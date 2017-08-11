@@ -1,0 +1,24 @@
+trainFile=train-questions.txt
+serializeTo=ner-model.ser.gz
+map = word=0,answer=1
+useClassFeature=true
+useWord=true
+usePosition=true
+useTypeSeqs2=true
+maxNGramLeng=6
+useTypeSeqs=true
+usePrevNextLemmas=true
+usePrevSequences=true
+useNGrams=true
+maxLeft=1
+usePrev=true
+printFeatures=1
+useBeginSent=true
+useTypeySequences=true
+useNext=true
+noMidNGrams=true
+useLemmaAsWord=true
+useLemmas=true
+useDisjunctive=true
+wordShape=chris2useLC
+useSequences=true
