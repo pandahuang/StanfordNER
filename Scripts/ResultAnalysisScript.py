@@ -73,31 +73,77 @@ def run(feature_set, DM=DM):
     crf_test.train()
     return crf_test.verify()
 
-for i in range(10):
-    # use demo features
-    feature_demo = features
-    sout, serr = run(feature_demo)
-    results = sout.strip().split('\r')
-    isWorng = False
-    sents = []
-    validation = serr.strip().split('\r')[-15:]
-    with open('LogWrongSents.txt', 'a') as fopen:
-        for val in validation:
-            fopen.write(val)
-        fopen.write('\n')
-    for result in results:
-        if result.strip():
-            sents.append(result.strip())
-            token, label, res = result.split('\t')[0], result.split('\t')[1], result.split('\t')[2]
-            if label != res:
-                isWorng = True
-        else:
-            with open('LogWrongSents.txt', 'a') as fopen:
-                if sents and isWorng:
-                    for sent in sents:
-                        fopen.write(sent + '\n')
-                    fopen.write('\n')
-            sents = []
-            isWorng = False
-    with open('LogWrongSents.txt', 'a') as fopen:
-        fopen.write('===============================================================================' + '\n')
+
+# for i in range(10):
+#     # use demo features
+#     feature_demo = features
+#     sout, serr = run(feature_demo)
+#     results = sout.strip().split('\r')
+#     isWorng = False
+#     sents = []
+#     validation = serr.strip().split('\r')[-15:]
+#     with open('LogWrongSents.txt', 'a') as fopen:
+#         for val in validation:
+#             fopen.write(val)
+#         fopen.write('\n')
+#     for result in results:
+#         if result.strip():
+#             sents.append(result.strip())
+#             token, label, res = result.split('\t')[0], result.split('\t')[1], result.split('\t')[2]
+#             if label != res:
+#                 isWorng = True
+#         else:
+#             with open('LogWrongSents.txt', 'a') as fopen:
+#                 if sents and isWorng:
+#                     for sent in sents:
+#                         fopen.write(sent + '\n')
+#                     fopen.write('\n')
+#             sents = []
+#             isWorng = False
+#     with open('LogWrongSents.txt', 'a') as fopen:
+#         fopen.write('===============================================================================' + '\n')
+
+import numpy as np
+
+field_res, null_res, total_res = [], [], []
+with open('LogWrongSents.txt') as fopen:
+    for line in fopen:
+        if line:
+            if line.strip().split('\t')[0] == 'Field' and len(line.strip().split('\t')) == 7:
+                field_res.append(line.strip().split('\t')[1:])  # P, R, F1, TP, FP, FN
+            elif line.strip().split('\t')[0] == 'NULL' and len(line.strip().split('\t')) == 7:
+                null_res.append(line.strip().split('\t')[1:])
+            elif line.strip().split('\t')[0] == 'Totals' and len(line.strip().split('\t')) == 7:
+                total_res.append(line.strip().split('\t')[1:])
+field_res = np.array(field_res).astype(np.float)
+null_res = np.array(null_res).astype(np.float)
+total_res = np.array(total_res).astype(np.float)
+
+field_res_avg = [float(np.mean(field_res[:, i])) for i in range(6)]
+null_res_avg = [float(np.mean(null_res[:, i])) for i in range(6)]
+total_res_avg = [float(np.mean(total_res[:, i])) for i in range(6)]
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(9, 6))
+xticks = ['FP', 'FN']
+plt.xticks(range(len(xticks)), xticks)
+plt.bar(np.arange(len(xticks)), field_res_avg[4:], width=0.2, facecolor='lightskyblue', edgecolor='white',
+        label='Field')
+plt.legend(loc='upper left', frameon=False)
+for x, y in zip(np.arange(len(xticks)), field_res_avg[4:]):
+    plt.text(x, y / 2, '%.2f' % y, ha='center')
+plt.bar(np.arange(len(xticks)), null_res_avg[4:], width=0.2, facecolor='lightgreen', edgecolor='white', label='NULL',
+        bottom=field_res_avg[4:])
+plt.legend(loc='upper left', frameon=False)
+for x, y, y1 in zip(np.arange(len(xticks)), np.array(null_res_avg[4:]), np.array(field_res_avg[4:])):
+    plt.text(x, y / 2 + y1, '%.2f' % y, ha='center')
+plt.bar(np.arange(len(xticks)), np.array(total_res_avg[4:]) - np.array(field_res_avg[4:]) - np.array(null_res_avg[4:]),
+        width=0.2, facecolor='lightpink', edgecolor='white', label='Others',
+        bottom=(np.array(field_res_avg[4:]) + np.array(null_res_avg[4:])))
+plt.legend(loc='upper left', frameon=False)
+for x, y, y1, y2 in zip(np.arange(len(xticks)),
+                        np.array(total_res_avg[4:]) - np.array(field_res_avg[4:]) - np.array(null_res_avg[4:]),
+                        np.array(null_res_avg[4:]), np.array(field_res_avg[4:])):
+    plt.text(x, y / 2 + y1 + y2, '%.2f' % y, ha='center')
+plt.show()
