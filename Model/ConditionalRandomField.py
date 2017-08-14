@@ -110,7 +110,7 @@ class CRF(object):
         LogResult(str(testing_time.total_seconds()), str(accuracy), serr)
         if not test_file == self.test_file:
             os.remove(test_file)
-        pass
+        return sout, serr
 
 
 if __name__ == '__main__':

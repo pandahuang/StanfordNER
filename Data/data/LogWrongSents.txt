@@ -1,0 +1,1741 @@
+Invoked on Mon Aug 14 12:43:34 CST 2017 with arguments: -loadClassifier ner-model.ser.gz -testFile test-questions.txt
+testFile=test-questions.txt
+loadClassifier=ner-model.ser.gz
+Loading classifier from ner-model.ser.gz ... done [0.2 sec].
+CRFClassifier tagged 920 words in 168 documents at 1049.03 words per second.
+         Entity	P	R	F1	TP	FP	FN
+    Aggregation	0.9722	0.9211	0.9459	35	1	3
+ ComparisonWith	1.0000	1.0000	1.0000	20	0	0
+DateTimeFilterField	1.0000	0.5000	0.6667	1	0	1
+DateTimeFilterValue	1.0000	0.7500	0.8571	9	0	3
+          Field	0.9259	0.8929	0.9091	50	4	6
+GeneralFilterField	0.9744	1.0000	0.9870	38	1	0
+GeneralFilterValue	0.9744	1.0000	0.9870	38	1	0
+        GroupBy	0.9825	0.9492	0.9655	56	1	3
+          Limit	1.0000	1.0000	1.0000	39	0	0
+           NULL	0.9437	0.9393	0.9415	201	12	13
+          Order	1.0000	0.9500	0.9744	57	0	3
+        OrderBy	1.0000	1.0000	1.0000	29	0	0
+         Totals	0.9663	0.9471	0.9566	573	20	32
+3	B-Limit	B-Limit
+biggest	B-Order	NULL
+sales	B-GroupBy	B-GroupBy
+order	I-GroupBy	I-GroupBy
+
+how	B-Aggregation	B-Aggregation
+many	B-Aggregation	I-Aggregation
+products	NULL	NULL
+
+preferred	B-Field	NULL
+vendor	I-Field	NULL
+
+product	NULL	B-Field
+count	B-Aggregation	I-Field
+
+sales	NULL	B-Field
+employee	NULL	I-Field
+
+the	NULL	NULL
+first	B-Order	NULL
+deal	B-GroupBy	NULL
+today	B-DateTimeFilterValue	NULL
+
+What	NULL	NULL
+kind	NULL	NULL
+of	NULL	NULL
+product(s)	B-GroupBy	NULL
+has	NULL	NULL
+the	NULL	NULL
+most	B-Order	B-Order
+cancelled	NULL	NULL
+PO	NULL	NULL
+
+What	NULL	NULL
+are	NULL	NULL
+the	NULL	NULL
+figure	B-Field	NULL
+of	NULL	NULL
+Purchase	NULL	NULL
+document	NULL	NULL
+status	NULL	NULL
+
+the	NULL	NULL
+4	B-Limit	B-Limit
+worst	B-Order	NULL
+selling	B-GroupBy	NULL
+products	I-GroupBy	B-GroupBy
+
+how	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+sales	B-Field	NULL
+orders	I-Field	NULL
+are	NULL	NULL
+delivered	NULL	NULL
+on-time	NULL	NULL
+
+how	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+staff	B-Field	NULL
+report	NULL	NULL
+to	NULL	NULL
+me	NULL	NULL
+
+average	B-Aggregation	B-Aggregation
+days	B-Field	B-Field
+of	I-Field	NULL
+delays	I-Field	NULL
+in	NULL	NULL
+delivery	NULL	NULL
+
+Show	NULL	NULL
+Segmentation	B-Field	NULL
+AccountCode	I-Field	NULL
+
+How	B-Aggregation	B-Aggregation
+much	I-Aggregation	I-Aggregation
+account	NULL	B-Field
+balance	NULL	I-Field
+of	NULL	NULL
+Account	B-GeneralFilterField	B-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+
+JE	NULL	NULL
+of	NULL	NULL
+Week	B-DateTimeFilterField	B-GeneralFilterField
+XXX	B-DateTimeFilterValue	B-GeneralFilterValue
+
+===============================================================================
+Invoked on Mon Aug 14 12:43:53 CST 2017 with arguments: -loadClassifier ner-model.ser.gz -testFile test-questions.txt
+testFile=test-questions.txt
+loadClassifier=ner-model.ser.gz
+Loading classifier from ner-model.ser.gz ... done [0.2 sec].
+CRFClassifier tagged 972 words in 168 documents at 1029.66 words per second.
+         Entity	P	R	F1	TP	FP	FN
+    Aggregation	1.0000	0.9744	0.9870	38	0	1
+ ComparisonWith	1.0000	1.0000	1.0000	14	0	0
+DateTimeFilterField	1.0000	1.0000	1.0000	2	0	0
+DateTimeFilterValue	1.0000	0.8500	0.9189	17	0	3
+          Field	0.8730	0.8088	0.8397	55	8	13
+GeneralFilterField	0.9783	0.9783	0.9783	45	1	1
+GeneralFilterValue	1.0000	1.0000	1.0000	46	0	0
+        GroupBy	0.9800	0.9423	0.9608	49	1	3
+          Limit	1.0000	0.9730	0.9863	36	0	1
+           NULL	0.8894	0.9147	0.9019	193	24	18
+          Order	0.9643	0.9643	0.9643	54	2	2
+        OrderBy	1.0000	1.0000	1.0000	28	0	0
+         Totals	0.9413	0.9321	0.9367	577	36	42
+preferred	B-Field	NULL
+vendor	I-Field	NULL
+
+product	NULL	B-Field
+count	B-Aggregation	I-Field
+
+the	NULL	NULL
+first	B-Order	NULL
+deal	B-GroupBy	NULL
+today	B-DateTimeFilterValue	NULL
+
+the	NULL	NULL
+last	B-Order	B-Order
+deal	B-GroupBy	NULL
+in	NULL	NULL
+Q2	B-DateTimeFilterValue	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+average	B-Aggregation	B-Aggregation
+purchase	B-Field	B-Field
+order	I-Field	I-Field
+lead	I-Field	NULL
+time	I-Field	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+average	B-Aggregation	B-Aggregation
+purchase	B-Field	B-Field
+order	I-Field	I-Field
+lead	I-Field	NULL
+time	I-Field	NULL
+of	NULL	NULL
+buyer	B-GeneralFilterField	B-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+average	B-Aggregation	B-Aggregation
+purchase	B-Field	B-Field
+order	I-Field	I-Field
+lead	I-Field	NULL
+time	I-Field	NULL
+of	NULL	NULL
+country	B-GeneralFilterField	B-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+
+Which	NULL	NULL
+shipping	B-GroupBy	B-GroupBy
+type	I-GroupBy	NULL
+has	NULL	NULL
+the	NULL	NULL
+most	B-Order	B-Order
+back	B-OrderBy	B-OrderBy
+order	I-OrderBy	I-OrderBy
+quantity	I-OrderBy	I-OrderBy
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+cost	B-Field	B-Order
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+Credit	B-Field	NULL
+Limit	I-Field	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+total	B-Aggregation	B-Aggregation
+out	B-Field	NULL
+bound	I-Field	B-Field
+inventory	I-Field	I-Field
+value	I-Field	I-Field
+this	B-DateTimeFilterValue	B-DateTimeFilterValue
+month	I-DateTimeFilterValue	I-DateTimeFilterValue
+
+who	NULL	NULL
+owes	NULL	NULL
+most	NULL	B-Order
+bottom	B-Order	B-Order
+3	B-Limit	B-Limit
+
+worst	B-Order	NULL
+selling	NULL	NULL
+items	I-GroupBy	B-GroupBy
+
+8	B-Limit	NULL
+worst	B-Order	B-Order
+selling	B-GroupBy	B-GroupBy
+products	I-GroupBy	I-GroupBy
+
+List	NULL	NULL
+all	NULL	NULL
+sales	B-Field	NULL
+employee	I-Field	NULL
+
+List	NULL	NULL
+all	NULL	NULL
+buyer	B-Field	NULL
+
+list	NULL	NULL
+all	NULL	NULL
+prospects	B-Field	NULL
+
+how	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+sales	B-Field	NULL
+orders	I-Field	NULL
+are	NULL	NULL
+delivered	NULL	NULL
+on-time	NULL	NULL
+
+Show	NULL	NULL
+amount	B-Field	B-Field
+of	NULL	NULL
+P&L	B-GeneralFilterField	B-GeneralFilterField
+account	I-GeneralFilterField	I-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+in	NULL	NULL
+Period	B-DateTimeFilterValue	NULL
+
+JE	NULL	NULL
+of	NULL	NULL
+Document	B-GeneralFilterField	NULL
+Type	I-GeneralFilterField	B-GeneralFilterField
+XXX	B-GeneralFilterValue	B-GeneralFilterValue
+
+Equity	B-Field	NULL
+
+OC	B-Field	NULL
+
+ROE	NULL	B-Field
+
+Compare	NULL	NULL
+ROE	NULL	B-Field
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+year	I-ComparisonWith	I-ComparisonWith
+
+Compare	NULL	NULL
+ROE	NULL	B-Field
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+period	I-ComparisonWith	I-ComparisonWith
+
+===============================================================================
+Invoked on Mon Aug 14 12:44:11 CST 2017 with arguments: -loadClassifier ner-model.ser.gz -testFile test-questions.txt
+testFile=test-questions.txt
+loadClassifier=ner-model.ser.gz
+Loading classifier from ner-model.ser.gz ... done [0.2 sec].
+CRFClassifier tagged 979 words in 168 documents at 1054.96 words per second.
+         Entity	P	R	F1	TP	FP	FN
+    Aggregation	1.0000	0.9767	0.9882	42	0	1
+ ComparisonWith	1.0000	0.9444	0.9714	17	0	1
+DateTimeFilterField	1.0000	0.8889	0.9412	8	0	1
+DateTimeFilterValue	1.0000	0.9565	0.9778	22	0	1
+          Field	0.9508	0.8657	0.9063	58	3	9
+GeneralFilterField	0.9189	0.9714	0.9444	34	3	1
+GeneralFilterValue	0.9189	1.0000	0.9577	34	3	0
+        GroupBy	1.0000	0.9508	0.9748	58	0	3
+          Limit	1.0000	0.9762	0.9880	41	0	1
+           NULL	0.9266	0.9266	0.9266	202	16	16
+          Order	1.0000	0.9524	0.9756	60	0	3
+        OrderBy	1.0000	1.0000	1.0000	32	0	0
+         Totals	0.9605	0.9426	0.9515	608	25	37
+3	B-Limit	B-Limit
+latest	B-Order	NULL
+deals	B-GroupBy	NULL
+
+preferred	B-Field	NULL
+vendor	I-Field	NULL
+
+the	NULL	NULL
+last	B-Order	NULL
+deal	B-GroupBy	NULL
+in	NULL	NULL
+Q2	B-DateTimeFilterValue	B-DateTimeFilterValue
+
+From	NULL	NULL
+which	NULL	NULL
+country	B-GroupBy	NULL
+we	NULL	NULL
+import	NULL	NULL
+most	B-Order	B-Order
+goods	NULL	NULL
+by	NULL	NULL
+amount	B-OrderBy	B-OrderBy
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+total	B-Aggregation	B-Aggregation
+amount	B-Field	B-Field
+of	NULL	NULL
+credit	NULL	B-GeneralFilterField
+memo	NULL	B-GeneralFilterValue
+
+What	NULL	NULL
+are	NULL	NULL
+the	NULL	NULL
+figure	B-Field	NULL
+of	NULL	NULL
+Purchase	NULL	NULL
+document	NULL	NULL
+status	NULL	NULL
+
+The	NULL	NULL
+cost	B-Field	NULL
+trend	NULL	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+Sales	NULL	NULL
+Documents	NULL	NULL
+Balance	B-Field	NULL
+Total	B-Aggregation	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+total	B-Aggregation	B-Aggregation
+out	B-Field	NULL
+bound	I-Field	B-Field
+inventory	I-Field	I-Field
+value	I-Field	I-Field
+this	B-DateTimeFilterValue	B-DateTimeFilterValue
+month	I-DateTimeFilterValue	I-DateTimeFilterValue
+
+sales	B-Field	NULL
+volume	I-Field	NULL
+from	NULL	NULL
+bottom	B-Order	B-Order
+3	B-Limit	B-Limit
+customers	B-GroupBy	B-GroupBy
+
+worst	B-Order	NULL
+selling	NULL	NULL
+items	I-GroupBy	B-GroupBy
+
+8	B-Limit	NULL
+worst	B-Order	B-Order
+selling	B-GroupBy	B-GroupBy
+products	I-GroupBy	I-GroupBy
+
+List	NULL	NULL
+all	NULL	NULL
+sales	B-Field	NULL
+employee	I-Field	NULL
+
+how	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+staff	B-Field	NULL
+report	NULL	NULL
+to	NULL	NULL
+me	NULL	NULL
+
+average	B-Aggregation	B-Aggregation
+days	B-Field	B-Field
+of	I-Field	NULL
+delays	I-Field	NULL
+in	NULL	NULL
+delivery	NULL	NULL
+
+How	B-Aggregation	B-Aggregation
+much	I-Aggregation	I-Aggregation
+account	NULL	B-Field
+balance	NULL	I-Field
+of	NULL	NULL
+Account	B-GeneralFilterField	B-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+
+Compare	NULL	NULL
+balance	B-Field	B-Field
+of	NULL	NULL
+B/S	B-GeneralFilterField	B-GeneralFilterField
+account	B-ComparisonWith	I-GeneralFilterField
+X	I-ComparisonWith	B-GeneralFilterValue
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+year	I-ComparisonWith	I-ComparisonWith
+
+JE	NULL	NULL
+of	NULL	NULL
+Posting	B-DateTimeFilterField	B-GeneralFilterField
+Date	I-DateTimeFilterField	I-GeneralFilterField
+XXX	B-DateTimeFilterValue	B-GeneralFilterValue
+
+===============================================================================
+Invoked on Mon Aug 14 12:44:28 CST 2017 with arguments: -loadClassifier ner-model.ser.gz -testFile test-questions.txt
+testFile=test-questions.txt
+loadClassifier=ner-model.ser.gz
+Loading classifier from ner-model.ser.gz ... done [0.2 sec].
+CRFClassifier tagged 972 words in 168 documents at 1089.69 words per second.
+         Entity	P	R	F1	TP	FP	FN
+    Aggregation	1.0000	0.7750	0.8732	31	0	9
+ ComparisonWith	1.0000	0.9545	0.9767	21	0	1
+DateTimeFilterField	1.0000	0.7143	0.8333	5	0	2
+DateTimeFilterValue	0.9412	0.8000	0.8649	16	1	4
+          Field	0.8364	0.8519	0.8440	46	9	8
+GeneralFilterField	0.9211	0.9722	0.9459	35	3	1
+GeneralFilterValue	0.9211	1.0000	0.9589	35	3	0
+        GroupBy	0.9474	0.8852	0.9153	54	3	7
+          Limit	1.0000	0.9730	0.9863	36	0	1
+           NULL	0.8667	0.8405	0.8534	195	30	37
+          Order	0.9365	0.9219	0.9291	59	4	5
+        OrderBy	1.0000	0.9706	0.9851	33	0	1
+         Totals	0.9144	0.8816	0.8977	566	53	76
+product	NULL	B-Field
+count	B-Aggregation	I-Field
+
+sales	NULL	B-Field
+employee	NULL	I-Field
+
+the	NULL	B-Order
+3	B-Limit	B-Limit
+most	B-Order	B-Order
+lucrative	NULL	NULL
+products	B-GroupBy	B-GroupBy
+
+the	NULL	NULL
+first	B-Order	NULL
+deal	B-GroupBy	NULL
+today	B-DateTimeFilterValue	NULL
+
+the	NULL	NULL
+top	B-Order	NULL
+back	NULL	NULL
+ordered	NULL	NULL
+quantity	NULL	NULL
+product	B-GroupBy	B-GroupBy
+
+top	B-Order	NULL
+sales	B-GroupBy	NULL
+person	I-GroupBy	NULL
+
+From	NULL	NULL
+which	NULL	NULL
+country	B-GroupBy	NULL
+we	NULL	NULL
+import	NULL	NULL
+most	B-Order	B-Order
+goods	NULL	NULL
+by	NULL	NULL
+amount	B-OrderBy	B-OrderBy
+
+The	NULL	NULL
+average	B-Aggregation	B-Field
+price	B-Field	I-Field
+trend	NULL	NULL
+
+Which	NULL	NULL
+territory	B-GroupBy	B-GroupBy
+has	NULL	NULL
+the	NULL	NULL
+highest	B-Order	B-Order
+profit	B-OrderBy	B-Field
+rate	I-OrderBy	I-Field
+
+Which	NULL	NULL
+territory	B-GroupBy	NULL
+contribute	NULL	NULL
+most	B-Order	B-Order
+to	NULL	NULL
+revenue	B-OrderBy	B-OrderBy
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+back	NULL	B-Field
+order	NULL	I-Field
+quantity	B-Field	I-Field
+of	NULL	NULL
+customer	B-GeneralFilterField	B-GeneralFilterField
+A	B-GeneralFilterValue	B-GeneralFilterValue
+
+Which	NULL	NULL
+shipping	B-GroupBy	NULL
+type	I-GroupBy	NULL
+has	NULL	NULL
+the	NULL	NULL
+most	B-Order	B-Order
+back	B-OrderBy	B-OrderBy
+order	I-OrderBy	I-OrderBy
+quantity	I-OrderBy	I-OrderBy
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+cost	B-Field	B-Order
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+overall	B-Aggregation	NULL
+ontime	NULL	NULL
+delivery	B-Field	B-Field
+rate	I-Field	I-Field
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+current	NULL	B-Field
+status	NULL	I-Field
+of	NULL	NULL
+Item	B-GeneralFilterField	B-GeneralFilterField
+A	B-GeneralFilterValue	B-GeneralFilterValue
+in	NULL	NULL
+Warehouse	B-GeneralFilterField	B-GeneralFilterField
+B	B-GeneralFilterValue	B-GeneralFilterValue
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+in	B-Field	NULL
+stock	I-Field	B-Field
+quantity	I-Field	I-Field
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+in	B-Field	NULL
+stock	I-Field	B-Field
+quantity	I-Field	I-Field
+of	NULL	NULL
+Item	B-GeneralFilterField	B-GeneralFilterField
+A	B-GeneralFilterValue	B-GeneralFilterValue
+in	NULL	NULL
+warehouse	B-GeneralFilterField	B-GeneralFilterField
+B	B-GeneralFilterValue	B-GeneralFilterValue
+
+List	NULL	NULL
+all	NULL	NULL
+sales	NULL	B-Field
+employee	NULL	I-Field
+or	NULL	NULL
+buyer	NULL	NULL
+
+the	NULL	NULL
+bottom	B-Order	B-Order
+3	B-Limit	B-Limit
+worst	NULL	B-Order
+selling	NULL	NULL
+items	B-GroupBy	I-GroupBy
+
+the	NULL	B-Order
+4	B-Limit	B-Limit
+worst	B-Order	NULL
+selling	B-GroupBy	NULL
+products	I-GroupBy	B-GroupBy
+
+8	B-Limit	NULL
+worst	B-Order	NULL
+selling	B-GroupBy	NULL
+products	I-GroupBy	B-GroupBy
+
+List	NULL	NULL
+all	NULL	NULL
+buyer	B-Field	NULL
+
+is	NULL	NULL
+item	B-GeneralFilterField	B-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+in	NULL	NULL
+stock	NULL	B-DateTimeFilterValue
+
+top	B-Order	B-Order
+3	B-Limit	B-Limit
+potential	NULL	NULL
+deals	NULL	B-GroupBy
+
+how	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+staff	B-Field	NULL
+report	NULL	NULL
+to	NULL	NULL
+me	NULL	NULL
+
+Compare	NULL	NULL
+balance	B-Field	B-Field
+of	NULL	NULL
+B/S	B-GeneralFilterField	B-GeneralFilterField
+account	B-ComparisonWith	I-GeneralFilterField
+X	I-ComparisonWith	B-GeneralFilterValue
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+year	I-ComparisonWith	I-ComparisonWith
+
+JE	NULL	NULL
+of	NULL	NULL
+Posting	B-DateTimeFilterField	NULL
+Date	I-DateTimeFilterField	B-GeneralFilterField
+XXX	B-DateTimeFilterValue	B-GeneralFilterValue
+
+JE	NULL	NULL
+of	NULL	NULL
+Week	B-DateTimeFilterField	B-GeneralFilterField
+XXX	B-DateTimeFilterValue	B-GeneralFilterValue
+
+Total	B-Aggregation	NULL
+Assets	NULL	NULL
+
+Compare	NULL	NULL
+Total	B-Aggregation	NULL
+Assets	NULL	NULL
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+year	I-ComparisonWith	I-ComparisonWith
+
+Compare	NULL	NULL
+Total	B-Aggregation	NULL
+Assets	NULL	NULL
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+period	I-ComparisonWith	I-ComparisonWith
+
+Total	B-Aggregation	NULL
+Liabilities	NULL	NULL
+
+Compare	NULL	NULL
+Total	B-Aggregation	NULL
+Liabilities	NULL	NULL
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+year	I-ComparisonWith	I-ComparisonWith
+
+Compare	NULL	NULL
+Total	B-Aggregation	NULL
+Liabilities	NULL	NULL
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+period	I-ComparisonWith	I-ComparisonWith
+
+Equity	B-Field	NULL
+
+===============================================================================
+Invoked on Mon Aug 14 12:44:45 CST 2017 with arguments: -loadClassifier ner-model.ser.gz -testFile test-questions.txt
+testFile=test-questions.txt
+loadClassifier=ner-model.ser.gz
+Loading classifier from ner-model.ser.gz ... done [0.2 sec].
+CRFClassifier tagged 965 words in 168 documents at 1089.16 words per second.
+         Entity	P	R	F1	TP	FP	FN
+    Aggregation	1.0000	0.9355	0.9667	29	0	2
+ ComparisonWith	1.0000	0.9048	0.9500	19	0	2
+DateTimeFilterField	1.0000	0.6000	0.7500	3	0	2
+DateTimeFilterValue	0.9048	0.7917	0.8444	19	2	5
+          Field	0.9057	0.8000	0.8496	48	5	12
+GeneralFilterField	0.9091	0.8824	0.8955	30	3	4
+GeneralFilterValue	0.8889	0.9697	0.9275	32	4	1
+        GroupBy	1.0000	0.9667	0.9831	58	0	2
+          Limit	1.0000	1.0000	1.0000	35	0	0
+           NULL	0.9000	0.8722	0.8859	198	22	29
+          Order	0.9661	0.9828	0.9744	57	2	1
+        OrderBy	1.0000	1.0000	1.0000	25	0	0
+         Totals	0.9357	0.9021	0.9186	553	38	60
+product	NULL	B-Field
+count	B-Aggregation	I-Field
+
+sales	NULL	B-Field
+employee	NULL	I-Field
+
+the	NULL	NULL
+top	B-Order	NULL
+back	NULL	NULL
+ordered	NULL	NULL
+quantity	NULL	NULL
+product	B-GroupBy	B-GroupBy
+
+What	NULL	NULL
+kind	NULL	NULL
+of	NULL	NULL
+product(s)	B-GroupBy	NULL
+has	NULL	NULL
+the	NULL	NULL
+most	B-Order	B-Order
+cancelled	NULL	NULL
+PO	NULL	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+cost	B-Field	B-Order
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+top	B-Order	B-Order
+N	B-Limit	B-Limit
+products	B-GroupBy	B-Field
+returned	NULL	I-Field
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+overall	B-Aggregation	NULL
+ontime	NULL	NULL
+delivery	B-Field	B-Field
+rate	I-Field	I-Field
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+Credit	B-Field	NULL
+Limit	I-Field	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+Commitment	B-Field	NULL
+Limit	I-Field	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+total	B-Aggregation	B-Aggregation
+out	B-Field	NULL
+bound	I-Field	B-Field
+inventory	I-Field	I-Field
+value	I-Field	I-Field
+this	B-DateTimeFilterValue	B-DateTimeFilterValue
+month	I-DateTimeFilterValue	I-DateTimeFilterValue
+
+bottom	B-Order	B-Order
+5	B-Limit	B-Limit
+biggest	NULL	B-Order
+customers	B-GroupBy	B-GroupBy
+
+sales	B-Field	NULL
+volume	I-Field	NULL
+from	NULL	NULL
+bottom	B-Order	B-Order
+3	B-Limit	B-Limit
+customers	B-GroupBy	B-GroupBy
+
+revenue	B-Field	NULL
+of	NULL	NULL
+bottom	B-Order	B-Order
+5	B-Limit	B-Limit
+items	B-GroupBy	B-GroupBy
+
+List	NULL	NULL
+all	NULL	NULL
+buyer	B-Field	NULL
+
+profit	B-Field	NULL
+margin	I-Field	NULL
+of	NULL	NULL
+item	B-GeneralFilterField	B-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+
+how	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+staff	B-Field	NULL
+report	NULL	NULL
+to	NULL	NULL
+me	NULL	NULL
+
+average	B-Aggregation	B-Aggregation
+deal	B-Field	NULL
+size	I-Field	NULL
+this	B-DateTimeFilterValue	B-DateTimeFilterValue
+year	I-DateTimeFilterValue	I-DateTimeFilterValue
+
+average	B-Aggregation	B-Aggregation
+days	B-Field	I-Field
+of	I-Field	NULL
+delays	I-Field	NULL
+in	NULL	NULL
+delivery	NULL	NULL
+
+Compare	NULL	NULL
+balance	B-Field	B-Field
+of	NULL	NULL
+B/S	B-GeneralFilterField	B-GeneralFilterField
+account	B-ComparisonWith	I-GeneralFilterField
+X	I-ComparisonWith	B-GeneralFilterValue
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+year	I-ComparisonWith	I-ComparisonWith
+
+Compare	NULL	NULL
+amount	B-Field	B-Field
+of	NULL	NULL
+P7L	B-ComparisonWith	NULL
+account	I-ComparisonWith	B-GeneralFilterField
+X	I-ComparisonWith	B-GeneralFilterValue
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+year	I-ComparisonWith	I-ComparisonWith
+
+JE	NULL	NULL
+of	NULL	NULL
+Posting	B-DateTimeFilterField	NULL
+Date	I-DateTimeFilterField	NULL
+XXX	B-DateTimeFilterValue	B-GeneralFilterValue
+
+JE	NULL	NULL
+of	NULL	NULL
+Due	B-DateTimeFilterField	NULL
+Date	I-DateTimeFilterField	NULL
+XXX	B-DateTimeFilterValue	B-GeneralFilterValue
+
+JE	NULL	NULL
+of	NULL	NULL
+Business	B-GeneralFilterField	NULL
+Partner	I-GeneralFilterField	NULL
+XXX	B-GeneralFilterValue	B-GeneralFilterValue
+
+JE	NULL	NULL
+of	NULL	NULL
+Document	B-GeneralFilterField	NULL
+Type	I-GeneralFilterField	B-GeneralFilterField
+XXX	B-GeneralFilterValue	B-GeneralFilterValue
+
+How	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+was	NULL	NULL
+sold	NULL	NULL
+for	NULL	NULL
+product	B-GeneralFilterField	B-GeneralFilterField
+XXX	B-GeneralFilterValue	B-GeneralFilterValue
+in	NULL	NULL
+current	B-DateTimeFilterValue	NULL
+month/period	I-DateTimeFilterValue	I-DateTimeFilterValue
+
+How	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+was	NULL	NULL
+receipt	NULL	NULL
+into	NULL	NULL
+warehouse	B-GeneralFilterField	NULL
+XXX	B-GeneralFilterValue	NULL
+for	NULL	NULL
+product	B-GeneralFilterField	B-GeneralFilterField
+XXX	B-GeneralFilterValue	B-GeneralFilterValue
+in	NULL	NULL
+current	B-DateTimeFilterValue	NULL
+month/period	I-DateTimeFilterValue	I-DateTimeFilterValue
+
+===============================================================================
+Invoked on Mon Aug 14 12:45:04 CST 2017 with arguments: -loadClassifier ner-model.ser.gz -testFile test-questions.txt
+testFile=test-questions.txt
+loadClassifier=ner-model.ser.gz
+Loading classifier from ner-model.ser.gz ... done [0.2 sec].
+CRFClassifier tagged 923 words in 168 documents at 1068.29 words per second.
+         Entity	P	R	F1	TP	FP	FN
+    Aggregation	1.0000	0.8710	0.9310	27	0	4
+ ComparisonWith	1.0000	1.0000	1.0000	25	0	0
+DateTimeFilterField	1.0000	0.8571	0.9231	6	0	1
+DateTimeFilterValue	1.0000	0.9375	0.9677	15	0	1
+          Field	0.8644	0.7969	0.8293	51	8	13
+GeneralFilterField	0.8485	0.8750	0.8615	28	5	4
+GeneralFilterValue	0.9697	1.0000	0.9846	32	1	0
+        GroupBy	0.9375	0.9375	0.9375	45	3	3
+          Limit	1.0000	0.9688	0.9841	31	0	1
+           NULL	0.8784	0.8864	0.8824	195	27	25
+          Order	0.9796	0.9412	0.9600	48	1	3
+        OrderBy	1.0000	0.9524	0.9756	20	0	1
+         Totals	0.9208	0.9033	0.9119	523	45	56
+item	NULL	NULL
+count	B-Aggregation	NULL
+
+ordered	B-Field	NULL
+quantity	I-Field	NULL
+
+preferred	B-Field	NULL
+vendor	I-Field	NULL
+
+The	NULL	NULL
+average	B-Aggregation	B-Field
+price	B-Field	I-Field
+trend	NULL	NULL
+
+Which	NULL	NULL
+territory	B-GroupBy	B-GroupBy
+has	NULL	NULL
+the	NULL	NULL
+highest	B-Order	B-Field
+profit	B-OrderBy	I-Field
+rate	I-OrderBy	I-Field
+
+Which	NULL	NULL
+territory	B-GroupBy	NULL
+contribute	NULL	NULL
+most	B-Order	B-Order
+to	NULL	NULL
+revenue	B-OrderBy	B-OrderBy
+
+The	NULL	NULL
+cost	B-Field	NULL
+trend	NULL	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+overall	B-Aggregation	NULL
+ontime	NULL	NULL
+delivery	B-Field	B-Field
+rate	I-Field	I-Field
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+Sales	NULL	NULL
+Documents	NULL	NULL
+Balance	B-Field	NULL
+Total	B-Aggregation	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+Credit	B-Field	NULL
+Limit	I-Field	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+Commitment	B-Field	NULL
+Limit	I-Field	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+total	B-Aggregation	B-Aggregation
+out	B-Field	B-Field
+bound	I-Field	B-Field
+inventory	I-Field	I-Field
+value	I-Field	I-Field
+this	B-DateTimeFilterValue	B-DateTimeFilterValue
+month	I-DateTimeFilterValue	I-DateTimeFilterValue
+
+List	NULL	NULL
+all	NULL	NULL
+sales	NULL	NULL
+employee	NULL	NULL
+or	NULL	NULL
+buyer	NULL	B-GroupBy
+
+who	NULL	NULL
+owes	NULL	NULL
+most	NULL	B-Order
+bottom	B-Order	B-Order
+3	B-Limit	B-Limit
+
+sales	B-Field	NULL
+volume	I-Field	NULL
+from	NULL	NULL
+bottom	B-Order	B-Order
+3	B-Limit	B-Limit
+customers	B-GroupBy	B-GroupBy
+
+the	NULL	NULL
+4	B-Limit	B-Limit
+worst	B-Order	NULL
+selling	B-GroupBy	NULL
+products	I-GroupBy	B-GroupBy
+
+8	B-Limit	NULL
+worst	B-Order	NULL
+selling	B-GroupBy	NULL
+products	I-GroupBy	B-GroupBy
+
+List	NULL	NULL
+all	NULL	NULL
+sales	B-Field	NULL
+employee	I-Field	NULL
+
+list	NULL	NULL
+all	NULL	NULL
+prospects	B-Field	NULL
+
+how	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+staff	B-Field	NULL
+report	NULL	NULL
+to	NULL	NULL
+me	NULL	NULL
+
+Show	NULL	NULL
+Segmentation	B-Field	NULL
+AccountCode	I-Field	NULL
+
+How	B-Aggregation	B-Aggregation
+much	I-Aggregation	I-Aggregation
+account	NULL	B-Field
+balance	NULL	I-Field
+of	NULL	NULL
+Account	B-GeneralFilterField	B-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+
+JE	NULL	NULL
+of	NULL	NULL
+Business	B-GeneralFilterField	NULL
+Partner	I-GeneralFilterField	B-GeneralFilterField
+XXX	B-GeneralFilterValue	B-GeneralFilterValue
+
+JE	NULL	NULL
+of	NULL	NULL
+Document	B-GeneralFilterField	NULL
+Type	I-GeneralFilterField	B-GeneralFilterField
+XXX	B-GeneralFilterValue	B-GeneralFilterValue
+
+JE	NULL	NULL
+of	NULL	NULL
+Week	B-DateTimeFilterField	B-GeneralFilterField
+XXX	B-DateTimeFilterValue	B-GeneralFilterValue
+
+How	B-Aggregation	B-Aggregation
+much	I-Aggregation	I-Aggregation
+tax	B-Field	B-Field
+of	NULL	NULL
+tax	B-GeneralFilterField	NULL
+code	I-GeneralFilterField	B-GeneralFilterField
+xxx	B-GeneralFilterValue	B-GeneralFilterValue
+
+How	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+vat	B-Field	B-Field
+of	NULL	NULL
+tax	B-GeneralFilterField	NULL
+code	I-GeneralFilterField	B-GeneralFilterField
+xxx	B-GeneralFilterValue	B-GeneralFilterValue
+
+ROE	NULL	B-Field
+
+Compare	NULL	NULL
+ROE	NULL	B-Field
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+year	I-ComparisonWith	I-ComparisonWith
+
+Compare	NULL	NULL
+ROE	NULL	B-Field
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+period	I-ComparisonWith	I-ComparisonWith
+
+===============================================================================
+Invoked on Mon Aug 14 12:45:22 CST 2017 with arguments: -loadClassifier ner-model.ser.gz -testFile test-questions.txt
+testFile=test-questions.txt
+loadClassifier=ner-model.ser.gz
+Loading classifier from ner-model.ser.gz ... done [0.2 sec].
+CRFClassifier tagged 946 words in 168 documents at 1044.15 words per second.
+         Entity	P	R	F1	TP	FP	FN
+    Aggregation	1.0000	0.9500	0.9744	38	0	2
+ ComparisonWith	0.9600	0.9600	0.9600	24	1	1
+DateTimeFilterField	1.0000	1.0000	1.0000	5	0	0
+DateTimeFilterValue	0.8947	0.8947	0.8947	17	2	2
+          Field	0.9063	0.8529	0.8788	58	6	10
+GeneralFilterField	1.0000	1.0000	1.0000	24	0	0
+GeneralFilterValue	1.0000	1.0000	1.0000	24	0	0
+        GroupBy	0.9111	0.8723	0.8913	41	4	6
+          Limit	1.0000	0.9655	0.9825	28	0	1
+           NULL	0.9167	0.9083	0.9124	198	18	20
+          Order	0.9800	1.0000	0.9899	49	1	0
+        OrderBy	1.0000	1.0000	1.0000	26	0	0
+         Totals	0.9433	0.9268	0.9350	532	32	42
+default	B-Field	NULL
+vendor	I-Field	NULL
+
+preferred	B-Field	NULL
+vendor	I-Field	NULL
+
+product	NULL	B-Field
+count	B-Aggregation	I-Field
+
+the	NULL	NULL
+first	B-Order	B-Order
+deal	B-GroupBy	NULL
+today	B-DateTimeFilterValue	NULL
+
+Which	NULL	NULL
+product	B-GroupBy	B-GroupBy
+group	I-GroupBy	NULL
+purchased	NULL	NULL
+the	NULL	NULL
+most	B-Order	B-Order
+by	NULL	NULL
+quantity	B-OrderBy	B-OrderBy
+
+Which	NULL	NULL
+product	B-GroupBy	B-GroupBy
+group	I-GroupBy	NULL
+purchased	NULL	NULL
+the	NULL	NULL
+most	B-Order	B-Order
+by	NULL	NULL
+amount	B-OrderBy	B-OrderBy
+
+Which	NULL	NULL
+vendor	B-GroupBy	B-GroupBy
+group	I-GroupBy	NULL
+purchased	NULL	NULL
+the	NULL	NULL
+most	B-Order	B-Order
+by	NULL	NULL
+amount	B-OrderBy	B-OrderBy
+
+The	NULL	NULL
+average	B-Aggregation	B-Aggregation
+price	B-Field	B-Field
+trend	NULL	I-Field
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+cost	B-Field	B-Order
+
+The	NULL	NULL
+average	B-Aggregation	B-Aggregation
+selling	B-Field	B-Field
+price	I-Field	I-Field
+trend	NULL	I-Field
+
+The	NULL	NULL
+cost	B-Field	NULL
+trend	NULL	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+top	B-Order	B-Order
+N	B-Limit	B-Limit
+products	B-GroupBy	B-GroupBy
+returned	NULL	I-GroupBy
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+overall	B-Aggregation	NULL
+ontime	NULL	NULL
+delivery	B-Field	B-Field
+rate	I-Field	I-Field
+
+the	NULL	NULL
+bottom	B-Order	B-Order
+8	B-Limit	B-Limit
+biggest	NULL	NULL
+contract	B-GroupBy	NULL
+
+sales	B-Field	NULL
+volume	I-Field	NULL
+from	NULL	NULL
+bottom	B-Order	B-Order
+3	B-Limit	B-Limit
+customers	B-GroupBy	B-GroupBy
+
+8	B-Limit	NULL
+worst	B-Order	B-Order
+selling	B-GroupBy	B-GroupBy
+products	I-GroupBy	I-GroupBy
+
+List	NULL	NULL
+all	NULL	NULL
+sales	B-Field	NULL
+employee	I-Field	NULL
+
+List	NULL	NULL
+all	NULL	NULL
+buyer	B-Field	NULL
+
+list	NULL	NULL
+all	NULL	NULL
+prospects	B-Field	NULL
+
+How	B-Aggregation	B-Aggregation
+much	I-Aggregation	I-Aggregation
+account	NULL	B-Field
+balance	NULL	I-Field
+of	NULL	NULL
+Account	B-GeneralFilterField	B-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+
+Compare	NULL	NULL
+amount	B-Field	B-Field
+of	NULL	NULL
+P7L	B-ComparisonWith	NULL
+account	I-ComparisonWith	B-ComparisonWith
+X	I-ComparisonWith	I-ComparisonWith
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+year	I-ComparisonWith	I-ComparisonWith
+
+How	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+sales	NULL	B-Field
+orders	NULL	I-Field
+we	NULL	NULL
+have	NULL	NULL
+in	NULL	NULL
+this	B-DateTimeFilterValue	B-DateTimeFilterValue
+month/period	I-DateTimeFilterValue	I-DateTimeFilterValue
+
+===============================================================================
+Invoked on Mon Aug 14 12:45:39 CST 2017 with arguments: -loadClassifier ner-model.ser.gz -testFile test-questions.txt
+testFile=test-questions.txt
+loadClassifier=ner-model.ser.gz
+Loading classifier from ner-model.ser.gz ... done [0.2 sec].
+CRFClassifier tagged 940 words in 168 documents at 1037.53 words per second.
+         Entity	P	R	F1	TP	FP	FN
+    Aggregation	0.9750	0.9070	0.9398	39	1	4
+ ComparisonWith	0.9412	0.9412	0.9412	16	1	1
+DateTimeFilterField	1.0000	0.6667	0.8000	2	0	1
+DateTimeFilterValue	1.0000	0.7143	0.8333	10	0	4
+          Field	0.9138	0.8833	0.8983	53	5	7
+GeneralFilterField	0.9487	0.9737	0.9610	37	2	1
+GeneralFilterValue	0.9744	1.0000	0.9870	38	1	0
+        GroupBy	1.0000	0.9434	0.9709	50	0	3
+          Limit	1.0000	0.9750	0.9873	39	0	1
+           NULL	0.9167	0.9078	0.9122	187	17	19
+          Order	0.9423	0.9245	0.9333	49	3	4
+        OrderBy	1.0000	1.0000	1.0000	24	0	0
+         Totals	0.9477	0.9236	0.9355	544	30	45
+3	B-Limit	B-Limit
+latest	B-Order	NULL
+deals	B-GroupBy	NULL
+
+how	B-Aggregation	B-Aggregation
+many	B-Aggregation	I-Aggregation
+products	NULL	NULL
+
+product	NULL	B-Field
+count	B-Aggregation	I-Field
+
+the	NULL	B-Order
+3	B-Limit	B-Limit
+most	B-Order	B-Order
+lucrative	NULL	NULL
+products	B-GroupBy	B-GroupBy
+
+the	NULL	NULL
+first	B-Order	NULL
+deal	B-GroupBy	NULL
+today	B-DateTimeFilterValue	NULL
+
+the	NULL	NULL
+last	B-Order	NULL
+deal	B-GroupBy	NULL
+in	NULL	NULL
+Q2	B-DateTimeFilterValue	NULL
+
+What	NULL	NULL
+are	NULL	NULL
+the	NULL	NULL
+figure	B-Field	NULL
+of	NULL	NULL
+Purchase	NULL	NULL
+document	NULL	NULL
+status	NULL	NULL
+
+Total	B-Aggregation	B-Aggregation
+back	B-Field	NULL
+order	I-Field	NULL
+quantity	I-Field	B-Field
+of	NULL	NULL
+sales	B-GeneralFilterField	B-GeneralFilterField
+employee	I-GeneralFilterField	I-GeneralFilterField
+A	B-GeneralFilterValue	B-GeneralFilterValue
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+overall	B-Aggregation	NULL
+ontime	NULL	NULL
+delivery	B-Field	B-Field
+rate	I-Field	I-Field
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+in	B-Field	NULL
+stock	I-Field	B-Field
+quantity	I-Field	I-Field
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+in	B-Field	NULL
+stock	I-Field	B-Field
+quantity	I-Field	I-Field
+of	NULL	NULL
+Item	B-GeneralFilterField	B-GeneralFilterField
+A	B-GeneralFilterValue	B-GeneralFilterValue
+in	NULL	NULL
+warehouse	B-GeneralFilterField	B-GeneralFilterField
+B	B-GeneralFilterValue	B-GeneralFilterValue
+
+who	NULL	NULL
+owes	NULL	NULL
+most	NULL	B-Order
+bottom	B-Order	NULL
+3	B-Limit	NULL
+
+sales	B-Field	NULL
+volume	I-Field	NULL
+from	NULL	NULL
+bottom	B-Order	B-Order
+3	B-Limit	B-Limit
+customers	B-GroupBy	B-GroupBy
+
+the	NULL	B-Order
+4	B-Limit	B-Limit
+worst	B-Order	B-Order
+selling	B-GroupBy	B-GroupBy
+products	I-GroupBy	I-GroupBy
+
+Show	NULL	NULL
+Segmentation	B-Field	NULL
+AccountCode	I-Field	NULL
+
+How	B-Aggregation	B-Aggregation
+much	I-Aggregation	I-Aggregation
+account	NULL	B-Field
+balance	NULL	I-Field
+of	NULL	NULL
+Account	B-GeneralFilterField	B-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+
+Show	NULL	NULL
+amount	B-Field	B-Field
+of	NULL	NULL
+P&L	B-GeneralFilterField	B-GeneralFilterField
+account	I-GeneralFilterField	I-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+in	NULL	NULL
+Period	B-DateTimeFilterValue	NULL
+
+Compare	NULL	NULL
+amount	B-Field	B-Field
+of	NULL	NULL
+P7L	B-ComparisonWith	NULL
+account	I-ComparisonWith	B-ComparisonWith
+X	I-ComparisonWith	I-ComparisonWith
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+year	I-ComparisonWith	I-ComparisonWith
+
+JE	NULL	NULL
+of	NULL	NULL
+Document	B-GeneralFilterField	NULL
+Type	I-GeneralFilterField	B-GeneralFilterField
+XXX	B-GeneralFilterValue	B-GeneralFilterValue
+
+JE	NULL	NULL
+of	NULL	NULL
+Week	B-DateTimeFilterField	B-GeneralFilterField
+XXX	B-DateTimeFilterValue	B-GeneralFilterValue
+
+Equity	B-Field	NULL
+
+===============================================================================
+Invoked on Mon Aug 14 12:45:57 CST 2017 with arguments: -loadClassifier ner-model.ser.gz -testFile test-questions.txt
+testFile=test-questions.txt
+loadClassifier=ner-model.ser.gz
+Loading classifier from ner-model.ser.gz ... done [0.2 sec].
+CRFClassifier tagged 976 words in 168 documents at 1173.08 words per second.
+         Entity	P	R	F1	TP	FP	FN
+    Aggregation	0.9697	0.9697	0.9697	32	1	1
+ ComparisonWith	1.0000	1.0000	1.0000	19	0	0
+DateTimeFilterField	1.0000	0.8571	0.9231	6	0	1
+DateTimeFilterValue	0.9412	0.8889	0.9143	16	1	2
+          Field	0.8929	0.8475	0.8696	50	6	9
+GeneralFilterField	0.9459	1.0000	0.9722	35	2	0
+GeneralFilterValue	0.9459	1.0000	0.9722	35	2	0
+        GroupBy	0.9636	0.9298	0.9464	53	2	4
+          Limit	1.0000	1.0000	1.0000	32	0	0
+           NULL	0.9359	0.9319	0.9339	219	15	16
+          Order	1.0000	0.9643	0.9818	54	0	2
+        OrderBy	1.0000	0.9259	0.9615	25	0	2
+         Totals	0.9521	0.9396	0.9458	576	29	37
+preferred	B-Field	NULL
+vendor	I-Field	NULL
+
+product	NULL	B-Field
+count	B-Aggregation	I-Field
+
+From	NULL	NULL
+which	NULL	NULL
+country	B-GroupBy	NULL
+we	NULL	NULL
+import	NULL	NULL
+most	B-Order	B-Order
+goods	NULL	NULL
+by	NULL	NULL
+amount	B-OrderBy	B-OrderBy
+
+What	NULL	NULL
+kind	NULL	NULL
+of	NULL	NULL
+product(s)	B-GroupBy	NULL
+has	NULL	NULL
+the	NULL	NULL
+most	B-Order	B-Order
+cancelled	NULL	NULL
+PO	NULL	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+total	B-Aggregation	B-Aggregation
+amount	B-Field	B-Field
+of	NULL	NULL
+credit	NULL	B-GeneralFilterField
+memo	NULL	B-GeneralFilterValue
+
+The	NULL	NULL
+average	B-Aggregation	B-Aggregation
+price	B-Field	B-Field
+trend	NULL	I-Field
+
+Which	NULL	NULL
+branch	B-GroupBy	B-GroupBy
+is	NULL	NULL
+the	NULL	NULL
+most	B-Order	B-Order
+profitable	NULL	NULL
+branch	NULL	B-GroupBy
+
+Which	NULL	NULL
+territory	B-GroupBy	B-GroupBy
+has	NULL	NULL
+the	NULL	NULL
+highest	B-Order	B-Order
+profit	B-OrderBy	B-Field
+rate	I-OrderBy	I-Field
+
+Total	B-Aggregation	B-Aggregation
+back	B-Field	NULL
+order	I-Field	NULL
+quantity	I-Field	B-Field
+of	NULL	NULL
+sales	B-GeneralFilterField	B-GeneralFilterField
+employee	I-GeneralFilterField	I-GeneralFilterField
+A	B-GeneralFilterValue	B-GeneralFilterValue
+
+The	NULL	NULL
+average	B-Aggregation	B-Aggregation
+selling	B-Field	B-Field
+price	I-Field	I-Field
+trend	NULL	I-Field
+
+the	NULL	NULL
+bottom	B-Order	B-Order
+7	B-Limit	B-Limit
+biggest	NULL	NULL
+project	B-GroupBy	NULL
+
+sales	B-Field	NULL
+volume	I-Field	NULL
+from	NULL	NULL
+bottom	B-Order	B-Order
+3	B-Limit	B-Limit
+customers	B-GroupBy	B-GroupBy
+
+the	NULL	NULL
+4	B-Limit	B-Limit
+worst	B-Order	NULL
+selling	B-GroupBy	NULL
+products	I-GroupBy	B-GroupBy
+
+List	NULL	NULL
+all	NULL	NULL
+sales	B-Field	NULL
+employee	I-Field	NULL
+
+List	NULL	NULL
+all	NULL	NULL
+buyer	B-Field	NULL
+
+is	NULL	NULL
+item	B-GeneralFilterField	B-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+in	NULL	NULL
+stock	NULL	B-DateTimeFilterValue
+
+list	NULL	NULL
+all	NULL	NULL
+prospects	B-Field	NULL
+
+Show	NULL	NULL
+amount	B-Field	B-Field
+of	NULL	NULL
+P&L	B-GeneralFilterField	B-GeneralFilterField
+account	I-GeneralFilterField	I-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+in	NULL	NULL
+Period	B-DateTimeFilterValue	NULL
+
+JE	NULL	NULL
+of	NULL	NULL
+Week	B-DateTimeFilterField	B-GeneralFilterField
+XXX	B-DateTimeFilterValue	B-GeneralFilterValue
+
+OC	B-Field	NULL
+
+===============================================================================
+Invoked on Mon Aug 14 12:46:14 CST 2017 with arguments: -loadClassifier ner-model.ser.gz -testFile test-questions.txt
+testFile=test-questions.txt
+loadClassifier=ner-model.ser.gz
+Loading classifier from ner-model.ser.gz ... done [0.2 sec].
+CRFClassifier tagged 999 words in 168 documents at 1101.43 words per second.
+         Entity	P	R	F1	TP	FP	FN
+    Aggregation	0.9412	0.9697	0.9552	32	2	1
+ ComparisonWith	0.9565	0.9565	0.9565	22	1	1
+DateTimeFilterField	1.0000	0.5000	0.6667	2	0	2
+DateTimeFilterValue	1.0000	0.7000	0.8235	14	0	6
+          Field	0.8750	0.8400	0.8571	63	9	12
+GeneralFilterField	0.9744	0.8837	0.9268	38	1	5
+GeneralFilterValue	0.9767	0.9767	0.9767	42	1	1
+        GroupBy	0.8889	0.9600	0.9231	48	6	2
+          Limit	1.0000	0.9375	0.9677	30	0	2
+           NULL	0.8932	0.8932	0.8932	209	25	25
+          Order	0.9778	0.9167	0.9462	44	1	4
+        OrderBy	1.0000	0.9286	0.9630	26	0	2
+         Totals	0.9253	0.9005	0.9127	570	46	63
+3	B-Limit	NULL
+latest	B-Order	NULL
+deals	B-GroupBy	B-GroupBy
+
+latest	B-Order	NULL
+sales	B-GroupBy	NULL
+order	I-GroupBy	NULL
+
+preferred	B-Field	NULL
+vendor	I-Field	NULL
+
+product	NULL	B-Field
+count	B-Aggregation	I-Field
+
+sales	NULL	B-Field
+employee	NULL	I-Field
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+total	B-Aggregation	B-Aggregation
+amount	B-Field	B-Field
+of	NULL	NULL
+credit	NULL	B-GeneralFilterField
+memo	NULL	B-GeneralFilterValue
+
+The	NULL	NULL
+average	B-Aggregation	B-Aggregation
+price	B-Field	B-Field
+trend	NULL	I-Field
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+total	B-Aggregation	B-Aggregation
+purchase	B-Field	B-Field
+return	I-Field	I-Field
+amount	I-Field	I-Field
+which	NULL	I-Field
+purchased	NULL	I-Field
+by	NULL	NULL
+buyer	B-GeneralFilterField	B-GeneralFilterField
+A	B-GeneralFilterValue	B-GeneralFilterValue
+
+The	NULL	NULL
+average	B-Aggregation	B-Aggregation
+selling	B-Field	B-Field
+price	I-Field	I-Field
+trend	NULL	I-Field
+
+The	NULL	NULL
+cost	B-Field	NULL
+trend	NULL	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+current	NULL	NULL
+inventory	B-Field	NULL
+status	I-Field	NULL
+
+List	NULL	NULL
+all	NULL	NULL
+sales	NULL	B-Field
+employee	NULL	I-Field
+or	NULL	NULL
+buyer	NULL	B-Field
+
+the	NULL	NULL
+bottom	B-Order	B-Order
+3	B-Limit	B-Limit
+worst	NULL	B-Order
+selling	NULL	B-GroupBy
+items	B-GroupBy	I-GroupBy
+
+revenue	B-Field	NULL
+of	NULL	NULL
+bottom	B-Order	B-Order
+5	B-Limit	B-Limit
+items	B-GroupBy	B-GroupBy
+
+8	B-Limit	NULL
+worst	B-Order	B-Order
+selling	B-GroupBy	B-GroupBy
+products	I-GroupBy	I-GroupBy
+
+top	B-Order	B-Order
+3	B-Limit	B-Limit
+potential	NULL	B-GroupBy
+deals	NULL	NULL
+
+how	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+sales	B-Field	NULL
+orders	I-Field	NULL
+are	NULL	NULL
+delivered	NULL	NULL
+on-time	NULL	NULL
+
+how	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+staff	B-Field	NULL
+report	NULL	NULL
+to	NULL	NULL
+me	NULL	NULL
+
+Show	NULL	NULL
+amount	B-Field	B-Field
+of	NULL	NULL
+P&L	B-GeneralFilterField	B-GeneralFilterField
+account	I-GeneralFilterField	I-GeneralFilterField
+X	B-GeneralFilterValue	B-GeneralFilterValue
+in	NULL	NULL
+Period	B-DateTimeFilterValue	NULL
+
+Compare	NULL	NULL
+amount	B-Field	B-Field
+of	NULL	NULL
+P7L	B-ComparisonWith	NULL
+account	I-ComparisonWith	B-ComparisonWith
+X	I-ComparisonWith	I-ComparisonWith
+with	NULL	NULL
+last	B-ComparisonWith	B-ComparisonWith
+year	I-ComparisonWith	I-ComparisonWith
+
+How	B-Aggregation	B-Aggregation
+much	I-Aggregation	I-Aggregation
+account	B-Field	NULL
+balance	I-Field	NULL
+of	NULL	NULL
+period	I-DateTimeFilterValue	I-DateTimeFilterValue
+
+JE	NULL	NULL
+of	NULL	NULL
+Posting	B-DateTimeFilterField	NULL
+Date	I-DateTimeFilterField	NULL
+XXX	B-DateTimeFilterValue	NULL
+
+JE	NULL	NULL
+of	NULL	NULL
+Due	B-DateTimeFilterField	NULL
+Date	I-DateTimeFilterField	NULL
+XXX	B-DateTimeFilterValue	NULL
+
+Equity	B-Field	NULL
+
+OC	B-Field	NULL
+
+How	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+was	NULL	NULL
+sold	NULL	NULL
+for	NULL	NULL
+product	B-GeneralFilterField	B-GroupBy
+XXX	B-GeneralFilterValue	B-GeneralFilterValue
+in	NULL	NULL
+current	B-DateTimeFilterValue	NULL
+month/period	I-DateTimeFilterValue	NULL
+
+How	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+was	NULL	NULL
+receipt	NULL	NULL
+into	NULL	NULL
+warehouse	B-GeneralFilterField	NULL
+XXX	B-GeneralFilterValue	NULL
+for	NULL	NULL
+product	B-GeneralFilterField	B-GroupBy
+XXX	B-GeneralFilterValue	B-GeneralFilterValue
+in	NULL	NULL
+current	B-DateTimeFilterValue	NULL
+month/period	I-DateTimeFilterValue	NULL
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+highest	B-Order	B-Aggregation
+selling	B-OrderBy	B-Field
+price	I-OrderBy	I-Field
+for	NULL	NULL
+product	B-GeneralFilterField	B-GroupBy
+XXX	B-GeneralFilterValue	B-GeneralFilterValue
+
+What	NULL	NULL
+is	NULL	NULL
+the	NULL	NULL
+lowest	B-Order	B-Aggregation
+purchasing	B-OrderBy	B-Field
+price	I-OrderBy	I-Field
+for	NULL	NULL
+product	B-GeneralFilterField	B-GroupBy
+XXX	B-GeneralFilterValue	B-GeneralFilterValue
+
+===============================================================================

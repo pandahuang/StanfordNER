@@ -49,7 +49,7 @@ class CRFPreprocessor(Preprocessor):
         train_index = []
         test_index = []
         if isRandom:
-            train_index = random.sample(index_record, len(index_record) / percent[0] * (percent[0] + percent[1]))
+            train_index = random.sample(index_record, len(index_record) / (percent[0] + percent[1]) * percent[0])
             test_index = list(set(index_record) - set(train_index))
         else:
             train_index, test_index = regular_sample(index_record, percent)
