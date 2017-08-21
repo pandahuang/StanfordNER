@@ -26,7 +26,8 @@ features = {
     'useLemmaAsWord': 'true',
     'usePosition': 'true',
     'useBeginSent': 'true',
-    'printFeatures': '1'
+    'printFeatures': '1',
+    'mergeTags': 'false'
 }
 
 feature_sets = []
@@ -35,28 +36,6 @@ feature_sets = []
 def list2dict(feature):
     return {key: features.get(key) for key in feature if features.has_key(key)}
 
-
-default = ['useWord', 'useSequences', 'printFeatures']
-word = ['usePrev', 'useNext']
-ngram = ['useNGrams', 'noMidNGrams', 'maxNGramLeng']
-wordshape = ['wordShape', 'useTypeSeqs', 'useTypeSeqs2', 'useTypeySequences']
-classf = ['useClassFeature', 'usePrevSequences', 'maxLeft']
-disjunctive = ['useDisjunctive']
-lemmas = ['useLemmas', 'usePrevNextLemmas', 'useLemmaAsWord']
-position = ['usePosition', 'useBeginSent']
-
-feature_default = list2dict(default)
-feature_sets.append(feature_default)
-feature_word = list2dict(default + word)
-feature_sets.append(feature_word)
-feature_ngram = list2dict(default + ngram)
-feature_sets.append(feature_ngram)
-feature_shape = list2dict(default + wordshape)
-feature_sets.append(feature_shape)
-feature_class = list2dict(default + classf)
-feature_sets.append(feature_class)
-feature_disjunctive = list2dict(default + disjunctive)
-feature_sets.append(feature_disjunctive)
 
 DM = DataManager()
 DM.change_pwd()
@@ -78,7 +57,7 @@ def run(feature_set, DM=DM):
 for i in range(10):
     # use demo features
     feature_demo = features
-    sout, serr = run(feature_demo)
+    sout, serr, custom_info = run(feature_demo)
     results = sout.strip().split('\r')
     isWorng = False
     sents = []
@@ -87,6 +66,9 @@ for i in range(10):
         for val in validation:
             fopen.write(val)
         fopen.write('\n')
+        fopen.write('----------------------------------------------------------------\n')
+        fopen.write(custom_info + '\n')
+        fopen.write('----------------------------------------------------------------\n')
     for result in results:
         if result.strip():
             sents.append(result.strip())
@@ -129,7 +111,7 @@ import matplotlib.pyplot as plt
 plt.figure(figsize=(9, 6))
 xticks = ['Precision', 'Recall', 'F1']
 plt.xticks(range(len(xticks)), xticks)
-plt.ylim(0.5 ,1)
+plt.ylim(0.5, 1)
 # plt.bar(np.arange(len(xticks)), field_res_avg[:2], width=0.2, facecolor='lightskyblue', edgecolor='white',
 #         label='Field')
 # plt.legend(loc='upper left', frameon=False)

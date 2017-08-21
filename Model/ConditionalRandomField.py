@@ -12,23 +12,56 @@ def CombineTokens(token_list):
     return strg
 
 
-def CountAccuracy(sout, serr):
+def CountCustomResults(sout, serr):
+    custom_info = ''
+    labels_tp, labels_fp, labels_fn = {}, {}, {}
     results = sout.strip().split('\r')
     count = 0
     for result in results:
         try:
             token, label, res = result.split('\t')[0], result.split('\t')[1], result.split('\t')[2]
-            count = count + 1 if label == res else count
-        except IndexError, e:
+            if label == res:
+                labels_tp[label] = labels_tp[label] + 1 if labels_tp.has_key(label) else 1
+                count += 1
+            else:
+                labels_fn[label] = labels_fn[label] + 1 if labels_fn.has_key(label) else 1
+                labels_fp[res] = labels_fp[res] + 1 if labels_fp.has_key(res) else 1
+        except IndexError, e1:
             # print result
             continue
+        except KeyError, e2:
+            continue
     accuracy = float(count) / len(results)
-    print '--------------------Accuracy--------------------'
-    print accuracy
+    print '--------------------Custom Result--------------------'
+    print 'Total accuracy is %f.' % (accuracy)
+    print 'Entity\tP\tR\tF1\tTP\tFP\tFN'
+    custom_info = 'Entity\tP\tR\tF1\tTP\tFP\tFN'
+    labelset = list(set(labels_fp.keys() + labels_tp.keys() + labels_fn.keys()))
+    for label in labelset:
+        try:
+            tp = labels_tp[label] if labels_tp.has_key(label) else 0
+            fp = labels_fp[label] if labels_fp.has_key(label) else 0
+            fn = labels_fn[label] if labels_fn.has_key(label) else 0
+            precision = float(tp) / (tp + fp)
+            recall = float(tp) / (tp + fn)
+            f1 = 2 * precision * recall / (precision + recall)
+            print '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (label, precision, recall, f1, tp, fp, fn)
+            custom_info = custom_info + '\r' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (label, precision, recall, f1, tp, fp, fn)
+        except ZeroDivisionError, e:
+            continue
+    total_tp = sum(labels_tp.values())
+    total_fp = sum(labels_fp.values())
+    total_fn = sum(labels_fn.values())
+    total_precision = float(total_tp) / (total_tp + total_fp)
+    total_recall = float(total_tp) / (total_tp + total_fn)
+    total_f1 = 2 * total_precision * total_recall / (total_precision + total_recall)
+    print '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
+        'Total', total_precision, total_recall, total_f1, total_tp, total_fp, total_fn)
+    custom_info = custom_info + '\r' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
+        'Total', total_precision, total_recall, total_f1, total_tp, total_fp, total_fn)
     print '--------------------System Result--------------------'
     print serr
-    return accuracy
-    pass
+    return accuracy, custom_info
 
 
 def LogResult(time, accuracy, serr, result_file='result-questions.txt'):
@@ -103,14 +136,14 @@ class CRF(object):
         before_testing = datetime.now()
         cmd = shlex.split(command)
         sout, serr = java(cmd, classpath=self.path_to_jar, stdout=PIPE, stderr=PIPE)
-        accuracy = CountAccuracy(sout, serr)
+        accuracy, custom_info = CountCustomResults(sout, serr)
         after_testing = datetime.now()
         testing_time = after_testing - before_testing
         print 'Testing time is %s.%s seconds.' % (testing_time.seconds, testing_time.microseconds)
         LogResult(str(testing_time.total_seconds()), str(accuracy), serr)
         if not test_file == self.test_file:
             os.remove(test_file)
-        return sout, serr
+        return sout, serr, custom_info
 
 
 if __name__ == '__main__':
