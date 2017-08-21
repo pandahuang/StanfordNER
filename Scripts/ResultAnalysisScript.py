@@ -129,6 +129,7 @@ import matplotlib.pyplot as plt
 plt.figure(figsize=(9, 6))
 xticks = ['Precision', 'Recall', 'F1']
 plt.xticks(range(len(xticks)), xticks)
+plt.ylim(0.5 ,1)
 # plt.bar(np.arange(len(xticks)), field_res_avg[:2], width=0.2, facecolor='lightskyblue', edgecolor='white',
 #         label='Field')
 # plt.legend(loc='upper left', frameon=False)
@@ -153,17 +154,17 @@ plt.bar(np.arange(len(xticks)), field_res_avg[:3], width=0.2, facecolor='lightsk
         label='Field')
 plt.legend(loc='upper left', frameon=False)
 for x, y in zip(np.arange(len(xticks)), field_res_avg[:3]):
-    plt.text(x, y + 0.1, '%.2f' % y, ha='center')
+    plt.text(x, y + 0.02, '%.2f' % y, ha='center')
 
 plt.bar(np.arange(len(xticks)) + 3, null_res_avg[:3], width=0.2, facecolor='lightgreen', edgecolor='white',
         label='NULL')
 plt.legend(loc='upper left', frameon=False)
-for x, y in zip(np.arange(len(xticks)) + 3, field_res_avg[:3]):
-    plt.text(x, y + 0.1, '%.2f' % y, ha='center')
+for x, y in zip(np.arange(len(xticks)) + 3, null_res_avg[:3]):
+    plt.text(x, y + 0.02, '%.2f' % y, ha='center')
 
 plt.bar(np.arange(len(xticks)) + 6, total_res_avg[:3], width=0.2, facecolor='lightpink', edgecolor='white',
         label='Total')
 plt.legend(loc='upper left', frameon=False)
-for x, y in zip(np.arange(len(xticks)) + 6, field_res_avg[:3]):
-    plt.text(x, y + 0.1, '%.2f' % y, ha='center')
+for x, y in zip(np.arange(len(xticks)) + 6, total_res_avg[:3]):
+    plt.text(x, y + 0.02, '%.2f' % y, ha='center')
 plt.show()
