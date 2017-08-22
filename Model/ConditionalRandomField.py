@@ -46,7 +46,7 @@ def CountCustomResults(sout, serr):
             recall = float(tp) / (tp + fn)
             f1 = 2 * precision * recall / (precision + recall)
             print '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (label, precision, recall, f1, tp, fp, fn)
-            custom_info = custom_info + '\r' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (label, precision, recall, f1, tp, fp, fn)
+            custom_info = custom_info + '\n' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (label, precision, recall, f1, tp, fp, fn)
         except ZeroDivisionError, e:
             continue
     total_tp = sum(labels_tp.values())
@@ -57,7 +57,7 @@ def CountCustomResults(sout, serr):
     total_f1 = 2 * total_precision * total_recall / (total_precision + total_recall)
     print '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
         'Total', total_precision, total_recall, total_f1, total_tp, total_fp, total_fn)
-    custom_info = custom_info + '\r' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
+    custom_info = custom_info + '\n' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
         'Total', total_precision, total_recall, total_f1, total_tp, total_fp, total_fn)
     print '--------------------System Result--------------------'
     print serr
