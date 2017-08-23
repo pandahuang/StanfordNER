@@ -1,77 +1,91 @@
-3 B-Limit
+<num> B-Limit
 latest B-Order
 deals B-GroupBy
 
-average B-Aggregation
-delay B-Field
-of NULL
-delivery NULL
+available B-Field
+quantity I-Field
 
-biggest B-Order
-sales B-GroupBy
-order I-GroupBy
+count B-Aggregation
+of NULL
+employee B-Field
+
+how B-Aggregation
+many I-Aggregation
+items B-Field
+
+invoice NULL
+
+item B-Field
+count B-Aggregation
 
 latest B-Order
-3 B-Limit
+<num> B-Limit
 deals B-GroupBy
-
-latest B-Order
-sales B-GroupBy
-order I-GroupBy
-
-number B-Aggregation
-of NULL
-items NULL
 
 open B-Field
 sales I-Field
 order I-Field
 quantity I-Field
 
-opportunities NULL
-list NULL
+open B-Field
+sales I-Field
+quantity I-Field
 
-opportunity NULL
-list NULL
+opportunity B-Field
 
-order NULL
-
-preferred B-Field
-vendor I-Field
-
-procurement B-Field
+purchase B-Field
 price I-Field
 
-product NULL
-count B-Aggregation
+purchasing B-Field
+price I-Field
 
-sales NULL
-employee NULL
+sales B-Field
+delivery I-Field
 
-sales NULL
-person NULL
+sales B-Field
+employee I-Field
+
+sales B-Field
+invoice I-Field
+
+salesperson B-Field
 
 the NULL
 current NULL
 available B-Field
 quantity I-Field
 
-top B-Order
-3 B-Limit
-deals B-GroupBy
-
-total B-Aggregation
-open B-Field
-quantity I-Field
-
-which NULL
-product B-GroupBy
-has NULL
 the NULL
-biggest B-Order
-back B-OrderBy
-order I-OrderBy
-quantity I-OrderBy
+top B-Order
+<num> B-Limit
+back NULL
+ordered NULL
+quantity NULL
+product B-GroupBy
+
+top B-Order
+<num> B-Limit
+orders B-GroupBy
+
+top B-Order
+<num> B-Limit
+projects B-GroupBy
+
+top B-Order
+<num> B-Limit
+sales B-GroupBy
+employee I-GroupBy
+
+top B-Order
+<num> B-Limit
+opportunity B-GroupBy
+
+Top B-Order
+<num> B-Limit
+Items B-GroupBy
+purchased NULL
+by NULL
+quantity B-OrderBy
 
 Which NULL
 buyer B-GroupBy
@@ -81,69 +95,21 @@ by NULL
 amount B-OrderBy
 
 Which NULL
-project B-GroupBy
+product B-GroupBy
+group I-GroupBy
 purchased NULL
 the NULL
 most B-Order
-by NULL
-quantity B-OrderBy
-
-Which NULL
-warehouse B-GroupBy
-received NULL
-the NULL
-most B-Order
-goods NULL
-by NULL
-amount B-OrderBy
-
-Which NULL
-buyer B-GroupBy
-has NULL
-the NULL
-most B-Order
-goods NULL
-return NULL
-by NULL
-quantity B-OrderBy
-
-Which NULL
-buyer B-GroupBy
-has NULL
-the NULL
-most B-Order
-goods NULL
-return NULL
 by NULL
 amount B-OrderBy
 
 Which NULL
 branch B-GroupBy
-has NULL
+received NULL
 the NULL
 most B-Order
-goods NULL
-return NULL
 by NULL
 amount B-OrderBy
-
-What NULL
-is NULL
-the NULL
-total B-Aggregation
-amount B-Field
-of NULL
-purchase NULL
-return NULL
-
-What NULL
-is NULL
-the NULL
-total B-Aggregation
-amount B-Field
-of NULL
-credit NULL
-memo NULL
 
 What NULL
 is NULL
@@ -154,21 +120,24 @@ of NULL
 AP NULL
 invoice NULL
 
-The NULL
+What NULL
+is NULL
+the NULL
 average B-Aggregation
-price B-Field
-trend NULL
+purchase NULL
+order NULL
+lead B-Field
+time I-Field
+of NULL
+country B-FilterField
+<CountryCode> B-FilterValue
 
 What NULL
 is NULL
 the NULL
-purchase B-Field
-order I-Field
-ontime I-Field
-rate I-Field
-of NULL
-Buyer B-GeneralFilterField
-X B-GeneralFilterValue
+average B-Aggregation
+variance B-Field
+days I-Field
 
 What NULL
 is NULL
@@ -177,8 +146,8 @@ average B-Aggregation
 variance B-Field
 days I-Field
 of NULL
-buyer B-GeneralFilterField
-X B-GeneralFilterValue
+country B-FilterField
+<CountryCode> B-FilterValue
 
 What NULL
 is NULL
@@ -187,11 +156,7 @@ total B-Aggregation
 purchase B-Field
 return I-Field
 amount I-Field
-which NULL
-purchased NULL
-by NULL
-buyer B-GeneralFilterField
-A B-GeneralFilterValue
+<date> B-FilterValue
 
 What NULL
 is NULL
@@ -199,8 +164,7 @@ the NULL
 GRPO B-Field
 amount I-Field
 of NULL
-this B-DateTimeFilterValue
-month I-DateTimeFilterValue
+<date> B-FilterValue
 
 What NULL
 is NULL
@@ -208,37 +172,15 @@ the NULL
 GRPO B-Field
 quantity I-Field
 of NULL
-Product B-GeneralFilterField
-A B-GeneralFilterValue
-this B-DateTimeFilterValue
-month I-DateTimeFilterValue
+Product B-FilterField
+<ItemCode> B-FilterValue
+<date> B-FilterValue
 
 What NULL
 is NULL
 the NULL
-purchase B-Field
-return I-Field
-amount I-Field
-from NULL
-vendor B-GeneralFilterField
-A B-GeneralFilterValue
-this B-DateTimeFilterValue
-month I-DateTimeFilterValue
-
-What NULL
-is NULL
-the NULL
-Purchase NULL
-Order NULL
-Open B-Field
-Balance I-Field
-
-What NULL
-is NULL
-the NULL
-Account NULL
-Payable NULL
-Open B-Field
+GRPO B-Field
+Open I-Field
 Balance I-Field
 
 What NULL
@@ -248,13 +190,24 @@ most B-Order
 profitable NULL
 product B-GroupBy
 
+Which NULL
+customer B-GroupBy
+contribute NULL
+most B-Order
+
 Who NULL
 sell NULL
 the NULL
 best B-Order
 
 Which NULL
-branch B-GroupBy
+country B-GroupBy
+is NULL
+most B-Order
+profitable NULL
+
+Which NULL
+country B-GroupBy
 contribute NULL
 most B-Order
 to NULL
@@ -267,6 +220,36 @@ most B-Order
 to NULL
 revenue B-OrderBy
 
+Total B-Aggregation
+back B-Field
+order I-Field
+quantity I-Field
+of NULL
+sales B-FilterField
+employee I-FilterField
+<SalesEmployeeOrBuyerName> B-FilterValue
+
+Which NULL
+Channel B-GroupBy
+has NULL
+the NULL
+most B-Order
+back B-OrderBy
+order I-OrderBy
+
+Which NULL
+branch B-GroupBy
+has NULL
+the NULL
+most B-Order
+back B-OrderBy
+order I-OrderBy
+
+What NULL
+is NULL
+the NULL
+cost B-Field
+
 What NULL
 is NULL
 the NULL
@@ -274,135 +257,139 @@ average B-Aggregation
 selling B-Field
 price I-Field
 of NULL
-product B-GeneralFilterField
-N B-GeneralFilterValue
+product B-FilterField
+<ItemCode> B-FilterValue
 to NULL
-customer B-GeneralFilterField
-A B-GeneralFilterValue
-
-The NULL
-average B-Aggregation
-selling B-Field
-price I-Field
-trend NULL
+customer B-FilterField
+<BusinessPartnerCode> B-FilterValue
 
 The NULL
 average B-Aggregation
 selling B-Field
 price I-Field
 of NULL
-product B-ComparisonWith
-A I-ComparisonWith
+product B-FilterField
+A B-FilterValue
 vs. NULL
 the B-ComparisonWith
 same I-ComparisonWith
 period I-ComparisonWith
 last I-ComparisonWith
-year/Quarter/month/week I-ComparisonWith
+year I-ComparisonWith
 
 The NULL
 cost B-Field
 trend NULL
 
+What NULL
+is NULL
+the NULL
+average B-Aggregation
+selling B-Field
+price I-Field
+of NULL
+product B-FilterField
+<ItemDescription> B-FilterValue
+to NULL
+Channel B-FilterField
+M B-FilterValue
+
+What NULL
+is NULL
+the NULL
+total B-Aggregation
+sales B-Field
+return I-Field
+amount I-Field
+<date> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+total B-Aggregation
+sales B-Field
+return I-Field
+quantity I-Field
+of NULL
+product B-FilterField
+<ItemCode> B-FilterValue
+<date> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+total B-Aggregation
+sales B-Field
+return I-Field
+amount I-Field
+of NULL
+product B-FilterField
+<ItemCode> B-FilterValue
+<date> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+total B-Aggregation
+sales B-Field
+return I-Field
+amount I-Field
+by NULL
+sales B-FilterField
+employee I-FilterField
+<SalesEmployeeOrBuyerName> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+top B-Order
+<num> B-Limit
+products B-GroupBy
+returned I-GroupBy
+
 Top B-Order
-3 B-Limit
+<num> B-Limit
 delivery NULL
 delayed NULL
 customer B-GroupBy
 
 Top B-Order
-3 B-Limit
+<num> B-Limit
 delivery NULL
-on NULL
-time NULL
-customer B-GroupBy
-
-Top B-Order
-3 B-Limit
-delayed NULL
+on-time NULL
 customer B-GroupBy
 
 What NULL
 is NULL
 the NULL
-on NULL
-time NULL
-delivery B-Field
-rate I-Field
-of NULL
-sales B-GeneralFilterField
-employee I-GeneralFilterField
-A B-GeneralFilterValue
-
-What NULL
-is NULL
-the NULL
-on NULL
-time NULL
-delivery B-Field
-rate I-Field
-of NULL
-Country B-GeneralFilterField
-A B-GeneralFilterValue
+current NULL
+sales B-Field
+order I-Field
+fulfilment I-Field
+days I-Field
 
 What NULL
 is NULL
 the NULL
 current NULL
-sales NULL
-order NULL
-fulfilment B-Field
+sales B-Field
+order I-Field
+fulfilment I-Field
 days I-Field
 of NULL
-sales B-GeneralFilterField
-employee I-GeneralFilterField
-A B-GeneralFilterValue
+country B-FilterField
+<CountryCode> B-FilterValue
 
 What NULL
 is NULL
 the NULL
-current NULL
-sales NULL
-order NULL
-fulfilment B-Field
-days I-Field
-of NULL
-Branch B-GeneralFilterField
-A B-GeneralFilterValue
-
-What NULL
-is NULL
-the NULL
-current NULL
-sales NULL
-order NULL
-fulfilment B-Field
-days I-Field
-of NULL
-BP B-GeneralFilterField
-XX B-GeneralFilterValue
-Channel B-GeneralFilterField
-A B-GeneralFilterValue
-
-What NULL
-is NULL
-the NULL
-average B-Aggregation
-delivery B-Field
-variance I-Field
-of NULL
-sales B-GeneralFilterField
-employee I-GeneralFilterField
-A B-GeneralFilterValue
-
-What NULL
-is NULL
-the NULL
-average B-Aggregation
-delivery B-Field
-variance I-Field
+Sales B-Field
+Delivery I-Field
+Open I-Field
+Balance I-Field
 
 open B-Field
+invoice I-Field
 amount I-Field
 
 What NULL
@@ -414,64 +401,21 @@ Limit I-Field
 What NULL
 is NULL
 the NULL
-current NULL
-inventory B-Field
-status I-Field
-
-What NULL
-is NULL
-the NULL
-current NULL
-status NULL
-of NULL
-Item B-GeneralFilterField
-A B-GeneralFilterValue
-in NULL
-Warehouse B-GeneralFilterField
-B B-GeneralFilterValue
-
-What NULL
-is NULL
-the NULL
 available B-Field
 quantity I-Field
 of NULL
-Item B-GeneralFilterField
-A B-GeneralFilterValue
+Item B-FilterField
+<ItemCode> B-FilterValue
 in NULL
-Warehouse B-GeneralFilterField
-B B-GeneralFilterValue
+Warehouse B-FilterField
+<ItemDescription> B-FilterValue
 
 What NULL
 is NULL
 the NULL
-committed B-Field
-quantity I-Field
-
-What NULL
-is NULL
-the NULL
-ordered B-Field
-quantity I-Field
-
-What NULL
-is NULL
-the NULL
-ordered B-Field
-quantity I-Field
-of NULL
-Item B-GeneralFilterField
-A B-GeneralFilterValue
-in NULL
-warehouse B-GeneralFilterField
-B B-GeneralFilterValue
-
-What NULL
-is NULL
-the NULL
-in B-Field
-stock I-Field
-quantity I-Field
+total B-Aggregation
+inventory B-Field
+value I-Field
 
 What NULL
 is NULL
@@ -480,48 +424,8 @@ total B-Aggregation
 inventory B-Field
 value I-Field
 of NULL
-item B-GeneralFilterField
-A B-GeneralFilterValue
-in NULL
-warehouse B-GeneralFilterField
-B B-GeneralFilterValue
-
-What NULL
-is NULL
-the NULL
-outbound B-Field
-inventory I-Field
-quantity I-Field
-of NULL
-Item B-GeneralFilterField
-A B-GeneralFilterValue
-this B-DateTimeFilterValue
-month I-DateTimeFilterValue
-
-What NULL
-is NULL
-the NULL
-total B-Aggregation
-inbound B-Field
-inventory I-Field
-value I-Field
-this B-DateTimeFilterValue
-month I-DateTimeFilterValue
-
-What NULL
-is NULL
-the NULL
-inbound B-Field
-inventory I-Field
-quantity I-Field
-of NULL
-item B-GeneralFilterField
-A B-GeneralFilterValue
-to NULL
-warehouse B-GeneralFilterField
-B B-GeneralFilterValue
-this B-DateTimeFilterValue
-month I-DateTimeFilterValue
+item B-FilterField
+<ItemCode> B-FilterValue
 
 What NULL
 is NULL
@@ -530,13 +434,9 @@ inbound B-Field
 inventory I-Field
 value I-Field
 of NULL
-item B-GeneralFilterField
-A B-GeneralFilterValue
-to NULL
-warehouse B-GeneralFilterField
-B B-GeneralFilterValue
-this B-DateTimeFilterValue
-month I-DateTimeFilterValue
+item B-FilterField
+<ItemCode> B-FilterValue
+<date> B-FilterValue
 
 What NULL
 is NULL
@@ -545,326 +445,350 @@ outbound B-Field
 inventory I-Field
 value I-Field
 of NULL
-item B-GeneralFilterField
-A B-GeneralFilterValue
-from NULL
-warehouse B-GeneralFilterField
-B B-GeneralFilterValue
-this B-DateTimeFilterValue
-month I-DateTimeFilterValue
+item B-FilterField
+<ItemDescription> B-FilterValue
+<date> B-FilterValue
 
 List NULL
 all NULL
-branches NULL
+branches B-Field
 
 List NULL
 all NULL
-cost NULL
-centers NULL
+currency B-Field
 
 List NULL
 all NULL
-employee NULL
+financial B-Field
+period I-Field
 
 List NULL
 all NULL
-item NULL
-
-List NULL
-all NULL
-sales NULL
-employee NULL
-or NULL
-buyer NULL
+industry B-Field
 
 bottom B-Order
-3 B-Limit
-sales B-GroupBy
-employee I-GroupBy
-
-bottom B-Order
-3 B-Limit
+<num> B-Limit
 sales B-GroupBy
 orders I-GroupBy
 
 bottom B-Order
-sales B-GroupBy
-person I-GroupBy
+<num> B-Limit
+opportunity B-GroupBy
 
 bottom B-Order
-5 B-Limit
+<num> B-Limit
 Items B-GroupBy
 purchased NULL
 by NULL
-quantity B-OrderBy
+amount B-OrderBy
+
+What NULL
+is NULL
+the NULL
+bottom B-Order
+<num> B-Limit
+products B-GroupBy
+returned NULL
 
 bottom B-Order
-3 B-Limit
+<num> B-Limit
+customers B-GroupBy
+which NULL
+returned NULL
+most B-Order
+
+bottom B-Order
+<num> B-Limit
 delivery NULL
 delayed NULL
 customer B-GroupBy
 
-the NULL
 bottom B-Order
-3 B-Limit
-worst NULL
-selling NULL
-items B-GroupBy
+<num> B-Limit
+delivery NULL
+on NULL
+time NULL
+customer B-GroupBy
 
 bottom B-Order
-5 B-Limit
+<num> B-Limit
+delivery NULL
+on-time NULL
+customer B-GroupBy
+
+the NULL
+bottom B-Order
+2 B-Limit
+worst NULL
+selling NULL
+customers B-GroupBy
+
+bottom B-Order
+<num> B-Limit
 biggest NULL
+customers B-GroupBy
+
+the NULL
+bottom B-Order
+<num> B-Limit
+project B-GroupBy
+
+the NULL
+bottom B-Order
+<num> B-Limit
+biggest NULL
+project B-GroupBy
+
+sales B-Field
+volume I-Field
+from NULL
+bottom B-Order
+<num> B-Limit
 customers B-GroupBy
 
 revenue B-Field
 of NULL
 bottom B-Order
-5 B-Limit
+<num> B-Limit
 items B-GroupBy
 
-8 B-Limit
 worst B-Order
-selling B-GroupBy
-products I-GroupBy
+selling NULL
+items I-GroupBy
+
+who NULL
+is NULL
+the NULL
+worst B-Order
+sales B-GroupBy
+
+who NULL
+is NULL
+the NULL
+worst B-Order
+sales B-GroupBy
+person I-GroupBy
 
 Top B-Order
-5 B-Limit
+<num> B-Limit
+products B-GroupBy
+by NULL
+sales B-OrderBy
+amount I-OrderBy
+
+Top B-Order
+<num> B-Limit
 products B-GroupBy
 by NULL
 revenue B-OrderBy
 
 Top B-Order
-5 B-Limit
+<num> B-Limit
 products B-GroupBy
 sell NULL
 by NULL
 quantity B-OrderBy
 
 Top B-Order
-5 B-Limit
-customers B-GroupBy
+<num> B-Limit
+products B-GroupBy
 by NULL
 sales B-OrderBy
+quantity I-OrderBy
+
+Top B-Order
+<num> B-Limit
+products B-GroupBy
+by NULL
+returned B-OrderBy
 amount I-OrderBy
 
 Top B-Order
-5 B-Limit
+<num> B-Limit
+customers B-GroupBy
+by NULL
+amount B-OrderBy
+
+Top B-Order
+<num> B-Limit
+customers B-GroupBy
+by NULL
+sales B-OrderBy
+quantity I-OrderBy
+
+Top B-Order
+<num> B-Limit
 customers B-GroupBy
 by NULL
 returned B-OrderBy
-quantity I-OrderBy
+amount I-OrderBy
 
 Top B-Order
-1 B-Limit
-vendors B-GroupBy
+<num> B-Limit
+Items B-GroupBy
 by NULL
 purchase B-OrderBy
-quantity I-OrderBy
+amount I-OrderBy
 
 Bottom B-Order
-5 B-Limit
+<num> B-Limit
+products B-GroupBy
+sell NULL
+by NULL
+amount B-OrderBy
+
+Bottom B-Order
+<num> B-Limit
 products B-GroupBy
 by NULL
 sales B-OrderBy
 amount I-OrderBy
 
 Bottom B-Order
-5 B-Limit
-products B-GroupBy
-by NULL
-revenue B-OrderBy
-
-Bottom B-Order
-5 B-Limit
+<num> B-Limit
 products B-GroupBy
 by NULL
 profit B-OrderBy
 
 Bottom B-Order
-5 B-Limit
-products B-GroupBy
-sell NULL
-by NULL
-quantity B-OrderBy
-
-Bottom B-Order
-5 B-Limit
+<num> B-Limit
 products B-GroupBy
 by NULL
 sales B-OrderBy
 quantity I-OrderBy
 
 Bottom B-Order
-5 B-Limit
-products B-GroupBy
-by NULL
-returned B-OrderBy
-quantity I-OrderBy
-
-Bottom B-Order
-5 B-Limit
+<num> B-Limit
 customers B-GroupBy
 by NULL
 revenue B-OrderBy
 
 Bottom B-Order
-5 B-Limit
-customers B-GroupBy
-by NULL
-amount B-OrderBy
-
-Bottom B-Order
-5 B-Limit
+<num> B-Limit
 customers B-GroupBy
 by NULL
 returned B-OrderBy
-quantity I-OrderBy
-
-Bottom B-Order
-1 B-Limit
-vendors B-GroupBy
-by NULL
-purchase B-OrderBy
-quantity I-OrderBy
-
-Bottom B-Order
-3 B-Limit
-vendors B-GroupBy
-by NULL
-purchase B-OrderBy
 amount I-OrderBy
 
-top B-Order
-3 B-Limit
-potential NULL
-deals NULL
+List NULL
+all NULL
+buyer B-Field
+
+list NULL
+all NULL
+prospects B-Field
+
+biggest B-Order
+prospects B-GroupBy
 
 top B-Order
-3 B-Limit
-sales B-GroupBy
+<num> B-Limit
+potential NULL
+deals B-GroupBy
+
+top B-Order
+<num> B-Limit
+most B-Order
+profitable NULL
+products B-GroupBy
+by NULL
+amount B-OrderBy
+
+top B-Order
+<num> B-Limit
+SO B-GroupBy
+
+number B-Aggregation
+of NULL
+sales B-Field
+staff I-Field
 
 how B-Aggregation
 many I-Aggregation
 sales B-Field
-orders I-Field
-are NULL
-delivered NULL
-on-time NULL
+invoices I-Field
+<date> B-FilterValue
 
-how B-Aggregation
-many I-Aggregation
-staff B-Field
-report NULL
-to NULL
-me NULL
+average B-Aggregation
+days B-Field
+of I-Field
+delays I-Field
+in NULL
+delivery NULL
 
-supplier NULL
+supplier B-Field
 
 How B-Aggregation
 many I-Aggregation
-Financial NULL
-Periods NULL
+Financial B-Field
+Periods I-Field
 
-Payment NULL
-Methods NULL
-list NULL
+How B-Aggregation
+many I-Aggregation
+Payment B-Field
+Methods I-Field
 
 Show NULL
 Payment B-Field
 Methods I-Field
-name I-Field
+Code I-Field
 
-Show NULL
+how B-Aggregation
+many I-Aggregation
 account B-Field
-code I-Field
+category I-Field
 
-account NULL
-category NULL
+account B-Field
+category I-Field
 list NULL
 
 how B-Aggregation
 many I-Aggregation
-account NULL
-level NULL
-
-Show NULL
 account B-Field
-balance I-Field
-of NULL
-Account B-GeneralFilterField
-X B-GeneralFilterValue
+level I-Field
 
-How B-Aggregation
-many I-Aggregation
-Tax NULL
-Groups NULL
-
-branch NULL
+account B-Field
+level I-Field
 list NULL
 
 How B-Aggregation
-much I-Aggregation
-balance B-Field
-of NULL
-B/S B-GeneralFilterField
-account I-GeneralFilterField
-X B-GeneralFilterValue
-in NULL
-period B-DateTimeFilterField
-Y B-DateTimeFilterValue
+many I-Aggregation
+Tax B-Field
+Category I-Field
 
-How B-Aggregation
-much I-Aggregation
-amount B-Field
-of NULL
-P&L B-GeneralFilterField
-account I-GeneralFilterField
-X B-GeneralFilterValue
-in NULL
-period B-DateTimeFilterValue
+Tax B-Field
+Category I-Field
+list NULL
 
 Show NULL
-amount B-Field
-of NULL
-P&L B-GeneralFilterField
-account I-GeneralFilterField
-X B-GeneralFilterValue
-in NULL
-Period B-DateTimeFilterValue
+Tax B-Field
+code I-Field
 
-Compare NULL
-amount B-Field
-of NULL
-P7L B-ComparisonWith
-account I-ComparisonWith
-X I-ComparisonWith
-with NULL
-last B-ComparisonWith
-year I-ComparisonWith
+branch B-Field
+list NULL
 
-How B-Aggregation
-much I-Aggregation
+Industry B-Field
+list NULL
+
+Show NULL
 money B-Field
 received I-Field
 of NULL
-account B-GeneralFilterField
-X B-GeneralFilterValue
+account B-FilterField
+<AccountCode> B-FilterValue
 in NULL
-fiscal B-DateTimeFilterField
-year I-DateTimeFilterField
-Y B-DateTimeFilterValue
+fiscal B-FilterField
+year I-FilterField
+<FiscalYear> B-FilterValue
 
-How B-Aggregation
-much I-Aggregation
+Show NULL
 money B-Field
-received I-Field
-and NULL
-spent B-Field
+spent I-Field
 of NULL
-account B-GeneralFilterField
-X B-GeneralFilterValue
+account B-FilterField
+<AccountCode> B-FilterValue
 in NULL
-period B-DateTimeFilterValue
+<FinancialPeriodName> B-FilterValue
 
 Show NULL
 money B-Field
@@ -872,15 +796,27 @@ received I-Field
 and NULL
 spent B-Field
 of NULL
-account B-GeneralFilterField
-X B-GeneralFilterValue
+account B-FilterField
+<AccountName> B-FilterValue
 in NULL
-period B-DateTimeFilterValue
+fiscal B-FilterField
+year I-FilterField
+<FiscalYear> B-FilterValue
 
-JE NULL
+Show NULL
+money B-Field
+received I-Field
+and NULL
+spent B-Field
 of NULL
-CategoryName B-GeneralFilterField
-XXX B-GeneralFilterValue
+account B-FilterField
+<AccountName> B-FilterValue
+in NULL
+<FiscalYear> B-FilterValue
+
+AutoReversed NULL
+JE B-Field
+list NULL
 
 Aging B-Field
 by NULL
@@ -889,252 +825,48 @@ customer B-GroupBy
 Aging B-Field
 by NULL
 customer B-GroupBy
-& NULL
-project B-GroupBy
-
-Aging B-Field
-by NULL
-customer B-GroupBy
-& NULL
-project B-GroupBy
 & NULL
 transaction B-GroupBy
 
-How B-Aggregation
-much I-Aggregation
+Aging B-Field
+by NULL
+customer B-GroupBy
+& NULL
+project B-GroupBy
+
+Show NULL
 account B-Field
 balance I-Field
 of NULL
-period I-DateTimeFilterValue
+<FinancialPeriodCode> B-FilterValue
 
-JE NULL
+JE B-Field
 of NULL
-Posting B-DateTimeFilterField
-Date I-DateTimeFilterField
-XXX B-DateTimeFilterValue
-
-JE NULL
-of NULL
-Due B-DateTimeFilterField
-Date I-DateTimeFilterField
-XXX B-DateTimeFilterValue
+<date> B-FilterValue
 
 How B-Aggregation
 much I-Aggregation
-vat B-Field
+tax B-Field
 of NULL
-customer B-GeneralFilterField
-xxx B-GeneralFilterValue
+customer B-FilterField
+<BusinessPartnerName> B-FilterValue
 
-Total B-Aggregation
-Assets NULL
-
-Compare NULL
-Total B-Aggregation
-Assets NULL
-with NULL
-last B-ComparisonWith
-year I-ComparisonWith
-
-Total B-Aggregation
-Liabilities NULL
-
-Equity B-Field
-
-Working NULL
-Capital NULL
-
-DSO B-Field
-
-Compare NULL
-DSO B-Field
-with NULL
-last B-ComparisonWith
-year I-ComparisonWith
-
-Compare NULL
-DSO B-Field
-with NULL
-last B-ComparisonWith
-period I-ComparisonWith
-
-DPO B-Field
-
-Compare NULL
-DPO B-Field
-with NULL
-last B-ComparisonWith
-period I-ComparisonWith
-
-Compare NULL
-DIO B-Field
-with NULL
-last B-ComparisonWith
-period I-ComparisonWith
-
-Compare NULL
-CCC B-Field
-with NULL
-last B-ComparisonWith
-year I-ComparisonWith
-
-Compare NULL
-CCC B-Field
-with NULL
-last B-ComparisonWith
-period I-ComparisonWith
-
-OC B-Field
-
-Compare NULL
-OC B-Field
-with NULL
-last B-ComparisonWith
-year I-ComparisonWith
-
-Net NULL
-Gearing NULL
-
-Inventory NULL
-Turnover NULL
-
-(Show/Display) NULL
-Inventory NULL
-Turnover NULL
-Trend NULL
-
-Compare NULL
-Inventory NULL
-Turnover NULL
-with NULL
-last B-ComparisonWith
-period I-ComparisonWith
-
-(Show/Display) NULL
-Financing NULL
-Net NULL
-Cashflow NULL
-Trend NULL
-
-Compare NULL
-Investment NULL
-Net NULL
-Cashflow NULL
-with NULL
-last B-ComparisonWith
-year I-ComparisonWith
-
-Compare NULL
-Investment NULL
-Net NULL
-Cashflow NULL
-with NULL
-last B-ComparisonWith
-period I-ComparisonWith
-
-(Show/Display) NULL
-Cash NULL
-Ratio NULL
-by NULL
-Net NULL
-Profit NULL
-Trend NULL
-
-Compare NULL
-Cash NULL
-Ratio NULL
-by NULL
-Net NULL
-Profit NULL
-with NULL
-last B-ComparisonWith
-period I-ComparisonWith
-
-Cash NULL
-Ratio NULL
-by NULL
-Net NULL
-Sales NULL
-
-Compare NULL
-Net NULL
-Profit NULL
-with NULL
-last B-ComparisonWith
-period I-ComparisonWith
-
-Compare NULL
-Net NULL
-Profit NULL
-Margin NULL
-with NULL
-last B-ComparisonWith
-year I-ComparisonWith
-
-Compare NULL
-Net NULL
-Profit NULL
-Margin NULL
-with NULL
-last B-ComparisonWith
-period I-ComparisonWith
-
-(Show/Display) NULL
-Gross NULL
-Profit NULL
-Trend NULL
-
-Compare NULL
-Gross NULL
-Profit NULL
-with NULL
-last B-ComparisonWith
-period I-ComparisonWith
-
-Compare NULL
-COGS NULL
-with NULL
-last B-ComparisonWith
-year I-ComparisonWith
-
-Compare NULL
-COGS NULL
-with NULL
-last B-ComparisonWith
-period I-ComparisonWith
-
-ROE NULL
-
-Compare NULL
-ROE NULL
-with NULL
-last B-ComparisonWith
-year I-ComparisonWith
+How B-Aggregation
+much I-Aggregation
+tax B-Field
+of NULL
+FederalTaxID B-FilterField
+<FederalTaxID> B-FilterValue
 
 How B-Aggregation
 many I-Aggregation
 was NULL
 sold NULL
 for NULL
-product B-GeneralFilterField
-XXX B-GeneralFilterValue
+product B-FilterField
+<ItemCode> B-FilterValue
 in NULL
-current B-DateTimeFilterValue
-month/period I-DateTimeFilterValue
-
-How B-Aggregation
-many I-Aggregation
-was NULL
-receipt NULL
-into NULL
-warehouse B-GeneralFilterField
-XXX B-GeneralFilterValue
-for NULL
-product B-GeneralFilterField
-XXX B-GeneralFilterValue
-in NULL
-current B-DateTimeFilterValue
-month/period I-DateTimeFilterValue
+<date> B-FilterValue
 
 What NULL
 is NULL
@@ -1143,8 +875,8 @@ highest B-Order
 selling B-OrderBy
 price I-OrderBy
 for NULL
-product B-GeneralFilterField
-XXX B-GeneralFilterValue
+product B-FilterField
+<ItemCode> B-FilterValue
 
 What NULL
 is NULL
@@ -1153,15 +885,16 @@ lowest B-Order
 purchasing B-OrderBy
 price I-OrderBy
 for NULL
-product B-GeneralFilterField
-XXX B-GeneralFilterValue
+product B-FilterField
+<ItemCode> B-FilterValue
 
-What NULL
-is NULL
-the NULL
-sales B-Field
-margin I-Field
-on NULL
-current B-DateTimeFilterValue
-period I-DateTimeFilterValue
+How B-Aggregation
+many I-Aggregation
+purchase B-Field
+orders I-Field
+we NULL
+have NULL
+placed NULL
+in NULL
+<date> B-FilterValue
 

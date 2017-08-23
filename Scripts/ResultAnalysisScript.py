@@ -39,7 +39,7 @@ def list2dict(feature):
 
 DM = DataManager()
 DM.change_pwd()
-DM.source_data_file = 'CorpusLabelData_WithToken.txt'
+DM.source_data_file = 'CorpusLabelData_MergedFilter.txt'
 
 
 def run(feature_set, DM=DM):
@@ -51,10 +51,13 @@ def run(feature_set, DM=DM):
                    test_file=DM.test_file, result_file=DM.result_file)
     crf_test.feature_config(features=feature_set)
     crf_test.train()
-    return crf_test.verify()
+    os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), 'features-train.txt'))
+    sout, serr, custom_info = crf_test.verify()
+    os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), 'features-test.txt'))
+    return sout, serr, custom_info
 
 
-for i in range(10):
+for i in range(1):
     # use demo features
     feature_demo = features
     sout, serr, custom_info = run(feature_demo)
