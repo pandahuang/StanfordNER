@@ -51,25 +51,26 @@ def run(feature_set, DM=DM):
                    test_file=DM.test_file, result_file=DM.result_file)
     crf_test.feature_config(features=feature_set)
     crf_test.train()
+    if os.path.exists(os.path.join(os.getcwd(), 'features-train.txt')):
+        os.remove(os.path.join(os.getcwd(), 'features-train.txt'))
+    if os.path.exists(os.path.join(os.getcwd(), 'features-test.txt')):
+        os.remove(os.path.join(os.getcwd(), 'features-test.txt'))
+    if os.path.exists(os.path.join(os.getcwd(), 'LogWrongSents.txt')):
+        os.remove(os.path.join(os.getcwd(), 'LogWrongSents.txt'))
     os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), 'features-train.txt'))
-    sout, serr, custom_info = crf_test.verify()
+    sout, serr, sent_accuracy, custom_info = crf_test.verify()
     os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), 'features-test.txt'))
-    return sout, serr, custom_info
+    return sout, serr, sent_accuracy, custom_info
 
 
 for i in range(1):
     # use demo features
     feature_demo = features
-    sout, serr, custom_info = run(feature_demo)
+    sout, serr, sent_accuracy, custom_info = run(feature_demo)
     results = sout.strip().split('\r')
     isWorng = False
     sents = []
-    validation = serr.strip().split('\r')[-15:]
     with open('LogWrongSents.txt', 'a') as fopen:
-        # for val in validation:
-        #     fopen.write(val)
-        # fopen.write('\n')
-        # fopen.write('----------------------------------------------------------------\n')
         fopen.write(custom_info + '\n')
         fopen.write('----------------------------------------------------------------\n')
     for result in results:
@@ -111,48 +112,3 @@ field_res_avg = [float(np.mean(field_res[:, i])) for i in range(6)]
 null_res_avg = [float(np.mean(null_res[:, i])) for i in range(6)]
 total_res_avg = [float(np.mean(total_res[:, i])) for i in range(6)]
 print ' '.join([str(t) for t in total_res_avg])
-
-# import matplotlib.pyplot as plt
-#
-# plt.figure(figsize=(9, 6))
-# xticks = ['Precision', 'Recall', 'F1']
-# plt.xticks(range(len(xticks)), xticks)
-# plt.ylim(0.5, 1)
-# # plt.bar(np.arange(len(xticks)), field_res_avg[:2], width=0.2, facecolor='lightskyblue', edgecolor='white',
-# #         label='Field')
-# # plt.legend(loc='upper left', frameon=False)
-# # for x, y in zip(np.arange(len(xticks)), field_res_avg[:2]):
-# #     plt.text(x, y / 2, '%.2f' % y, ha='center')
-# # plt.bar(np.arange(len(xticks)), null_res_avg[:2], width=0.2, facecolor='lightgreen', edgecolor='white', label='NULL',
-# #         bottom=field_res_avg[:2])
-# # plt.legend(loc='upper left', frameon=False)
-# # for x, y, y1 in zip(np.arange(len(xticks)), np.array(null_res_avg[:2]), np.array(field_res_avg[:2])):
-# #     plt.text(x, y / 2 + y1, '%.2f' % y, ha='center')
-# # plt.bar(np.arange(len(xticks)), np.array(total_res_avg[:2]) - np.array(field_res_avg[:2]) - np.array(null_res_avg[:2]),
-# #         width=0.2, facecolor='lightpink', edgecolor='white', label='Others',
-# #         bottom=(np.array(field_res_avg[:2]) + np.array(null_res_avg[:2])))
-# # plt.legend(loc='upper left', frameon=False)
-# # for x, y, y1, y2 in zip(np.arange(len(xticks)),
-# #                         np.array(total_res_avg[:2]) - np.array(field_res_avg[:2]) - np.array(null_res_avg[:2]),
-# #                         np.array(null_res_avg[:2]), np.array(field_res_avg[:2])):
-# #     plt.text(x, y / 2 + y1 + y2, '%.2f' % y, ha='center')
-# # plt.show()
-#
-# plt.bar(np.arange(len(xticks)), field_res_avg[:3], width=0.2, facecolor='lightskyblue', edgecolor='white',
-#         label='Field')
-# plt.legend(loc='upper left', frameon=False)
-# for x, y in zip(np.arange(len(xticks)), field_res_avg[:3]):
-#     plt.text(x, y + 0.02, '%.2f' % y, ha='center')
-#
-# plt.bar(np.arange(len(xticks)) + 3, null_res_avg[:3], width=0.2, facecolor='lightgreen', edgecolor='white',
-#         label='NULL')
-# plt.legend(loc='upper left', frameon=False)
-# for x, y in zip(np.arange(len(xticks)) + 3, null_res_avg[:3]):
-#     plt.text(x, y + 0.02, '%.2f' % y, ha='center')
-#
-# plt.bar(np.arange(len(xticks)) + 6, total_res_avg[:3], width=0.2, facecolor='lightpink', edgecolor='white',
-#         label='Total')
-# plt.legend(loc='upper left', frameon=False)
-# for x, y in zip(np.arange(len(xticks)) + 6, total_res_avg[:3]):
-#     plt.text(x, y + 0.02, '%.2f' % y, ha='center')
-# plt.show()

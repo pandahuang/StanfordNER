@@ -13,28 +13,38 @@ def CombineTokens(token_list):
 
 
 def CountCustomResults(sout, serr):
-    custom_info = ''
     labels_tp, labels_fp, labels_fn = {}, {}, {}
     results = sout.strip().split('\r')
-    count = 0
+    count_wrong, count_sent = 0, 0
+    isWorng = False
     for result in results:
+        if result.strip():
+            token, label, res = result.split('\t')[0], result.split('\t')[1], result.split('\t')[2]
+            if label != res:
+                isWorng = True
+        else:
+            if isWorng:
+                count_wrong += 1
+            count_sent += 1
+            isWorng = False
+
         try:
             token, label, res = result.split('\t')[0], result.split('\t')[1], result.split('\t')[2]
             if label == res:
                 labels_tp[label] = labels_tp[label] + 1 if labels_tp.has_key(label) else 1
-                count += 1
             else:
                 labels_fn[label] = labels_fn[label] + 1 if labels_fn.has_key(label) else 1
                 labels_fp[res] = labels_fp[res] + 1 if labels_fp.has_key(res) else 1
         except IndexError, e1:
-            # print result
             continue
         except KeyError, e2:
             continue
-    accuracy = float(count) / len(results)
+
+    sent_accuracy = float(count_sent - count_wrong) / count_sent
+
     print '--------------------Custom Result--------------------'
-    print 'Total accuracy is %f.' % (accuracy)
-    print 'Entity\tP\tR\tF1\tTP\tFP\tFN'
+    print 'The sentences accuracy is %f.' % (sent_accuracy)
+    # print 'Entity\tP\tR\tF1\tTP\tFP\tFN'
     custom_info = 'Entity\tP\tR\tF1\tTP\tFP\tFN'
     labelset = list(set(labels_fp.keys() + labels_tp.keys() + labels_fn.keys()))
     for label in labelset:
@@ -45,7 +55,7 @@ def CountCustomResults(sout, serr):
             precision = float(tp) / (tp + fp)
             recall = float(tp) / (tp + fn)
             f1 = 2 * precision * recall / (precision + recall)
-            print '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (label, precision, recall, f1, tp, fp, fn)
+            # print '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (label, precision, recall, f1, tp, fp, fn)
             custom_info = custom_info + '\n' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (label, precision, recall, f1, tp, fp, fn)
         except ZeroDivisionError, e:
             continue
@@ -55,26 +65,22 @@ def CountCustomResults(sout, serr):
     total_precision = float(total_tp) / (total_tp + total_fp)
     total_recall = float(total_tp) / (total_tp + total_fn)
     total_f1 = 2 * total_precision * total_recall / (total_precision + total_recall)
-    print '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
-        'Total', total_precision, total_recall, total_f1, total_tp, total_fp, total_fn)
+    # print '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
+    #     'Total', total_precision, total_recall, total_f1, total_tp, total_fp, total_fn)
     custom_info = custom_info + '\n' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
         'Total', total_precision, total_recall, total_f1, total_tp, total_fp, total_fn)
     print '--------------------System Result--------------------'
     print serr
-    return accuracy, custom_info
+    return sent_accuracy, custom_info
 
 
-def LogResult(time, accuracy, serr, result_file='result-questions.txt'):
-    totals = serr.strip().split('\r')[-1].split('\t')
-    totals_precision = totals[1]
-    totals_recall = totals[2]
-    totals_f1 = totals[3]
+def LogResult(time, sent_accuracy, custom_info, result_file='result-questions.txt'):
     if not os.path.exists(result_file):
         fopen = open(result_file, 'w')
-        fopen.write('time' + '\t' + 'accuracy' + '\t' + 'precision' + '\t' + 'recall' + '\t' + 'f-value' + '\n')
+        fopen.write('time' + '\t' + 'sent_accuracy' + '\t' + 'custom_info' + '\n')
         fopen.close()
     fopen = open(result_file, 'a')
-    fopen.write(time + '\t' + accuracy + '\t' + totals_precision + '\t' + totals_recall + '\t' + totals_f1 + '\n')
+    fopen.write(time + '\t' + sent_accuracy + '\t' + custom_info.replace('\n', ' | ') + '\n')
     fopen.close()
     pass
 
@@ -109,7 +115,7 @@ class CRF(object):
         sout, serr = java(cmd, classpath=self.path_to_jar, stdout=PIPE, stderr=PIPE)
         print '--------------------TRAIN------------------------'
         print sout
-        print serr
+        # print serr
         after_training = datetime.now()
         training_time = after_training - before_training
         print 'Training time is %s.%s seconds.' % (training_time.seconds, training_time.microseconds)
@@ -136,14 +142,14 @@ class CRF(object):
         before_testing = datetime.now()
         cmd = shlex.split(command)
         sout, serr = java(cmd, classpath=self.path_to_jar, stdout=PIPE, stderr=PIPE)
-        accuracy, custom_info = CountCustomResults(sout, serr)
+        sent_accuracy, custom_info = CountCustomResults(sout, serr)
         after_testing = datetime.now()
         testing_time = after_testing - before_testing
         print 'Testing time is %s.%s seconds.' % (testing_time.seconds, testing_time.microseconds)
-        LogResult(str(testing_time.total_seconds()), str(accuracy), serr)
+        LogResult(str(testing_time.total_seconds()), str(sent_accuracy), custom_info)
         if not test_file == self.test_file:
             os.remove(test_file)
-        return sout, serr, custom_info
+        return sout, serr, sent_accuracy, custom_info
 
 
 if __name__ == '__main__':

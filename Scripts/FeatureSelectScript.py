@@ -173,6 +173,6 @@ run(feature_demo)
 # run(features_opt8)
 # del features_opt8
 
-crf_canvas = CanvasFactory.CRFCanvasFactory().produce(result_file=DM.result_file)
-crf_canvas.load_data()
-crf_canvas.hist()
+# crf_canvas = CanvasFactory.CRFCanvasFactory().produce(result_file=DM.result_file)
+# crf_canvas.load_data()
+# crf_canvas.hist()
