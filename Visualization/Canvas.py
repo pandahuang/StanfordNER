@@ -36,16 +36,13 @@ class CRFCanvas(Canvas):
             fopen = open(self.result_file)
             fopen.readline()
             for line in fopen:
-                results.append(list2nparray(line.strip().split('\t')[:2]))
-
+                result = line.strip().split('\t', 2)[:2]
+                results.append(list2nparray(result))
         except IOError, e:
             print e
         results = np.array(results)
         self.time = results[index:, 0]
         self.accuracy = results[index:, 1]
-        # self.precision = results[index:, 2]
-        # self.recall = results[index:, 3]
-        # self.f1 = results[index:, 4]
         pass
 
     def plot(self):
@@ -57,11 +54,6 @@ class CRFCanvas(Canvas):
         ax2 = plt.subplot(212)
         plt.plot(X, self.accuracy, color='lightblue', linewidth=1, label='accuracy')
         plt.legend(loc='upper left', frameon=False)
-        # ax3 = plt.subplot(313)
-        # plt.plot(X, self.precision, color='lightpink', linewidth=1, label='precision')
-        # plt.plot(X, self.recall, color='lightblue', linewidth=1, label='recall')
-        # plt.plot(X, self.f1, color='lightgreen', linewidth=1, label='f1')
-        # plt.legend(loc='upper left', frameon=False)
         plt.show()
         pass
 
@@ -74,24 +66,6 @@ class CRFCanvas(Canvas):
         plt.ylim(0.5, 1.0)
         for x, y in zip(X, self.accuracy):
             plt.text(x + 0.2, y + 0.02, '%.2f' % y, ha='center')
-        # ax2 = plt.subplot(222)
-        # plt.bar(X, self.precision, width=0.35, facecolor='lightpink', edgecolor='white')
-        # plt.title('Precision')
-        # plt.ylim(0.5, 1.0)
-        # for x, y in zip(X, self.precision):
-        #     plt.text(x + 0.2, y + 0.02, '%.2f' % y, ha='center')
-        # ax3 = plt.subplot(223)
-        # plt.bar(X, self.recall, width=0.35, facecolor='lightgreen', edgecolor='white')
-        # plt.title('Recall')
-        # plt.ylim(0.5, 1.0)
-        # for x, y in zip(X, self.recall):
-        #     plt.text(x + 0.2, y + 0.02, '%.2f' % y, ha='center')
-        # ax4 = plt.subplot(224)
-        # plt.bar(X, self.f1, width=0.35, facecolor='yellowgreen', edgecolor='white')
-        # plt.title('f-value')
-        # plt.ylim(0.5, 1.0)
-        # for x, y in zip(X, self.f1):
-        #     plt.text(x + 0.2, y + 0.02, '%.2f' % y, ha='center')
         plt.show()
         pass
 

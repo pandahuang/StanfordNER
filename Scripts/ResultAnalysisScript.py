@@ -3,7 +3,7 @@ import copy
 from Data.DataManager import DataManager
 from Preprocessing import ProcessorFactory
 from Model.ConditionalRandomField import CRF
-from Visualization import CanvasFactory
+from Visualization import PainterFactory
 
 features = {
     'useClassFeature': 'true',
@@ -43,6 +43,9 @@ DM.source_data_file = 'CorpusLabelData_MergedFilter.txt'
 
 
 def run(feature_set, DM=DM):
+    DM.remove('features-train.txt')
+    DM.remove('features-test.txt')
+    DM.remove('LogWrongSents.txt')
     crf_processor = ProcessorFactory.CRFProcessorFactory().produce(source_data_file=DM.source_data_file,
                                                                    train_file=DM.train_file, test_file=DM.test_file)
     crf_processor.get_train_data(isRandom=True)
@@ -51,12 +54,6 @@ def run(feature_set, DM=DM):
                    test_file=DM.test_file, result_file=DM.result_file)
     crf_test.feature_config(features=feature_set)
     crf_test.train()
-    if os.path.exists(os.path.join(os.getcwd(), 'features-train.txt')):
-        os.remove(os.path.join(os.getcwd(), 'features-train.txt'))
-    if os.path.exists(os.path.join(os.getcwd(), 'features-test.txt')):
-        os.remove(os.path.join(os.getcwd(), 'features-test.txt'))
-    if os.path.exists(os.path.join(os.getcwd(), 'LogWrongSents.txt')):
-        os.remove(os.path.join(os.getcwd(), 'LogWrongSents.txt'))
     os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), 'features-train.txt'))
     sout, serr, sent_accuracy, custom_info = crf_test.verify()
     os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), 'features-test.txt'))
