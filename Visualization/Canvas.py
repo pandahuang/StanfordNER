@@ -36,8 +36,9 @@ class CRFCanvas(Canvas):
             fopen = open(self.result_file)
             fopen.readline()
             for line in fopen:
-                result = line.strip().split('\t', 2)[:2]
-                results.append(list2nparray(result))
+                if line.strip().split('\t', 3)[0] == 'test':
+                    result = line.strip().split('\t', 3)[1:3]
+                    results.append(list2nparray(result))
         except IOError, e:
             print e
         results = np.array(results)

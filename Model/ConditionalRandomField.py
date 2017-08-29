@@ -12,7 +12,22 @@ def CombineTokens(token_list):
     return strg
 
 
-def CountCustomResults(sout, serr):
+def CountTrainResults(sout, serr):
+    results = serr.strip().split('\n')
+    count_doc, train_time = 0, 0
+    for result in results:
+        try:
+            infos = result.strip().split(':')
+            if infos[0].strip() == 'numDocuments':
+                count_doc = infos[1].strip()
+        except IndexError:
+            continue
+    train_time_res = results[-3]
+    train_time = train_time_res.strip().split('[')[1].strip().split(' ')[0]
+    return train_time, count_doc
+
+
+def CountTestResults(sout, serr):
     labels_tp, labels_fp, labels_fn = {}, {}, {}
     results = sout.strip().split('\r')
     count_wrong, count_sent = 0, 0
@@ -74,13 +89,13 @@ def CountCustomResults(sout, serr):
     return sent_accuracy, custom_info
 
 
-def LogResult(time, sent_accuracy, custom_info, result_file='result-questions.txt'):
+def LogResult(job_cate, time, sent_accuracy, custom_info, result_file='result-questions.txt'):
     if not os.path.exists(result_file):
         fopen = open(result_file, 'w')
-        fopen.write('time' + '\t' + 'sent_accuracy' + '\t' + 'custom_info' + '\n')
+        fopen.write('category' + '\t' + 'time' + '\t' + 'sent_accuracy' + '\t' + 'custom_info' + '\n')
         fopen.close()
     fopen = open(result_file, 'a')
-    fopen.write(time + '\t' + sent_accuracy + '\t' + custom_info.replace('\n', ' | ') + '\n')
+    fopen.write(job_cate + '\t' + time + '\t' + sent_accuracy + '\t' + custom_info.replace('\n', ' | ') + '\n')
     fopen.close()
     pass
 
@@ -115,14 +130,17 @@ class CRF(object):
         sout, serr = java(cmd, classpath=self.path_to_jar, stdout=PIPE, stderr=PIPE)
         print '--------------------TRAIN------------------------'
         print sout
-        # print serr
+        print serr
         after_training = datetime.now()
         training_time = after_training - before_training
         print 'Training time is %s.%s seconds.' % (training_time.seconds, training_time.microseconds)
+        return sout, serr, training_time
 
     def train(self):
         # if not os.path.exists(self.model_filename):
-        self.training_crf_model()
+        sout, serr, training_time = self.training_crf_model()
+        train_time, count_doc = CountTrainResults(sout, serr)
+        LogResult('train', train_time, 'None', count_doc)
 
     def verify(self, sentence=None):
         test_file = self.test_file
@@ -142,11 +160,11 @@ class CRF(object):
         before_testing = datetime.now()
         cmd = shlex.split(command)
         sout, serr = java(cmd, classpath=self.path_to_jar, stdout=PIPE, stderr=PIPE)
-        sent_accuracy, custom_info = CountCustomResults(sout, serr)
+        sent_accuracy, custom_info = CountTestResults(sout, serr)
         after_testing = datetime.now()
         testing_time = after_testing - before_testing
         print 'Testing time is %s.%s seconds.' % (testing_time.seconds, testing_time.microseconds)
-        LogResult(str(testing_time.total_seconds()), str(sent_accuracy), custom_info)
+        LogResult('test', str(testing_time.total_seconds()), str(sent_accuracy), custom_info)
         if not test_file == self.test_file:
             os.remove(test_file)
         return sout, serr, sent_accuracy, custom_info
