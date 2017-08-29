@@ -7,8 +7,8 @@ import shlex
 import os
 
 
-def CombineTokens(token_list):
-    strg = reduce(lambda x, y: str(x) + ' ' + str(y), token_list)
+def CombineTokens(tokens):
+    strg = reduce(lambda x, y: str(x) + ' ' + str(y), tokens)
     return strg
 
 

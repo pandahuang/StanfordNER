@@ -1,6 +1,11 @@
 import random
 
 
+def CombineTokens(tokens):
+    strg = reduce(lambda x, y: str(x) + ' ' + str(y), tokens)
+    return strg
+
+
 def regular_sample(index_record, percent):
     train_index = []
     test_index = []
@@ -65,6 +70,33 @@ class CRFPreprocessor(Preprocessor):
                 elif index in test_index:
                     fopen_test.write(''.join(sents))
                     sents = []
+
+
+'''
+    Retag the null label with pos tag.
+'''
+
+
+class PreLabelWithPosPreprocessor(Preprocessor):
+    import nltk
+    def __init__(self, **kw):
+        self.train_file = kw.get('train_file')
+        self.test_file = kw.get('test_file')
+
+    def preprocess(self):
+        print 'This is PreLabel preprocessor using pos tag.'
+
+    def prelabel_with_pos(self, former_labels=['null']):
+        fopen_train = open(self.train_file)
+        lines_train = fopen_train.readlines()
+        fopen_train.close()
+        fopen_test = open(self.test_file)
+        lines_test = fopen_test.readlines()
+        fopen_test.close()
+        with open(self.train_file, 'w') as fopen:
+            for line in lines_train:
+                pass
+        pass
 
 
 class LSTMPreprocessor(Preprocessor):

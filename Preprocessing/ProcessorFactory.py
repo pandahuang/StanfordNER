@@ -12,6 +12,11 @@ class CRFProcessorFactory(Provider):
         return Preprocessor.CRFPreprocessor(**kw)
 
 
+class PreLabelWithPosProcessorFactory(Provider):
+    def produce(self, **kw):
+        return Preprocessor.PreLabelWithPosPreprocessor(**kw)
+
+
 class LSTMProcessorFactory(Provider):
     def produce(self, **kw):
         return Preprocessor.LSTMPreprocessor(**kw)
