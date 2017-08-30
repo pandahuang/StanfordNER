@@ -59,53 +59,53 @@ def run(feature_set, DM=DM):
     os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), 'features-test.txt'))
     return sout, serr, sent_accuracy, custom_info
 
+if __name__=='__main__':
+    for i in range(1):
+        # use demo features
+        feature_demo = features
+        sout, serr, sent_accuracy, custom_info = run(feature_demo)
+        results = sout.strip().split('\r')
+        isWorng = False
+        sents = []
+        with open('LogWrongSents.txt', 'a') as fopen:
+            fopen.write(custom_info + '\n')
+            fopen.write('----------------------------------------------------------------\n')
+        for result in results:
+            if result.strip():
+                sents.append(result.strip())
+                token, label, res = result.split('\t')[0], result.split('\t')[1], result.split('\t')[2]
+                if label != res:
+                    isWorng = True
+            else:
+                with open('LogWrongSents.txt', 'a') as fopen:
+                    if sents and isWorng:
+                        for sent in sents:
+                            fopen.write(sent + '\n')
+                        fopen.write('\n')
+                sents = []
+                isWorng = False
+        with open('LogWrongSents.txt', 'a') as fopen:
+            fopen.write('===============================================================================' + '\n')
 
-for i in range(1):
-    # use demo features
-    feature_demo = features
-    sout, serr, sent_accuracy, custom_info = run(feature_demo)
-    results = sout.strip().split('\r')
-    isWorng = False
-    sents = []
-    with open('LogWrongSents.txt', 'a') as fopen:
-        fopen.write(custom_info + '\n')
-        fopen.write('----------------------------------------------------------------\n')
-    for result in results:
-        if result.strip():
-            sents.append(result.strip())
-            token, label, res = result.split('\t')[0], result.split('\t')[1], result.split('\t')[2]
-            if label != res:
-                isWorng = True
-        else:
-            with open('LogWrongSents.txt', 'a') as fopen:
-                if sents and isWorng:
-                    for sent in sents:
-                        fopen.write(sent + '\n')
-                    fopen.write('\n')
-            sents = []
-            isWorng = False
-    with open('LogWrongSents.txt', 'a') as fopen:
-        fopen.write('===============================================================================' + '\n')
+    import numpy as np
 
-import numpy as np
+    field_res, null_res, total_res = [], [], []
+    with open('LogWrongSents.txt') as fopen:
+        for line in fopen:
+            if line:
+                if line.strip().split('\t')[0] in ['B-Field', 'I-Field'] and len(line.strip().split('\t')) == 7:
+                    field_res.append(line.strip().split('\t')[1:])  # P, R, F1, TP, FP, FN
+                elif line.strip().split('\t')[0] == 'NULL' and len(line.strip().split('\t')) == 7:
+                    null_res.append(line.strip().split('\t')[1:])
+                elif line.strip().split('\t')[0] == 'Total' and len(line.strip().split('\t')) == 7:
+                    total_res.append(line.strip().split('\t')[1:])
+    field_res = np.array(field_res).astype(np.float)
+    null_res = np.array(null_res).astype(np.float)
+    total_res = np.array(total_res).astype(np.float)
 
-field_res, null_res, total_res = [], [], []
-with open('LogWrongSents.txt') as fopen:
-    for line in fopen:
-        if line:
-            if line.strip().split('\t')[0] in ['B-Field', 'I-Field'] and len(line.strip().split('\t')) == 7:
-                field_res.append(line.strip().split('\t')[1:])  # P, R, F1, TP, FP, FN
-            elif line.strip().split('\t')[0] == 'NULL' and len(line.strip().split('\t')) == 7:
-                null_res.append(line.strip().split('\t')[1:])
-            elif line.strip().split('\t')[0] == 'Total' and len(line.strip().split('\t')) == 7:
-                total_res.append(line.strip().split('\t')[1:])
-field_res = np.array(field_res).astype(np.float)
-null_res = np.array(null_res).astype(np.float)
-total_res = np.array(total_res).astype(np.float)
+    # print field_res
 
-# print field_res
-
-field_res_avg = [float(np.mean(field_res[:, i])) for i in range(6)]
-null_res_avg = [float(np.mean(null_res[:, i])) for i in range(6)]
-total_res_avg = [float(np.mean(total_res[:, i])) for i in range(6)]
-print ' '.join([str(t) for t in total_res_avg])
+    field_res_avg = [float(np.mean(field_res[:, i])) for i in range(6)]
+    null_res_avg = [float(np.mean(null_res[:, i])) for i in range(6)]
+    total_res_avg = [float(np.mean(total_res[:, i])) for i in range(6)]
+    print ' '.join([str(t) for t in total_res_avg])

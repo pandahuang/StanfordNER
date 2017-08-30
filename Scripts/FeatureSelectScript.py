@@ -82,97 +82,97 @@ def run(feature_set, DM=DM):
     crf_test.train()
     crf_test.verify()
 
+if __name__=='__main__':
+    # #use feature in the demo list one by one
+    # for feature_set in feature_sets:
+    #     run(feature_set)
 
-# #use feature in the demo list one by one
-# for feature_set in feature_sets:
-#     run(feature_set)
+    #use demo features
+    feature_demo = features
+    run(feature_demo)
 
-#use demo features
-feature_demo = features
-run(feature_demo)
+    # #use the 3 better feature in demo list
+    # feature_word_shape_disjunctive = list2dict(default + word + wordshape + disjunctive)
+    # run(feature_word_shape_disjunctive)
 
-# #use the 3 better feature in demo list
-# feature_word_shape_disjunctive = list2dict(default + word + wordshape + disjunctive)
-# run(feature_word_shape_disjunctive)
+    # #use all of demo features except the worst one - class feature
+    # feature_exp_class = list2dict(default + word + ngram + wordshape + disjunctive)
+    # run(feature_exp_class)
 
-# #use all of demo features except the worst one - class feature
-# feature_exp_class = list2dict(default + word + ngram + wordshape + disjunctive)
-# run(feature_exp_class)
+    # #use demo features and two extra new features
+    # feature_demo_lemmas_position = features
+    # run(feature_demo_lemmas_position)
 
-# #use demo features and two extra new features
-# feature_demo_lemmas_position = features
-# run(feature_demo_lemmas_position)
+    '''
+        more options of demo feature
+            1.useWordPairs=true, useTags=true
+            2.lowercaseNGrams=true, useNeighborNGrams=true, conjionShapeNGrams=true
+            3.useTypeSeqs3=true, useDisjShape=true
+            4.useNextSequences=true, useTaggySequences=true
+            5.useDisjunctiveShapeInteraction=true, useWideDisjunctive=true
+            6.maxNGramLeng=(4,8)
+            7.maxLeft=(1,2,3), maxRight=(1,2,3)
+            8.wordShape=chris2useLC
+            9.disjunctionWidth=(2,6)
+            10.wideDisjunctionWidth=(2,6)
+    '''
 
-'''
-    more options of demo feature
-        1.useWordPairs=true, useTags=true
-        2.lowercaseNGrams=true, useNeighborNGrams=true, conjionShapeNGrams=true
-        3.useTypeSeqs3=true, useDisjShape=true
-        4.useNextSequences=true, useTaggySequences=true
-        5.useDisjunctiveShapeInteraction=true, useWideDisjunctive=true
-        6.maxNGramLeng=(4,8)
-        7.maxLeft=(1,2,3), maxRight=(1,2,3)
-        8.wordShape=chris2useLC
-        9.disjunctionWidth=(2,6)
-        10.wideDisjunctionWidth=(2,6)
-'''
+    # # option 1
+    # features_opt1 = copy.deepcopy(features)
+    # features_opt1['useWordPairs'] = 'true'
+    # features_opt1['useTags'] = 'true'
+    # run(features_opt1)
+    # del features_opt1
+    #
+    # # option 2
+    # features_opt2 = copy.deepcopy(features)
+    # features_opt2['lowercaseNGrams'] = 'true'
+    # features_opt2['useNeighborNGrams'] = 'true'
+    # features_opt2['conjionShapeNGrams'] = 'true'
+    # run(features_opt2)
+    # del features_opt2
+    #
+    # # option 3
+    # features_opt3 = copy.deepcopy(features)
+    # features_opt3['useTypeSeqs3'] = 'true'
+    # features_opt3['useDisjShape'] = 'true'
+    # run(features_opt3)
+    # del features_opt3
+    #
+    # # option 4
+    # features_opt4 = copy.deepcopy(features)
+    # features_opt4['useNextSequences'] = 'true'
+    # features_opt4['useTaggySequences'] = 'true'
+    # run(features_opt4)
+    # del features_opt4
+    #
+    # # option 5
+    # features_opt5 = copy.deepcopy(features)
+    # features_opt5['useDisjunctiveShapeInteraction'] = 'true'
+    # features_opt5['useWideDisjunctive'] = 'true'
+    # run(features_opt5)
+    # del features_opt5
 
-# # option 1
-# features_opt1 = copy.deepcopy(features)
-# features_opt1['useWordPairs'] = 'true'
-# features_opt1['useTags'] = 'true'
-# run(features_opt1)
-# del features_opt1
-#
-# # option 2
-# features_opt2 = copy.deepcopy(features)
-# features_opt2['lowercaseNGrams'] = 'true'
-# features_opt2['useNeighborNGrams'] = 'true'
-# features_opt2['conjionShapeNGrams'] = 'true'
-# run(features_opt2)
-# del features_opt2
-#
-# # option 3
-# features_opt3 = copy.deepcopy(features)
-# features_opt3['useTypeSeqs3'] = 'true'
-# features_opt3['useDisjShape'] = 'true'
-# run(features_opt3)
-# del features_opt3
-#
-# # option 4
-# features_opt4 = copy.deepcopy(features)
-# features_opt4['useNextSequences'] = 'true'
-# features_opt4['useTaggySequences'] = 'true'
-# run(features_opt4)
-# del features_opt4
-#
-# # option 5
-# features_opt5 = copy.deepcopy(features)
-# features_opt5['useDisjunctiveShapeInteraction'] = 'true'
-# features_opt5['useWideDisjunctive'] = 'true'
-# run(features_opt5)
-# del features_opt5
+    # # option 6
+    # features_opt6 = copy.deepcopy(features)
+    # for length in range(4, 8 + 1):
+    #     features_opt6['maxNGramLeng'] = str(length)
+    #     run(features_opt6)
+    # del features_opt6
 
-# # option 6
-# features_opt6 = copy.deepcopy(features)
-# for length in range(4, 8 + 1):
-#     features_opt6['maxNGramLeng'] = str(length)
-#     run(features_opt6)
-# del features_opt6
+    # # option 7
+    # features_opt7 = copy.deepcopy(features)
+    # for index in [1, 2]:
+    #     features_opt7['maxLeft'] = str(index)
+    #     run(features_opt7)
+    # del features_opt7
 
-# # option 7
-# features_opt7 = copy.deepcopy(features)
-# for index in [1, 2]:
-#     features_opt7['maxLeft'] = str(index)
-#     run(features_opt7)
-# del features_opt7
+    # # option 8
+    # features_opt8 = copy.deepcopy(features)
+    # features_opt8['wordShape'] = 'chris4useLC'
+    # run(features_opt8)
+    # del features_opt8
 
-# # option 8
-# features_opt8 = copy.deepcopy(features)
-# features_opt8['wordShape'] = 'chris4useLC'
-# run(features_opt8)
-# del features_opt8
-
-# crf_canvas = CanvasFactory.CRFCanvasFactory().produce(result_file=DM.result_file)
-# crf_canvas.load_data()
-# crf_canvas.hist()
+    # crf_canvas = CanvasFactory.CRFCanvasFactory().produce(result_file=DM.result_file)
+    # crf_canvas.load_data()
+    # crf_canvas.hist()

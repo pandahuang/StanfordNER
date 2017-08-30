@@ -3,7 +3,6 @@ import copy
 from Data.DataManager import DataManager
 from Preprocessing import ProcessorFactory
 from Model.ConditionalRandomField import CRF
-from Visualization import PainterFactory
 
 features = {
     'useClassFeature': 'true',
@@ -80,8 +79,10 @@ def ResultsAndWrongAnswerRecord(sout, serr, sent_accuracy, custom_info):
     with open('LogWrongSents.txt', 'a') as fopen:
         fopen.write('===============================================================================' + '\n')
 
-for i in range(1):
-    # use demo features
-    feature_demo = features
-    sout, serr, sent_accuracy, custom_info = run(feature_demo)
-    ResultsAndWrongAnswerRecord(sout, serr, sent_accuracy, custom_info)
+
+if __name__=='__main__':
+    for i in range(1):
+        # use demo features
+        feature_demo = features
+        sout, serr, sent_accuracy, custom_info = run(feature_demo)
+        ResultsAndWrongAnswerRecord(sout, serr, sent_accuracy, custom_info)
