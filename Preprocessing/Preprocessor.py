@@ -1,4 +1,5 @@
 import random
+import nltk
 
 
 def CombineTokens(tokens):
@@ -78,7 +79,6 @@ class CRFPreprocessor(Preprocessor):
 
 
 class PreLabelWithPosPreprocessor(Preprocessor):
-    import nltk
     def __init__(self, **kw):
         self.train_file = kw.get('train_file')
         self.test_file = kw.get('test_file')
@@ -95,7 +95,28 @@ class PreLabelWithPosPreprocessor(Preprocessor):
         fopen_test.close()
         with open(self.train_file, 'w') as fopen:
             for line in lines_train:
-                pass
+                if line.strip():
+                    token = line.strip().split(' ')[0]
+                    label = line.strip().split(' ')[1]
+                    if label.lower() in former_labels:
+                        label = nltk.pos_tag([token])
+                        fopen.write(token + ' ' + label[0][1] + '\n')
+                    else:
+                        fopen.write(line)
+                else:
+                    fopen.write(line)
+        with open(self.test_file, 'w') as fopen:
+            for line in lines_test:
+                if line.strip():
+                    token = line.strip().split(' ')[0]
+                    label = line.strip().split(' ')[1]
+                    if label.lower() in former_labels:
+                        label = nltk.pos_tag([token])
+                        fopen.write(token + ' ' + label[0][1] + '\n')
+                    else:
+                        fopen.write(line)
+                else:
+                    fopen.write(line)
         pass
 
 
