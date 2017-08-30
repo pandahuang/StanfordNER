@@ -37,6 +37,12 @@ class DataManager(object):
 
     pass
 
+    def remove(self, filepath):
+        if os.path.exists(os.path.join(os.getcwd(), filepath)):
+            os.remove(os.path.join(os.getcwd(), filepath))
+        else:
+            print 'IOError: %s is not in current work directory.'%filepath
+
 
 if __name__ == '__main__':
     DM = DataManager()
