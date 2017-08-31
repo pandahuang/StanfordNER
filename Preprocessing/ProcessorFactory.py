@@ -33,4 +33,5 @@ if __name__ == '__main__':
     prepos_processor = prepos_factory.produce(train_file=DM.abs_train_file,
                                               test_file=DM.abs_test_file)
     prepos_processor.preprocess()
-    prepos_processor.prelabel_with_pos()
+    # prepos_processor.prelabel_with_pos()
+    prepos_processor.prelabel_with_pos_by_sentence()

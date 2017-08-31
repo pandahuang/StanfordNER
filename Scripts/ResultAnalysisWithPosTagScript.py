@@ -32,13 +32,13 @@ def list2dict(feature):
 
 DM = DataManager()
 DM.change_pwd()
-DM.source_data_file = 'CorpusLabelData_MergedFilter.txt'
+DM.source_data_file = 'CorpusLabelData_MergedFilter_Update.txt'
+DM.remove('LogWrongSents.txt')
 
 
 def run(feature_set, DM=DM):
     DM.remove('features-train.txt')
     DM.remove('features-test.txt')
-    DM.remove('LogWrongSents.txt')
     crf_processor = ProcessorFactory.CRFProcessorFactory().produce(source_data_file=DM.source_data_file,
                                                                    train_file=DM.train_file, test_file=DM.test_file)
     crf_processor.get_train_data(isRandom=True)
@@ -54,6 +54,7 @@ def run(feature_set, DM=DM):
     sout, serr, sent_accuracy, custom_info = crf_test.verify()
     os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), 'features-test.txt'))
     return sout, serr, sent_accuracy, custom_info
+
 
 def ResultsAndWrongAnswerRecord(sout, serr, sent_accuracy, custom_info):
     results = sout.strip().split('\r')
@@ -80,9 +81,12 @@ def ResultsAndWrongAnswerRecord(sout, serr, sent_accuracy, custom_info):
         fopen.write('===============================================================================' + '\n')
 
 
-if __name__=='__main__':
-    for i in range(1):
+if __name__ == '__main__':
+    sent_accuracys = []
+    for i in range(10):
         # use demo features
         feature_demo = features
         sout, serr, sent_accuracy, custom_info = run(feature_demo)
         ResultsAndWrongAnswerRecord(sout, serr, sent_accuracy, custom_info)
+        sent_accuracys.append(sent_accuracy)
+    print 'Average sent_accuracy is : %f' % (sum(sent_accuracys) / 10)
