@@ -10,9 +10,9 @@ class DataManager(object):
     def __init__(self):
         self.root_path = 'C:\Users\I337906\PycharmProjects\StanfordNER\Data'
         self.source_data_file = 'CorpusLabelData.txt'
-        self.train_file = 'train-questions.txt'
-        self.test_file = 'test-questions.txt'
-        self.result_file = 'result-questions.txt'
+        self.train_file = 'train-data.txt'
+        self.test_file = 'test-data.txt'
+        self.result_file = 'result-record.txt'
         self.path_to_jar = 'stanford-ner.jar'
         self.prop_file = 'cus-crf.prop'
         self.model_file = 'ner-model.ser.gz'

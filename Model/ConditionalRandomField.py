@@ -12,27 +12,29 @@ def CombineTokens(tokens):
     return strg
 
 
-def CountTrainResults(sout, serr):
+def CountTrainResults(sout_train, serr_train):
+    sout, serr = sout_train, serr_train
     results = serr.strip().split('\n')
-    count_doc, train_time = 0, 0
+    train_datasize, train_time = 0, 0
     for result in results:
         try:
             infos = result.strip().split(':')
             if infos[0].strip() == 'numDocuments':
-                count_doc = infos[1].strip()
+                train_datasize = infos[1].strip()
         except IndexError:
             continue
     train_time_res = results[-3]
     train_time = train_time_res.strip().split('[')[1].strip().split(' ')[0]
-    return train_time, count_doc
+    return train_datasize, train_time
 
 
-def CountTestResults(sout, serr):
+def CountTestResults(sout_test, serr_test):
+    sout, serr = sout_test, serr_test
     labels_tp, labels_fp, labels_fn = {}, {}, {}
-    results = sout.strip().split('\r')
+    results_sout = sout.strip().split('\r')
     count_wrong, count_sent = 0, 0
     isWorng = False
-    for result in results:
+    for result in results_sout:
         if result.strip():
             token, label, res = result.split('\t')[0], result.split('\t')[1], result.split('\t')[2]
             if label != res:
@@ -42,7 +44,6 @@ def CountTestResults(sout, serr):
                 count_wrong += 1
             count_sent += 1
             isWorng = False
-
         try:
             token, label, res = result.split('\t')[0], result.split('\t')[1], result.split('\t')[2]
             if label == res:
@@ -60,7 +61,7 @@ def CountTestResults(sout, serr):
     print '--------------------Custom Result--------------------'
     print 'The sentences accuracy is %f.' % (sent_accuracy)
     # print 'Entity\tP\tR\tF1\tTP\tFP\tFN'
-    custom_info = 'Entity\tP\tR\tF1\tTP\tFP\tFN'
+    detail_result = 'Entity\tP\tR\tF1\tTP\tFP\tFN'
     labelset = list(set(labels_fp.keys() + labels_tp.keys() + labels_fn.keys()))
     for label in labelset:
         try:
@@ -70,8 +71,8 @@ def CountTestResults(sout, serr):
             precision = float(tp) / (tp + fp)
             recall = float(tp) / (tp + fn)
             f1 = 2 * precision * recall / (precision + recall)
-            # print '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (label, precision, recall, f1, tp, fp, fn)
-            custom_info = custom_info + '\n' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (label, precision, recall, f1, tp, fp, fn)
+            detail_result = detail_result + '\n' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
+                label, precision, recall, f1, tp, fp, fn)
         except ZeroDivisionError, e:
             continue
     total_tp = sum(labels_tp.values())
@@ -80,24 +81,32 @@ def CountTestResults(sout, serr):
     total_precision = float(total_tp) / (total_tp + total_fp)
     total_recall = float(total_tp) / (total_tp + total_fn)
     total_f1 = 2 * total_precision * total_recall / (total_precision + total_recall)
-    # print '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
-    #     'Total', total_precision, total_recall, total_f1, total_tp, total_fp, total_fn)
-    custom_info = custom_info + '\n' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
+    detail_result = detail_result + '\n' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
         'Total', total_precision, total_recall, total_f1, total_tp, total_fp, total_fn)
-    print '--------------------System Result--------------------'
-    print serr
-    return sent_accuracy, custom_info
+    test_datasize, test_time = 0, 0
+    results_serr = serr.strip().split('\n')
+    for result in results_serr:
+        try:
+            infos = result.strip().split(' ')
+            if infos[0].strip() == 'CRFClassifier':
+                test_datasize = infos[5].strip()
+                test_time = int(infos[2].strip()) * (1 / float(infos[8].strip()))
+        except IndexError:
+            continue
+    return sent_accuracy, test_datasize, test_time, detail_result
 
 
-def LogResult(job_cate, time, sent_accuracy, custom_info, result_file='result-questions.txt'):
+def LogResult(exp_date, sent_accuracy, source_data, train_datasize, train_time, test_datasize, test_time,
+              result_file='result-record.txt'):
     if not os.path.exists(result_file):
         fopen = open(result_file, 'w')
-        fopen.write('category' + '\t' + 'time' + '\t' + 'sent_accuracy' + '\t' + 'custom_info' + '\n')
+        fopen.write('ExpDate' + '\t' + 'SentAccuracy' + '\t' + 'SourceData' + '\t' + 'TrainDataSize' + '\t' +
+                    'TrainTime' + '\t' + 'TestDataSize' + '\t' + 'TestTime' + '\n')
         fopen.close()
     fopen = open(result_file, 'a')
-    fopen.write(job_cate + '\t' + time + '\t' + sent_accuracy + '\t' + custom_info.replace('\n', ' | ') + '\n')
+    fopen.write(exp_date + '\t' + sent_accuracy + '\t' + source_data + '\t' + str(train_datasize) + '\t' + str(train_time) + '\t' +
+                str(test_datasize) + '\t' + str(test_time) + '\n')
     fopen.close()
-    pass
 
 
 class CRF(object):
@@ -107,6 +116,7 @@ class CRF(object):
         self.path_to_jar = kw.get('path_to_jar')
         self.prop_file = kw.get('prop_file')
         self.model_filename = kw.get('model_file')  # path of custom model
+        self.source_data_file = kw.get('source_data_file')
         self.train_file = kw.get('train_file')
         self.test_file = kw.get('test_file')
         self.result_file = kw.get('result_file')
@@ -124,23 +134,17 @@ class CRF(object):
         pass
 
     def training_crf_model(self):
-        before_training = datetime.now()
         command = self.command_line + ' -prop ' + self.prop_file
         cmd = shlex.split(command)
         sout, serr = java(cmd, classpath=self.path_to_jar, stdout=PIPE, stderr=PIPE)
+        train_datasize, train_time = CountTrainResults(sout, serr)
         print '--------------------TRAIN------------------------'
-        print sout
         print serr
-        after_training = datetime.now()
-        training_time = after_training - before_training
-        print 'Training time is %s.%s seconds.' % (training_time.seconds, training_time.microseconds)
-        return sout, serr, training_time
+        print 'Training time is %s seconds.' % (train_time)
+        return sout, serr, train_datasize, train_time
 
     def train(self):
-        # if not os.path.exists(self.model_filename):
-        sout, serr, training_time = self.training_crf_model()
-        train_time, count_doc = CountTrainResults(sout, serr)
-        LogResult('train', train_time, 'None', count_doc)
+        return self.training_crf_model()
 
     def verify(self, sentence=None):
         test_file = self.test_file
@@ -156,18 +160,23 @@ class CRF(object):
 
         command = self.command_line + ' -loadClassifier ' + self.model_filename + ' -testFile ' + test_file
 
-        print '--------------------TEST------------------------'
-        before_testing = datetime.now()
         cmd = shlex.split(command)
         sout, serr = java(cmd, classpath=self.path_to_jar, stdout=PIPE, stderr=PIPE)
-        sent_accuracy, custom_info = CountTestResults(sout, serr)
-        after_testing = datetime.now()
-        testing_time = after_testing - before_testing
-        print 'Testing time is %s.%s seconds.' % (testing_time.seconds, testing_time.microseconds)
-        LogResult('test', str(testing_time.total_seconds()), str(sent_accuracy), custom_info)
+        sent_accuracy, test_datasize, test_time, detail_result = CountTestResults(sout, serr)
+        print '--------------------TEST------------------------'
+        print serr
+        print 'Testing time is %s seconds.' % (test_time)
         if not test_file == self.test_file:
             os.remove(test_file)
-        return sout, serr, sent_accuracy, custom_info
+        return sout, serr, sent_accuracy, test_datasize, test_time, detail_result
+
+    def train_and_verify(self):
+        sout_train, serr_train, train_datasize, train_time = self.train()
+        sout_test, serr_test, sent_accuracy, test_datasize, test_time, detail_result = self.verify()
+        exp_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        source_data = self.source_data_file
+        LogResult(exp_date, str(sent_accuracy), source_data, train_datasize, train_time, test_datasize, test_time)
+        return sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result
 
 
 if __name__ == '__main__':

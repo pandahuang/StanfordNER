@@ -20,7 +20,6 @@ features = {
     'useTypeSeqs2': 'true',
     'useTypeySequences': 'true',
     'wordShape': 'chris2useLC',
-    'printFeatures': '1',
 }
 
 feature_sets = []
@@ -37,8 +36,6 @@ DM.remove('LogWrongSents.txt')
 
 
 def run(feature_set, DM=DM):
-    DM.remove('features-train.txt')
-    DM.remove('features-test.txt')
     crf_processor = ProcessorFactory.CRFProcessorFactory().produce(source_data_file=DM.source_data_file,
                                                                    train_file=DM.train_file, test_file=DM.test_file)
     crf_processor.get_train_data(isRandom=True)
@@ -46,22 +43,19 @@ def run(feature_set, DM=DM):
                                                                                   test_file=DM.test_file)
     prepos_processor.prelabel_with_pos()
     crf_test = CRF(path_to_jar=DM.path_to_jar, prop_file=DM.prop_file, model_file=DM.model_file,
-                   train_file=DM.train_file,
-                   test_file=DM.test_file, result_file=DM.result_file)
+                   source_data_file=DM.source_data_file, train_file=DM.train_file, test_file=DM.test_file,
+                   result_file=DM.result_file)
     crf_test.feature_config(features=feature_set)
-    crf_test.train()
-    os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), 'features-train.txt'))
-    sout, serr, sent_accuracy, custom_info = crf_test.verify()
-    os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), 'features-test.txt'))
-    return sout, serr, sent_accuracy, custom_info
+    sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result = crf_test.train_and_verify()
+    return sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result
 
 
-def ResultsAndWrongAnswerRecord(sout, serr, sent_accuracy, custom_info):
+def ResultsAndWrongAnswerRecord(sout, serr, detail_result):
     results = sout.strip().split('\r')
     isWorng = False
     sents = []
     with open('LogWrongSents.txt', 'a') as fopen:
-        fopen.write(custom_info + '\n')
+        fopen.write(detail_result + '\n')
         fopen.write('----------------------------------------------------------------\n')
     for result in results:
         if result.strip():
@@ -83,10 +77,10 @@ def ResultsAndWrongAnswerRecord(sout, serr, sent_accuracy, custom_info):
 
 if __name__ == '__main__':
     sent_accuracys = []
-    for i in range(10):
+    for i in range(1):
         # use demo features
         feature_demo = features
-        sout, serr, sent_accuracy, custom_info = run(feature_demo)
-        ResultsAndWrongAnswerRecord(sout, serr, sent_accuracy, custom_info)
+        sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result = run(feature_demo)
+        ResultsAndWrongAnswerRecord(sout_test, serr_test, detail_result)
         sent_accuracys.append(sent_accuracy)
     print 'Average sent_accuracy is : %f' % (sum(sent_accuracys) / 10)
