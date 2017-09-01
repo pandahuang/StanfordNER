@@ -86,6 +86,25 @@ class PreLabelWithPosPreprocessor(Preprocessor):
     def preprocess(self):
         print 'This is PreLabel preprocessor using pos tag.'
 
+    def combine_pos_tag(self, pos_tag):
+        noun = ['NN', 'NNS', 'NNP', 'NNPS']
+        adjective = ['JJ', 'JJR', 'JJS']
+        adverb = ['RB', 'RBR', 'RBS']
+        verb = ['VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ']
+        wh = ['WDT', 'WP', 'WRB']
+        if pos_tag in noun:
+            return 'NN'
+        elif pos_tag in adjective:
+            return 'JJ'
+        elif pos_tag in adverb:
+            return 'RB'
+        elif pos_tag in verb:
+            return 'VB'
+        elif pos_tag in wh:
+            return 'WP'
+        else:
+            return pos_tag
+
     def prelabel_with_pos(self, former_labels=['null']):
         fopen_train = open(self.train_file)
         lines_train = fopen_train.readlines()
@@ -100,7 +119,7 @@ class PreLabelWithPosPreprocessor(Preprocessor):
                     label = line.strip().split(' ')[1]
                     if label.lower() in former_labels:
                         label = nltk.pos_tag([token])
-                        fopen.write(token + ' ' + label[0][1] + '\n')
+                        fopen.write(token + ' ' + self.combine_pos_tag(label[0][1]) + '\n')
                     else:
                         fopen.write(line)
                 else:
@@ -112,7 +131,7 @@ class PreLabelWithPosPreprocessor(Preprocessor):
                     label = line.strip().split(' ')[1]
                     if label.lower() in former_labels:
                         label = nltk.pos_tag([token])
-                        fopen.write(token + ' ' + label[0][1] + '\n')
+                        fopen.write(token + ' ' + self.combine_pos_tag(label[0][1]) + '\n')
                     else:
                         fopen.write(line)
                 else:
@@ -137,7 +156,7 @@ class PreLabelWithPosPreprocessor(Preprocessor):
                     pos_tags = nltk.pos_tag(tokens)
                     for (token, pos_tag), label in zip(pos_tags, labels):
                         if label.lower() in former_labels:
-                            fopen.write(token + ' ' + pos_tag + '\n')
+                            fopen.write(token + ' ' + self.combine_pos_tag(pos_tag) + '\n')
                         else:
                             fopen.write(token + ' ' + label + '\n')
                     fopen.write(line)
@@ -154,7 +173,7 @@ class PreLabelWithPosPreprocessor(Preprocessor):
                     pos_tags = nltk.pos_tag(tokens)
                     for (token, pos_tag), label in zip(pos_tags, labels):
                         if label.lower() in former_labels:
-                            fopen.write(token + ' ' + pos_tag + '\n')
+                            fopen.write(token + ' ' + self.combine_pos_tag(pos_tag) + '\n')
                         else:
                             fopen.write(token + ' ' + label + '\n')
                     fopen.write(line)
