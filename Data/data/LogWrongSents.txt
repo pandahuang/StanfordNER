@@ -1,84 +1,121 @@
 Entity	P	R	F1	TP	FP	FN
-B-OrderBy	1.000000	0.925926	0.961538	25	0	2
-B-Aggregation	1.000000	0.966667	0.983051	29	0	1
-B-Limit	1.000000	0.976744	0.988235	42	0	1
-I-OrderBy	1.000000	0.846154	0.916667	11	0	2
-I-FilterField	1.000000	1.000000	1.000000	4	0	0
-B-GroupBy	0.983871	1.000000	0.991870	61	1	0
-I-Aggregation	1.000000	1.000000	1.000000	11	0	0
-B-FilterField	1.000000	1.000000	1.000000	29	0	0
-I-Field	0.948718	0.973684	0.961039	74	4	2
-B-Order	0.983333	0.951613	0.967213	59	1	3
-B-ComparisonWith	1.000000	1.000000	1.000000	1	0	0
-I-ComparisonWith	1.000000	1.000000	1.000000	4	0	0
-NULL	0.978182	1.000000	0.988971	269	6	0
-B-FilterValue	1.000000	0.977273	0.988506	43	0	1
-B-Field	0.975309	0.975309	0.975309	79	2	2
-I-GroupBy	1.000000	0.833333	0.909091	5	0	1
-Total	0.980289	0.980289	0.980289	746	15	15
+B-Order	0.983333	0.967213	0.975207	59	1	2
+I-FilterField	1.000000	1.000000	1.000000	10	0	0
+I-Field	0.867347	1.000000	0.928962	85	13	0
+JJ	1.000000	0.571429	0.727273	4	0	3
+WP	1.000000	1.000000	1.000000	40	0	0
+DT	1.000000	1.000000	1.000000	46	0	0
+B-OrderBy	1.000000	0.966667	0.983051	29	0	1
+NN	0.972973	0.972973	0.972973	36	1	1
+TO	1.000000	1.000000	1.000000	3	0	0
+I-OrderBy	1.000000	0.937500	0.967742	15	0	1
+RB	1.000000	1.000000	1.000000	2	0	0
+VB	1.000000	0.931818	0.964706	41	0	3
+B-Limit	1.000000	1.000000	1.000000	41	0	0
+CC	1.000000	0.833333	0.909091	5	0	1
+B-GroupBy	0.969231	1.000000	0.984375	63	2	0
+I-Aggregation	1.000000	1.000000	1.000000	12	0	0
+B-FilterField	1.000000	1.000000	1.000000	39	0	0
+IN	1.000000	1.000000	1.000000	77	0	0
+B-Aggregation	1.000000	0.787879	0.881356	26	0	7
+B-FilterValue	1.000000	1.000000	1.000000	51	0	0
+B-Field	0.882353	0.925926	0.903614	75	10	6
+I-GroupBy	1.000000	0.800000	0.888889	8	0	2
+Total	0.965995	0.965995	0.965995	767	27	27
 ----------------------------------------------------------------
 item	B-Field	B-Field
 count	B-Aggregation	I-Field
 
-What	NULL	NULL
-is	NULL	NULL
-the	NULL	NULL
-cost	B-Field	B-Order
+number	B-Aggregation	B-Field
+of	IN	IN
+employee	B-Field	NN
 
-The	NULL	NULL
-average	B-Aggregation	B-Aggregation
-selling	B-Field	B-Field
-price	I-Field	I-Field
-of	NULL	NULL
-product	B-FilterField	B-FilterField
-A	B-FilterValue	I-FilterValue
-vs.	NULL	NULL
-the	B-ComparisonWith	B-ComparisonWith
-same	I-ComparisonWith	I-ComparisonWith
-period	I-ComparisonWith	I-ComparisonWith
-last	I-ComparisonWith	I-ComparisonWith
-year	I-ComparisonWith	I-ComparisonWith
+number	B-Aggregation	B-Field
+of	IN	IN
+items	B-Field	B-Field
 
-The	NULL	NULL
-cost	B-Field	NULL
-trend	NULL	NULL
+number	B-Aggregation	B-Field
+of	IN	IN
+products	B-Field	B-GroupBy
 
-the	NULL	NULL
-bottom	B-Order	B-Order
-2	B-Limit	NULL
-worst	NULL	NULL
-selling	NULL	NULL
-customers	B-GroupBy	B-GroupBy
-
-worst	B-Order	NULL
-selling	NULL	NULL
-items	I-GroupBy	B-GroupBy
-
-average	B-Aggregation	B-Aggregation
-days	B-Field	B-Field
-of	I-Field	NULL
-delays	I-Field	NULL
-in	NULL	NULL
-delivery	NULL	NULL
-
-What	NULL	NULL
-is	NULL	NULL
-the	NULL	NULL
+Which	WP	WP
+territory	B-GroupBy	B-GroupBy
+has	VB	VB
+the	DT	DT
 highest	B-Order	B-Field
-selling	B-OrderBy	I-Field
-price	I-OrderBy	I-Field
-for	NULL	NULL
-product	B-FilterField	B-FilterField
-<ItemCode>	B-FilterValue	B-FilterValue
+profit	B-OrderBy	I-Field
+rate	I-OrderBy	I-Field
 
-What	NULL	NULL
-is	NULL	NULL
-the	NULL	NULL
-lowest	B-Order	NULL
-purchasing	B-OrderBy	B-Field
-price	I-OrderBy	I-Field
-for	NULL	NULL
-product	B-FilterField	B-FilterField
+Which	WP	WP
+shipping	B-GroupBy	B-GroupBy
+type	I-GroupBy	B-GroupBy
+has	VB	VB
+the	DT	DT
+most	B-Order	B-Order
+back	B-OrderBy	B-OrderBy
+order	I-OrderBy	I-OrderBy
+quantity	I-OrderBy	I-OrderBy
+
+What	WP	WP
+is	VB	VB
+the	DT	DT
+overall	B-Aggregation	B-Field
+ontime	B-Field	I-Field
+delivery	I-Field	I-Field
+rate	I-Field	I-Field
+
+What	WP	WP
+is	VB	VB
+the	DT	DT
+Sales	B-Field	B-Field
+Documents	I-Field	I-Field
+Balance	I-Field	I-Field
+Total	B-Aggregation	I-Field
+
+What	WP	WP
+is	VB	VB
+the	DT	DT
+current	JJ	B-Field
+status	B-Field	I-Field
+of	IN	IN
+Item	B-FilterField	B-FilterField
 <ItemCode>	B-FilterValue	B-FilterValue
+in	IN	IN
+Warehouse	B-FilterField	B-FilterField
+<WarehouseName>	B-FilterValue	B-FilterValue
+
+current	JJ	B-Field
+inventory	B-Field	I-Field
+status	I-Field	I-Field
+
+List	NN	NN
+all	DT	DT
+sales	B-Field	B-Field
+employee	I-Field	I-Field
+or	CC	I-Field
+buyer	B-Field	I-Field
+
+the	DT	DT
+bottom	B-Order	B-Order
+<num>	B-Limit	B-Limit
+biggest	JJ	B-Order
+contract	B-GroupBy	B-GroupBy
+
+worst	B-Order	B-Field
+selling	VB	I-Field
+items	I-GroupBy	I-Field
+
+how	B-Aggregation	B-Aggregation
+many	I-Aggregation	I-Aggregation
+sales	B-Field	B-Field
+orders	I-Field	I-Field
+are	VB	I-Field
+delivered	VB	B-Field
+on-time	NN	I-Field
+
+number	B-Aggregation	B-Field
+of	IN	IN
+sales	B-Field	B-Field
+staff	I-Field	I-Field
 
 ===============================================================================
