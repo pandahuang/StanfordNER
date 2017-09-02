@@ -45,7 +45,10 @@ def run(feature_set, DM=DM):
                    result_file=DM.result_file)
     crf_test.feature_config(features=feature_set)
     sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result = crf_test.train_and_verify()
-    DM.train_file = 'CorpusLabelData_MergedFilter_Full.txt'
+    DM.source_data_file = 'CorpusLabelData_MergedFilter_Full.txt'
+    tat_data_processor = ProcessorFactory.TrainAndTestDataPreprocessorFactory.produce(source_data_file=DM.source_data_file,
+                                                                                      train_file=DM.train_file, test_file=DM.test_file)
+    tat_data_processor.reduce_replicate_data()
     crf_test_f = CRF(path_to_jar=DM.path_to_jar, prop_file=DM.prop_file, model_file=DM.model_file,
                      source_data_file=DM.source_data_file, train_file=DM.train_file, test_file=DM.test_file,
                      result_file=DM.result_file)
