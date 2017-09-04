@@ -6,30 +6,7 @@ from Model.ConditionalRandomField import CRF
 from Visualization import PainterFactory
 from ScriptToolkit import ScriptToolkit
 
-features = {
-    'useClassFeature': 'true',
-    'useWord': 'true',
-    'useNGrams': 'true',
-    'noMidNGrams': 'true',
-    'useDisjunctive': 'true',
-    'maxNGramLeng': '6',
-    'usePrev': 'true',
-    'useNext': 'true',
-    'useSequences': 'true',
-    'usePrevSequences': 'true',
-    'maxLeft': '1',
-    'useTypeSeqs': 'true',
-    'useTypeSeqs2': 'true',
-    'useTypeySequences': 'true',
-    'wordShape': 'chris2useLC',
-}
-
-feature_sets = []
-
-
-def list2dict(feature):
-    return {key: features.get(key) for key in feature if features.has_key(key)}
-
+features = ScriptToolkit.get_demo_features()
 
 DM = DataManager()
 DM.change_pwd()

@@ -6,30 +6,7 @@ from Model.ConditionalRandomField import CRF
 from Visualization import PainterFactory
 from ScriptToolkit import ScriptToolkit
 
-features = {
-    'useClassFeature': 'true',
-    'useWord': 'true',
-    'useNGrams': 'true',
-    'noMidNGrams': 'true',
-    'useDisjunctive': 'true',
-    'maxNGramLeng': '6',
-    'usePrev': 'true',
-    'useNext': 'true',
-    'useSequences': 'true',
-    'usePrevSequences': 'true',
-    'maxLeft': '1',
-    'useTypeSeqs': 'true',
-    'useTypeSeqs2': 'true',
-    'useTypeySequences': 'true',
-    'wordShape': 'chris2useLC',
-}
-
-feature_sets = []
-
-
-def list2dict(feature):
-    return {key: features.get(key) for key in feature if features.has_key(key)}
-
+features = ScriptToolkit.get_demo_features()
 
 DM = DataManager()
 DM.change_pwd()
@@ -48,12 +25,14 @@ def run(feature_set, DM=DM):
     sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result = crf_test.train_and_verify()
     return sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     sent_accuracys = []
-    for i in range(10):
+    cycle_times = 10
+    for i in range(cycle_times):
         # use demo features
         feature_demo = features
         sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result = run(feature_demo)
         ScriptToolkit.ResultsAndWrongAnswerRecord(sout_test, serr_test, detail_result)
         sent_accuracys.append(sent_accuracy)
-    print 'Average sent_accuracy is : %f' % (sum(sent_accuracys) / 10)
+    print 'Average sent_accuracy is : %f' % (sum(sent_accuracys) / cycle_times)
