@@ -3,6 +3,7 @@ import copy
 from Data.DataManager import DataManager
 from Preprocessing import ProcessorFactory
 from Model.ConditionalRandomField import CRF
+from ScriptToolkit import ScriptToolkit
 
 features = {
     'useClassFeature': 'true',
@@ -50,37 +51,12 @@ def run(feature_set, DM=DM):
     return sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result
 
 
-def ResultsAndWrongAnswerRecord(sout, serr, detail_result):
-    results = sout.strip().split('\r')
-    isWorng = False
-    sents = []
-    with open('LogWrongSents.txt', 'a') as fopen:
-        fopen.write(detail_result + '\n')
-        fopen.write('----------------------------------------------------------------\n')
-    for result in results:
-        if result.strip():
-            sents.append(result.strip())
-            token, label, res = result.split('\t')[0], result.split('\t')[1], result.split('\t')[2]
-            if label != res:
-                isWorng = True
-        else:
-            with open('LogWrongSents.txt', 'a') as fopen:
-                if sents and isWorng:
-                    for sent in sents:
-                        fopen.write(sent + '\n')
-                    fopen.write('\n')
-            sents = []
-            isWorng = False
-    with open('LogWrongSents.txt', 'a') as fopen:
-        fopen.write('===============================================================================' + '\n')
-
-
 if __name__ == '__main__':
     sent_accuracys = []
-    for i in range(1):
+    for i in range(10):
         # use demo features
         feature_demo = features
         sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result = run(feature_demo)
-        ResultsAndWrongAnswerRecord(sout_test, serr_test, detail_result)
+        ScriptToolkit.ResultsAndWrongAnswerRecord(sout_test, serr_test, detail_result)
         sent_accuracys.append(sent_accuracy)
     print 'Average sent_accuracy is : %f' % (sum(sent_accuracys) / 10)
