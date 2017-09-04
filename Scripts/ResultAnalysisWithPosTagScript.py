@@ -42,7 +42,7 @@ def run(feature_set, DM=DM):
     crf_processor.get_train_data(isRandom=True)
     prepos_processor = ProcessorFactory.PreLabelWithPosProcessorFactory().produce(train_file=DM.train_file,
                                                                                   test_file=DM.test_file)
-    prepos_processor.prelabel_with_pos()
+    prepos_processor.prelabel_with_pos_by_sentence(is_combine=True)
     crf_test = CRF(path_to_jar=DM.path_to_jar, prop_file=DM.prop_file, model_file=DM.model_file,
                    source_data_file=DM.source_data_file, train_file=DM.train_file, test_file=DM.test_file,
                    result_file=DM.result_file)

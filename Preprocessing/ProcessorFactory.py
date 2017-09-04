@@ -1,6 +1,7 @@
 from Preprocessing import Preprocessor
 from Data.DataManager import DataManager
 from Preprocessing.TrainAndTestDataPreprocessor import TrainAndTestDataPreprocessor
+from Preprocessing.PreLabelWithPosPreprocessor import PreLabelWithPosPreprocessor
 
 
 class Provider(object):
@@ -15,7 +16,7 @@ class CRFProcessorFactory(Provider):
 
 class PreLabelWithPosProcessorFactory(Provider):
     def produce(self, **kw):
-        return Preprocessor.PreLabelWithPosPreprocessor(**kw)
+        return PreLabelWithPosPreprocessor(**kw)
 
 
 class LSTMProcessorFactory(Provider):
@@ -41,13 +42,5 @@ if __name__ == '__main__':
     prepos_factory = PreLabelWithPosProcessorFactory()
     prepos_processor = prepos_factory.produce(train_file=DM.train_file, test_file=DM.test_file)
     prepos_processor.preprocess()
-    # prepos_processor.prelabel_with_pos()
-    # prepos_processor.prelabel_with_pos_by_sentence()
-    prepos_processor.prelabel_with_pos_nocombined_by_sentence()
-
-    # DM.source_data_file = 'CorpusLabelData_MergedFilter_Full.txt'
-    # tat_data_factory = TrainAndTestDataPreprocessorFactory()
-    # tat_data_processor = tat_data_factory.produce(source_data_file=DM.source_data_file, train_file=DM.train_file,
-    #                                               test_file=DM.test_file)
-    # tat_data_processor.preprocess()
-    # tat_data_processor.reduce_replicate_data()
+    prepos_processor.prelabel_with_pos_all()
+    prepos_processor.prelabel_with_pos_by_sentence(is_combine=True)
