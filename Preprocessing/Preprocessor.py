@@ -179,6 +179,48 @@ class PreLabelWithPosPreprocessor(Preprocessor):
                     fopen.write(line)
                     tokens, labels = [], []
 
+    def prelabel_with_pos_nocombined_by_sentence(self, former_labels=['null']):
+        fopen_train = open(self.train_file)
+        lines_train = fopen_train.readlines()
+        fopen_train.close()
+        fopen_test = open(self.test_file)
+        lines_test = fopen_test.readlines()
+        fopen_test.close()
+        with open(self.train_file, 'w') as fopen:
+            tokens, labels = [], []
+            for line in lines_train:
+                if line.strip():
+                    token = line.strip().split(' ')[0]
+                    label = line.strip().split(' ')[1]
+                    tokens.append(token)
+                    labels.append(label)
+                else:
+                    pos_tags = nltk.pos_tag(tokens)
+                    for (token, pos_tag), label in zip(pos_tags, labels):
+                        if label.lower() in former_labels:
+                            fopen.write(token + ' ' + pos_tag + '\n')
+                        else:
+                            fopen.write(token + ' ' + label + '\n')
+                    fopen.write(line)
+                    tokens, labels = [], []
+        with open(self.test_file, 'w') as fopen:
+            tokens, labels = [], []
+            for line in lines_test:
+                if line.strip():
+                    token = line.strip().split(' ')[0]
+                    label = line.strip().split(' ')[1]
+                    tokens.append(token)
+                    labels.append(label)
+                else:
+                    pos_tags = nltk.pos_tag(tokens)
+                    for (token, pos_tag), label in zip(pos_tags, labels):
+                        if label.lower() in former_labels:
+                            fopen.write(token + ' ' + pos_tag + '\n')
+                        else:
+                            fopen.write(token + ' ' + label + '\n')
+                    fopen.write(line)
+                    tokens, labels = [], []
+
 
 class LSTMPreprocessor(Preprocessor):
     def preprocess(self):
