@@ -10,7 +10,7 @@ features = ScriptToolkit.get_demo_features()
 
 DM = DataManager()
 DM.change_pwd()
-DM.remove('LogWrongSents.txt')
+DM.remove(DM.log_wrong_sentences)
 
 
 def run(feature_set, DM=DM):

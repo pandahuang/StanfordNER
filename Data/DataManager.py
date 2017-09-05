@@ -20,6 +20,11 @@ class DataManager(object):
         self.abs_train_file = get_abs_path(self.root_path, self.train_file)
         self.abs_test_file = get_abs_path(self.root_path, self.test_file)
         self.abs_result_file = get_abs_path(self.root_path, self.result_file)
+        self.log_wrong_sentences = 'LogWrongSents.txt'
+        self.features_train = 'features-train.txt'
+        self.features_test = 'features-test.txt'
+        self.log_best_dataset = 'LogBestData.txt'
+        self.log_worst_dataset = 'LogWorstData.txt'
 
     def list_all_files(self):
         for attr, value in DataManager().__dict__.iteritems():

@@ -58,20 +58,15 @@ feature_sets.append(feature_class)
 feature_disjunctive = list2dict(default + disjunctive)
 feature_sets.append(feature_disjunctive)
 
-# feature_word_ngram = list2dict(default + word + ngram)
-# feature_sets.append(feature_word_ngram)
-# feature_word_shape = list2dict(default + word + wordshape)
-# feature_sets.append(feature_word_shape)
-# feature_word_class = list2dict(default + word + classf)
-# feature_sets.append(feature_word_class)
-# feature_word_disjunctive = list2dict(default + word + disjunctive)
-# feature_sets.append(feature_word_disjunctive)
-
 DM = DataManager()
 DM.change_pwd()
 
 
 def run(feature_set, DM=DM):
+    if os.path.exists(os.path.join(os.getcwd(), DM.features_train)):
+        os.remove(os.path.join(os.getcwd(), DM.features_train))
+    if os.path.exists(os.path.join(os.getcwd(), DM.features_test)):
+        os.remove(os.path.join(os.getcwd(), DM.features_test))
     crf_processor = ProcessorFactory.CRFProcessorFactory().produce(source_data_file=DM.source_data_file,
                                                                    train_file=DM.train_file, test_file=DM.test_file)
     crf_processor.get_train_data(isRandom=False)
@@ -80,14 +75,17 @@ def run(feature_set, DM=DM):
                    test_file=DM.test_file, result_file=DM.result_file)
     crf_test.feature_config(features=feature_set)
     crf_test.train()
+    os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), DM.features_train))
     crf_test.verify()
+    os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), DM.features_test))
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     # #use feature in the demo list one by one
     # for feature_set in feature_sets:
     #     run(feature_set)
 
-    #use demo features
+    # use demo features
     feature_demo = features
     run(feature_demo)
 
@@ -172,7 +170,3 @@ if __name__=='__main__':
     # features_opt8['wordShape'] = 'chris4useLC'
     # run(features_opt8)
     # del features_opt8
-
-    # crf_canvas = CanvasFactory.CRFCanvasFactory().produce(result_file=DM.result_file)
-    # crf_canvas.load_data()
-    # crf_canvas.hist()

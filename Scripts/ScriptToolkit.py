@@ -1,3 +1,6 @@
+from Data.DataManager import DataManager
+
+
 class ScriptToolkit(object):
     def get_demo_features(self):
         features = {
@@ -26,7 +29,7 @@ class ScriptToolkit(object):
         results = sout.strip().split('\r')
         isWorng = False
         sents = []
-        with open('LogWrongSents.txt', 'a') as fopen:
+        with open(DataManager.log_wrong_sentences, 'a') as fopen:
             fopen.write(detail_result + '\n')
             fopen.write('----------------------------------------------------------------\n')
         for result in results:
@@ -36,12 +39,12 @@ class ScriptToolkit(object):
                 if label != res:
                     isWorng = True
             else:
-                with open('LogWrongSents.txt', 'a') as fopen:
+                with open(DataManager.log_wrong_sentences, 'a') as fopen:
                     if sents and isWorng:
                         for sent in sents:
                             fopen.write(sent + '\n')
                         fopen.write('\n')
                 sents = []
                 isWorng = False
-        with open('LogWrongSents.txt', 'a') as fopen:
+        with open(DataManager.log_wrong_sentences, 'a') as fopen:
             fopen.write('===============================================================================' + '\n')
