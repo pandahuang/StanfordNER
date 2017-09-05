@@ -1,930 +1,967 @@
-<num> NN
-biggest JJS
-deal NN
-
-available JJ
-quantity NN
-
-count NN
-of IN
-employee NN
-
-default NN
-vendor NN
-
-how WRB
-many JJ
-items NNS
-
-item NN
-count NN
-
-latest JJS
-<num> NN
-deals NNS
-
-latest JJS
-sales NNS
-order NN
-
-opportunities NNS
-
-purchase NN
-price NN
-
-sales NNS
-delivery NN
-
-the DT
-first RB
-deal NN
-<date> NN
-
-the DT
-top NN
-<num> NN
-back RB
-ordered VBN
-quantity NN
-product NN
-
-top NN
-<num> NN
-deal NN
-
-top NN
-<num> NN
-deals NNS
-
-top NN
-<num> NN
-opportunities NNS
-
-top NN
-<num> NN
-orders NNS
-
-top NN
-<num> NN
-projects NNS
-
-top NN
-<num> NN
-sales NNS
-employee NN
-
-top NN
-<num> NN
-sales NNS
-orders NNS
-
-top NN
-<num> NN
-sellers NNS
-
-total JJ
-open JJ
-sales NNS
-quantity NN
-
-Top JJ
-<num> NN
-Items NNS
-purchased VBN
-by IN
-quantity NN
-
-Top JJ
-<num> NN
-Items NNS
-purchased VBN
-by IN
-amount NN
-
-Top JJ
-<num> NN
-vendors NNS
-by IN
-amount NN
-
-Which WDT
-project NN
-purchased VBN
-the DT
-most JJS
-by IN
-quantity NN
-
-Which WDT
-project NN
-purchased VBN
-the DT
-most JJS
-by IN
-amount NN
-
-Which WDT
-warehouse NN
-received VBN
-the DT
-most JJS
-goods NNS
-by IN
-amount NN
-
-Which WDT
-branch NN
-received VBN
-the DT
-most JJS
-by IN
-amount NN
-
-From IN
-which WDT
-country NN
-we PRP
-import NN
-most JJS
-goods NNS
-by IN
-amount NN
-
-Which WDT
-vendor NN
-has VBZ
-the DT
-most JJS
-goods NNS
-return NN
-by IN
-amount NN
-
-What WP
-kind NN
-of IN
-product(s) NN
-has VBZ
-the DT
-most JJS
-cancelled VBN
-PO NN
-
-What WP
-is VBZ
-the DT
-total JJ
-amount NN
-of IN
-purchase NN
-return NN
-
-What WP
-are VBP
-the DT
-figure NN
-of IN
-Purchase NN
-document NN
-status NN
-
-What WP
-is VBZ
-the DT
-average JJ
-purchase NN
-price NN
-of IN
-product NN
-<ItemCode> NN
-buyer NN
-<SalesEmployeeOrBuyerName> NN
-purchased VBN
-
-What WP
-is VBZ
-the DT
-average JJ
-purchase NN
-order NN
-lead NN
-time NN
-of IN
-country NN
-<CountryCode> NN
-
-What WP
-is VBZ
-the DT
-average JJ
-variance NN
-days NNS
-
-What WP
-is VBZ
-the DT
-total JJ
-purchase NN
-return NN
-amount NN
-<date> NN
-
-What WP
-is VBZ
-the DT
-total JJ
-purchase NN
-return NN
-quantity NN
-of IN
-product NN
-<ItemCode> NN
-<date> NN
-
-What WP
-is VBZ
-the DT
-GRPO NN
-quantity NN
-of IN
-Product NN
-<ItemCode> NN
-<date> NN
-
-What WP
-is VBZ
-the DT
-Purchase NN
-Order NN
-Open VB
-Balance NN
-
-What WP
-is VBZ
-the DT
-most JJS
-profitable JJ
-product NN
-
-Which WDT
-customer NN
-contribute NN
-most JJS
-
-Who WP
-sell NN
-the DT
-best JJS
-
-Which WDT
-territory NN
-has VBZ
-the DT
-highest JJS
-profit NN
-rate NN
-
-Which WDT
-product NN
-sold VBN
-the DT
-most JJS
-
-Which WDT
-project NN
-contribute NN
-most JJS
-to TO
-revenue NN
-
-Which WDT
-branch NN
-has VBZ
-the DT
-most JJS
-back RB
-order NN
-
-What WP
-is VBZ
-the DT
-average JJ
-selling VBG
-price NN
-of IN
-product NN
-<ItemDescription> NN
-to TO
-Channel NNS
-M NN
-
-What WP
-is VBZ
-the DT
-total JJ
-sales NNS
-return NN
-quantity NN
-of IN
-product NN
-<ItemCode> NN
-<date> NN
-
-What WP
-is VBZ
-the DT
-total JJ
-sales NNS
-return NN
-amount NN
-
-What WP
-is VBZ
-the DT
-on IN
-time NN
-delivery NN
-rate NN
-
-What WP
-is VBZ
-the DT
-on IN
-time NN
-delivery NN
-rate NN
-of IN
-BP NN
-<BusinessPartnerName> NN
-Channel NNS
-A DT
-
-What WP
-is VBZ
-the DT
-on IN
-time NN
-delivery NN
-rate NN
-of IN
-Country NN
-<CountryCode> NN
-
-What WP
-is VBZ
-the DT
-average JJ
-delivery NN
-variance NN
-
-What WP
-is VBZ
-the DT
-Sales NNS
-Order NN
-Open VB
-Balance NN
-
-open JJ
-sales NNS
-order NN
-amount NN
-
-What WP
-is VBZ
-the DT
-Sales NNS
-Delivery NN
-Open VB
-Balance NN
-
-What WP
-is VBZ
-the DT
-Sales NNS
-Documents NNS
-Balance NN
-Total JJ
-
-What WP
-is VBZ
-the DT
-Commitment NN
-Limit NN
-
-current JJ
-inventory NN
-status NN
-
-What WP
-is VBZ
-the DT
-available JJ
-quantity NN
-of IN
-Item NN
-<ItemCode> NN
-in IN
-Warehouse IN
-<ItemDescription> NN
-
-What WP
-is VBZ
-the DT
-committed VBN
-quantity NN
-
-What WP
-is VBZ
-the DT
-ordered VBN
-quantity NN
-
-What WP
-is VBZ
-the DT
-in IN
-stock NN
-quantity NN
-of IN
-Item NN
-<ItemCode> NN
-in IN
-warehouse NN
-<WarehouseName> NN
-
-What WP
-is VBZ
-the DT
-outbound NN
-inventory NN
-quantity NN
-of IN
-Item NN
-<ItemCode> NN
-<date> NN
-
-What WP
-is VBZ
-the DT
-total JJ
-inbound NN
-inventory NN
-value NN
-<date> NN
-
-What WP
-is VBZ
-the DT
-total JJ
-out IN
-bound NN
-inventory NN
-value NN
-<date> NN
-
-What WP
-is VBZ
-the DT
-outbound NN
-inventory NN
-value NN
-of IN
-item NN
-<ItemCode> NN
-from IN
-warehouse NN
-<WarehouseCode> NN
-<date> NN
-
-List NN
-all DT
-branches NNS
-
-List NN
-all DT
-industry NN
-
-customer NN
-
-partners NNS
-
-Who WP
-sell NN
-the DT
-worst JJS
-
-the DT
-bottom NN
-<num> NN
-back RB
-ordered VBN
-quantity NN
-product NN
-
-bottom NN
-<num> NN
-deals NNS
-
-bottom NN
-<num> NN
-orders NNS
-
-bottom NN
-<num> NN
-projects NNS
-
-bottom NN
-<num> NN
-sales NNS
-employee NN
-
-bottom NN
-<num> NN
-sellers NNS
-
-bottom NN
-<num> NN
-delayed NNS
-customer NN
-
-the DT
-bottom NN
-<num> NN
-worst JJS
-selling VBG
-items NNS
-
-the DT
-bottom NN
-<num> NN
-biggest JJS
-contract NN
-
-the DT
-bottom NN
-<num> NN
-biggest JJS
-project NN
-
-who WP
-owes NN
-most JJS
-bottom NN
-<num> NN
-
-revenue NN
-of IN
-bottom NN
-<num> NN
-items NNS
-
-worst JJS
-selling VBG
-items NNS
-
-who WP
-is VBZ
-the DT
-worst JJS
-sales NNS
-person NN
-
-Top JJ
-<num> NN
-products NNS
-by IN
-profit NN
-
-Top JJ
-<num> NN
-customers NNS
-by IN
-quantity NN
-
-Top JJ
-<num> NN
-customers NNS
-by IN
-sales NNS
-quantity NN
-
-Bottom NN
-<num> NN
-products NNS
-by IN
-revenue NN
-
-Bottom NN
-<num> NN
-products NNS
-by IN
-profit NN
-
-Bottom NN
-<num> NN
-products NNS
-by IN
-sales NNS
-quantity NN
-
-Bottom NN
-<num> NN
-customers NNS
-by IN
-amount NN
-
-Bottom NN
-<num> NN
-customer NN
-by IN
-quantity NN
-
-Bottom NN
-<num> NN
-customers NNS
-by IN
-returned VBN
-amount NN
-
-Bottom NN
-<num> NN
-customers NNS
-by IN
-returned VBN
-quantity NN
-
-Bottom NN
-<num> NN
-Items NNS
-by IN
-purchase NN
-quantity NN
-
-Bottom NN
-<num> NN
-Items NNS
-by IN
-purchase NN
-amount NN
-
-Bottom NN
-<num> NN
-vendors NNS
-by IN
-purchase NN
-quantity NN
-
-List NN
-all DT
-buyer NN
-
-top NN
-<num> NN
-sold VBN
-out IN
-product NN
-
-list NN
-all DT
-prospects NNS
-
-biggest JJS
-prospects NNS
-
-how WRB
-many JJ
-sales NNS
-orders NNS
-are VBP
-delivered VBN
-on-time NN
-
-how WRB
-many JJ
-open JJ
-invoices NNS
-<date> NN
-
-How WRB
-many JJ
-Financial JJ
-Periods NNS
-
-Payment NN
-Methods NNS
-list NN
-
-Show NN
-account NN
-code NN
-
-How WRB
-many JJ
-account NN
-types NNS
-
-how WRB
-many JJ
-account NN
-level NN
-
-account NN
-level NN
-list NN
-
-Tax NN
-Groups NNS
-list NN
-
-How WRB
-many JJ
-Tax NN
-Category NN
-
-Show NN
-Tax NN
-code NN
-
-How WRB
-many JJ
-Industry NN
-
-How WRB
-many JJ
-project NN
-
-How WRB
-much JJ
-amount NN
-of IN
-P&L NN
-account NN
-<FiscalYear> NN
-in IN
-fiscal JJ
-year NN
-<FiscalYear> NN
-
-Show NN
-amount NN
-of IN
-P&L NN
-account NN
-<AccountCode> NN
-in IN
-fiscal JJ
-year NN
-<FiscalYear> NN
-
-How WRB
-much JJ
-amount NN
-of IN
-P&L NN
-account NN
-<AccountCode> NN
-in IN
-period NN
-<FinancialPeriodCode> NN
-
-Show NN
-money NN
-received VBN
-of IN
-account NN
-<AccountCode> NN
-in IN
-fiscal JJ
-year NN
-<FiscalYear> NN
-
-How WRB
-much JJ
-money NN
-received VBN
-of IN
-account NN
-<AccountCode> NN
-in IN
-<FinancialPeriodName> NN
-
-Show NN
-money NN
-spent NN
-of IN
-account NN
-<AccountName> NN
-in IN
-fiscal JJ
-year NN
-<FiscalYear> NN
-
-AutoReversed VBN
-JE NN
-list NN
-
-JE NN
-of IN
-WithholdingTax NN
-<WithholdingTaxCode> NN
-
-Aging VBG
-by IN
-customer NN
-
-Show NN
-account NN
-balance NN
-of IN
-<FinancialPeriodCode> NN
-
-How WRB
-much JJ
-BP NN
-balance NN
-of IN
-<FinancialPeriodCode> NN
-
-JE NN
-of IN
-Document NN
-Type NN
-<DocumentTypeCode> NN
-
-How WRB
-much JJ
-tax NN
-of IN
-customer NN
-<BusinessPartnerName> NN
-
-How WRB
-much JJ
-tax NN
-of IN
-vendor NN
-<BusinessPartnerCode> NN
-
-How WRB
-much JJ
-tax NN
-of IN
-tax NN
-code NN
-<TaxName> NN
-
-How WRB
-many JJ
-vat NN
-of IN
-tax NN
-code NN
-<FederalTaxID> NN
-
-How WRB
-many JJ
-vat NN
-of IN
-FederalTaxID NN
-<FederalTaxID> NN
-
-How WRB
-many JJ
-was VBD
-sold VBN
-for IN
-product NN
-<ItemCode> NN
-in IN
-<date> NN
-
-What WP
-is VBZ
-the DT
-highest JJS
-selling VBG
-price NN
-for IN
-product NN
-<ItemCode> NN
-
-What WP
-is VBZ
-the DT
-lowest JJS
-purchasing NN
-price NN
-for IN
-product NN
-<ItemCode> NN
-
-How WRB
-many JJ
-sales NNS
-orders NNS
-we PRP
-have VB
-in IN
-<date> NN
+<num> B-Limit
+latest B-Order
+deals B-GroupBy
+
+available B-Field
+quantity I-Field
+
+average B-Aggregation
+delay B-Field
+of NULL
+delivery NULL
+
+biggest B-Order
+sales B-GroupBy
+order I-GroupBy
+
+count B-Aggregation
+of NULL
+employee B-Field
+
+count B-Aggregation
+of NULL
+items B-Field
+
+count B-Aggregation
+of NULL
+products B-Field
+
+number B-Aggregation
+of NULL
+employee B-Field
+
+sales B-Field
+employee I-Field
+
+sales B-Field
+person I-Field
+
+salesemployee B-Field
+
+salesperson B-Field
+
+the NULL
+current NULL
+available B-Field
+quantity I-Field
+
+top B-Order
+<num> B-Limit
+sales B-GroupBy
+employee I-GroupBy
+
+top B-Order
+<num> B-Limit
+sales B-GroupBy
+orders I-GroupBy
+
+top B-Order
+sales B-GroupBy
+person I-GroupBy
+
+total B-Aggregation
+ordered B-Field
+quantity I-Field
+
+which NULL
+product B-GroupBy
+has NULL
+the NULL
+biggest B-Order
+back B-OrderBy
+order I-OrderBy
+quantity I-OrderBy
+
+Top B-Order
+<num> B-Limit
+Items B-GroupBy
+purchased NULL
+by NULL
+amount B-OrderBy
+
+Which NULL
+product B-GroupBy
+group I-GroupBy
+purchased NULL
+the NULL
+most B-Order
+by NULL
+quantity B-OrderBy
+
+Which NULL
+product B-GroupBy
+group I-GroupBy
+purchased NULL
+the NULL
+most B-Order
+by NULL
+amount B-OrderBy
+
+Which NULL
+project B-GroupBy
+purchased NULL
+the NULL
+most B-Order
+by NULL
+quantity B-OrderBy
+
+Which NULL
+warehouse B-GroupBy
+received NULL
+the NULL
+most B-Order
+goods NULL
+by NULL
+quantity B-OrderBy
+
+Which NULL
+branch B-GroupBy
+received NULL
+the NULL
+most B-Order
+by NULL
+amount B-OrderBy
+
+Which NULL
+vendor B-GroupBy
+has NULL
+the NULL
+most B-Order
+goods NULL
+return NULL
+by NULL
+quantity B-OrderBy
+
+Which NULL
+product B-GroupBy
+has NULL
+the NULL
+most B-Order
+goods NULL
+return NULL
+by NULL
+amount B-OrderBy
+
+Which NULL
+buyer B-GroupBy
+has NULL
+the NULL
+most B-Order
+goods NULL
+return NULL
+by NULL
+amount B-OrderBy
+
+Which NULL
+branch B-GroupBy
+has NULL
+the NULL
+most B-Order
+goods NULL
+return NULL
+by NULL
+amount B-OrderBy
+
+What NULL
+is NULL
+the NULL
+total B-Aggregation
+amount B-Field
+of NULL
+credit NULL
+memo NULL
+
+What NULL
+is NULL
+the NULL
+purchase B-Field
+order I-Field
+ontime I-Field
+rate I-Field
+
+What NULL
+is NULL
+the NULL
+average B-Aggregation
+purchase B-Field
+order I-Field
+lead I-Field
+time I-Field
+
+What NULL
+is NULL
+the NULL
+average B-Aggregation
+purchase B-Field
+order I-Field
+lead I-Field
+time I-Field
+of NULL
+buyer B-FilterField
+<SalesEmployeeOrBuyerName> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+average B-Aggregation
+purchase B-Field
+order I-Field
+lead I-Field
+time I-Field
+of NULL
+country B-FilterField
+<CountryCode> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+average B-Aggregation
+variance B-Field
+days I-Field
+of NULL
+buyer B-FilterField
+<SalesEmployeeOrBuyerName> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+average B-Aggregation
+variance B-Field
+days I-Field
+of NULL
+country B-FilterField
+<CountryCode> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+total B-Aggregation
+purchase B-Field
+return I-Field
+amount I-Field
+<date> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+total B-Aggregation
+purchase B-Field
+return I-Field
+amount I-Field
+of NULL
+product B-FilterField
+<ItemCode> B-FilterValue
+<date> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+GRPO B-Field
+amount I-Field
+of NULL
+<date> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+GRPO B-Field
+amount I-Field
+of NULL
+Product B-FilterField
+<ItemCode> B-FilterValue
+<date> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+Account B-Field
+Payable I-Field
+Open I-Field
+Balance I-Field
+
+Which NULL
+customer B-GroupBy
+contribute NULL
+most B-Order
+
+Who NULL
+sell NULL
+the NULL
+best B-Order
+
+Which NULL
+Channel B-GroupBy
+is NULL
+the NULL
+most B-Order
+profitable NULL
+one NULL
+
+Which NULL
+territory B-GroupBy
+has NULL
+the NULL
+highest B-Order
+profit B-OrderBy
+rate I-OrderBy
+
+Which NULL
+product B-GroupBy
+has NULL
+the NULL
+most B-Order
+back B-OrderBy
+order I-OrderBy
+quantity I-OrderBy
+
+What NULL
+is NULL
+the NULL
+back B-Field
+order I-Field
+quantity I-Field
+of NULL
+customer B-FilterField
+<BusinessPartnerCode> B-FilterValue
+
+Which NULL
+shipping B-GroupBy
+type I-GroupBy
+has NULL
+the NULL
+most B-Order
+back B-OrderBy
+order I-OrderBy
+quantity I-OrderBy
+
+Which NULL
+branch B-GroupBy
+has NULL
+the NULL
+most B-Order
+back B-OrderBy
+order I-OrderBy
+
+What NULL
+is NULL
+the NULL
+average B-Aggregation
+selling B-Field
+price I-Field
+
+The NULL
+average B-Aggregation
+selling B-Field
+price I-Field
+trend I-Field
+
+The NULL
+average B-Aggregation
+selling B-Field
+price I-Field
+of NULL
+product B-FilterField
+A B-FilterValue
+vs. NULL
+the B-ComparisonWith
+same I-ComparisonWith
+period I-ComparisonWith
+last I-ComparisonWith
+year I-ComparisonWith
+
+The NULL
+cost B-Field
+trend I-Field
+
+What NULL
+is NULL
+the NULL
+total B-Aggregation
+sales B-Field
+return I-Field
+amount I-Field
+of NULL
+product B-FilterField
+<ItemCode> B-FilterValue
+<date> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+total B-Aggregation
+sales B-Field
+return I-Field
+amount I-Field
+by NULL
+sales B-FilterField
+employee I-FilterField
+<SalesEmployeeOrBuyerName> B-FilterValue
+
+Top B-Order
+<num> B-Limit
+customers B-GroupBy
+which NULL
+returned NULL
+most B-Order
+
+What NULL
+is NULL
+the NULL
+overall B-Aggregation
+ontime B-Field
+delivery I-Field
+rate I-Field
+
+Top B-Order
+<num> B-Limit
+delivery NULL
+delayed NULL
+customer B-GroupBy
+
+Top B-Order
+<num> B-Limit
+delivery NULL
+on-time NULL
+customer B-GroupBy
+
+Top B-Order
+<num> B-Limit
+delayed NULL
+customer B-GroupBy
+
+What NULL
+is NULL
+the NULL
+on B-Field
+time I-Field
+delivery I-Field
+rate I-Field
+of NULL
+sales B-FilterField
+employee I-FilterField
+<SalesEmployeeOrBuyerName> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+average B-Aggregation
+delivery B-Field
+variance I-Field
+
+What NULL
+is NULL
+the NULL
+average B-Aggregation
+delivery B-Field
+variance I-Field
+of NULL
+country B-FilterField
+<CountryCode> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+Account B-Field
+Receivable I-Field
+Open I-Field
+Balance I-Field
+
+open B-Field
+amount I-Field
+
+What NULL
+is NULL
+the NULL
+current NULL
+status B-Field
+of NULL
+Item B-FilterField
+<ItemCode> B-FilterValue
+in NULL
+Warehouse B-FilterField
+<WarehouseName> B-FilterValue
+
+inventory B-Field
+status I-Field
+
+What NULL
+is NULL
+the NULL
+inventory B-Field
+available I-Field
+quantity I-Field
+
+What NULL
+is NULL
+the NULL
+total B-Aggregation
+inventory B-Field
+value I-Field
+
+What NULL
+is NULL
+the NULL
+total B-Aggregation
+inventory B-Field
+value I-Field
+of NULL
+item B-FilterField
+<ItemDescription> B-FilterValue
+in NULL
+warehouse B-FilterField
+<WarehouseName> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+inbound B-Field
+inventory I-Field
+quantity I-Field
+of NULL
+Item B-FilterField
+<ItemCode> B-FilterValue
+<date> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+outbound B-Field
+inventory I-Field
+value I-Field
+of NULL
+item B-FilterField
+<ItemDescription> B-FilterValue
+<date> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+total B-Aggregation
+inbound B-Field
+inventory I-Field
+value I-Field
+<date> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+outbound B-Field
+inventory I-Field
+quantity I-Field
+of NULL
+item B-FilterField
+<ItemCode> B-FilterValue
+from NULL
+warehouse B-FilterField
+<WarehouseCode> B-FilterValue
+<date> B-FilterValue
+
+List NULL
+all NULL
+employee B-Field
+
+List NULL
+all NULL
+territory B-Field
+
+customer B-Field
+
+Who NULL
+sell NULL
+the NULL
+worst B-Order
+
+bottom B-Order
+<num> B-Limit
+projects B-GroupBy
+
+bottom B-Order
+<num> B-Limit
+opportunity B-GroupBy
+
+bottom B-Order
+<num> B-Limit
+vendors B-GroupBy
+by NULL
+quantity B-OrderBy
+
+bottom B-Order
+<num> B-Limit
+customers B-GroupBy
+which NULL
+returned NULL
+most B-Order
+
+bottom B-Order
+<num> B-Limit
+delivery NULL
+delayed NULL
+customer B-GroupBy
+
+bottom B-Order
+<num> B-Limit
+delivery NULL
+on NULL
+time NULL
+customer B-GroupBy
+
+the NULL
+bottom B-Order
+<num> B-Limit
+worst NULL
+selling NULL
+items B-GroupBy
+
+the NULL
+bottom B-Order
+2 B-Limit
+worst NULL
+selling NULL
+customers B-GroupBy
+
+bottom B-Order
+<num> B-Limit
+customers B-GroupBy
+
+the NULL
+bottom B-Order
+<num> B-Limit
+project B-GroupBy
+
+the NULL
+bottom B-Order
+<num> B-Limit
+biggest NULL
+project B-GroupBy
+
+lowest B-Order
+<num> B-Limit
+sales B-GroupBy
+person I-GroupBy
+
+worst B-Order
+selling NULL
+items I-GroupBy
+
+<num> B-Limit
+worst B-Order
+selling B-GroupBy
+products I-GroupBy
+
+Top B-Order
+<num> B-Limit
+products B-GroupBy
+by NULL
+sales B-OrderBy
+quantity I-OrderBy
+
+Top B-Order
+<num> B-Limit
+customers B-GroupBy
+by NULL
+revenue B-OrderBy
+
+Top B-Order
+<num> B-Limit
+customers B-GroupBy
+by NULL
+sales B-OrderBy
+amount I-OrderBy
+
+Top B-Order
+<num> B-Limit
+customers B-GroupBy
+by NULL
+profit B-OrderBy
+
+Top B-Order
+<num> B-Limit
+Items B-GroupBy
+by NULL
+purchase B-OrderBy
+quantity I-OrderBy
+
+Top B-Order
+<num> B-Limit
+vendors B-GroupBy
+by NULL
+purchase B-OrderBy
+quantity I-OrderBy
+
+Top B-Order
+<num> B-Limit
+vendors B-GroupBy
+by NULL
+purchase B-OrderBy
+amount I-OrderBy
+
+Bottom B-Order
+<num> B-Limit
+products B-GroupBy
+by NULL
+profit B-OrderBy
+
+Bottom B-Order
+<num> B-Limit
+products B-GroupBy
+by NULL
+sales B-OrderBy
+quantity I-OrderBy
+
+Bottom B-Order
+<num> B-Limit
+products B-GroupBy
+by NULL
+returned B-OrderBy
+quantity I-OrderBy
+
+Bottom B-Order
+<num> B-Limit
+customer B-GroupBy
+by NULL
+quantity B-OrderBy
+
+Bottom B-Order
+<num> B-Limit
+customers B-GroupBy
+by NULL
+sales B-OrderBy
+quantity I-OrderBy
+
+Bottom B-Order
+<num> B-Limit
+customers B-GroupBy
+by NULL
+returned B-OrderBy
+amount I-OrderBy
+
+Bottom B-Order
+<num> B-Limit
+customers B-GroupBy
+by NULL
+returned B-OrderBy
+quantity I-OrderBy
+
+List NULL
+all NULL
+sales B-Field
+employee I-Field
+
+is NULL
+item B-FilterField
+<ItemCode> B-FilterValue
+in NULL
+stock NULL
+
+list NULL
+all NULL
+prospects B-Field
+
+number B-Aggregation
+of NULL
+sales B-Field
+staff I-Field
+
+how B-Aggregation
+many I-Aggregation
+sales B-Field
+invoices I-Field
+<date> B-FilterValue
+
+last B-Order
+<num> B-Limit
+SO B-GroupBy
+
+supplier B-Field
+
+Payment B-Field
+Methods I-Field
+list NULL
+
+Show NULL
+account B-Field
+code I-Field
+
+Show NULL
+account B-Field
+name I-Field
+
+How B-Aggregation
+many I-Aggregation
+account B-Field
+types I-Field
+
+how B-Aggregation
+many I-Aggregation
+account B-Field
+category I-Field
+
+account B-Field
+category I-Field
+list NULL
+
+How B-Aggregation
+much I-Aggregation
+account B-Field
+balance I-Field
+of NULL
+Account B-FilterField
+<AccountCode> B-FilterValue
+
+How B-Aggregation
+many I-Aggregation
+Tax B-Field
+Category I-Field
+
+How B-Aggregation
+many I-Aggregation
+branchs B-Field
+
+Industry B-Field
+list NULL
+
+project B-Field
+list NULL
+
+How B-Aggregation
+much I-Aggregation
+balance B-Field
+of NULL
+B/S B-FilterField
+account I-FilterField
+<AccountCode> B-FilterValue
+in NULL
+period B-FilterField
+<FinancialPeriodCode> B-FilterValue
+
+Show NULL
+balance B-Field
+of NULL
+B/S B-FilterField
+account I-FilterField
+<AccountCode> B-FilterValue
+in NULL
+period B-FilterField
+<FinancialPeriodCode> B-FilterValue
+
+How B-Aggregation
+much I-Aggregation
+amount B-Field
+of NULL
+P&L B-FilterField
+account I-FilterField
+<AccountCode> B-FilterValue
+in NULL
+period B-FilterField
+<FinancialPeriodCode> B-FilterValue
+
+How B-Aggregation
+much I-Aggregation
+money B-Field
+spent I-Field
+of NULL
+account B-FilterField
+<AccountName> B-FilterValue
+in NULL
+fiscal B-FilterField
+year I-FilterField
+<FiscalYear> B-FilterValue
+
+JE B-Field
+of NULL
+WithholdingTax B-FilterField
+<WithholdingTaxCode> B-FilterValue
+
+Aging B-Field
+by NULL
+customer B-GroupBy
+& NULL
+project B-GroupBy
+
+How B-Aggregation
+much I-Aggregation
+account B-Field
+balance I-Field
+of NULL
+<FinancialPeriodCode> B-FilterValue
+
+Show NULL
+account B-Field
+balance I-Field
+of NULL
+<FinancialPeriodCode> B-FilterValue
+
+How B-Aggregation
+much I-Aggregation
+tax B-Field
+of NULL
+tax B-FilterField
+code I-FilterField
+<TaxName> B-FilterValue
+
+How B-Aggregation
+much I-Aggregation
+tax B-Field
+of NULL
+FederalTaxID B-FilterField
+<FederalTaxID> B-FilterValue
+
+How B-Aggregation
+much I-Aggregation
+vat B-Field
+of NULL
+vendor B-FilterField
+<BusinessPartnerCode> B-FilterValue
+
+How B-Aggregation
+many I-Aggregation
+was NULL
+sold NULL
+for NULL
+product B-FilterField
+<ItemCode> B-FilterValue
+in NULL
+<date> B-FilterValue
+
+How B-Aggregation
+many I-Aggregation
+was NULL
+receipt NULL
+into NULL
+warehouse B-FilterField
+<WarehouseCode> B-FilterValue
+for NULL
+product B-FilterField
+<ItemCode> B-FilterValue
+in NULL
+<date> B-FilterValue
+
+What NULL
+is NULL
+the NULL
+highest B-Order
+selling B-OrderBy
+price I-OrderBy
+for NULL
+product B-FilterField
+<ItemCode> B-FilterValue
+
+How B-Aggregation
+many I-Aggregation
+sales B-Field
+orders I-Field
+we NULL
+have NULL
+in NULL
+<date> B-FilterValue
+
+How B-Aggregation
+many I-Aggregation
+purchase B-Field
+orders I-Field
+we NULL
+have NULL
+placed NULL
+in NULL
+<date> B-FilterValue
 
