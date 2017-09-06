@@ -36,8 +36,16 @@ class PreLabelWithPosPreprocessor(Preprocessor):
         else:
             return pos_tag
 
-    def prelabel_with_pos_all(self, datums, is_combined=False, file=''):
-        pass
+    def prelabel_with_pos_all(self, datums, file, is_combined=False):
+        with open(file, 'w') as fopen:
+            for datum in datums:
+                pos_tags = nltk.pos_tag(datum.tokens)
+                for (token, pos_tag) in pos_tags:
+                    if is_combined:
+                        fopen.write(token + ' ' + self.combine_pos_tag(pos_tag) + '\n')
+                    else:
+                        fopen.write(token + ' ' + pos_tag + '\n')
+                fopen.write('\n')
 
     def prelabel_with_pos_all(self, is_combined=False, file=''):
         files = []
@@ -61,10 +69,21 @@ class PreLabelWithPosPreprocessor(Preprocessor):
                     else:
                         fopen.write(line)
 
-    def prelabel_with_pos_by_sentence(self, datums, is_combine=False, file='', former_labels=['null']):
-        pass
+    def prelabel_with_pos_by_sentence(self, datums, file, is_combined=False, former_labels=['null']):
+        with open(file, 'w') as fopen:
+            for datum in datums:
+                pos_tags = nltk.pos_tag(datum.tokens)
+                for (token, pos_tag), glabel in zip(pos_tags, datum.golden_labels):
+                    if glabel.lower() in former_labels:
+                        if is_combined:
+                            fopen.write(token + ' ' + self.combine_pos_tag(pos_tag) + '\n')
+                        else:
+                            fopen.write(token + ' ' + pos_tag + '\n')
+                    else:
+                        fopen.write(token + ' ' + glabel + '\n')
+                fopen.write('\n')
 
-    def prelabel_with_pos_by_sentence(self, is_combine=False, file='', former_labels=['null']):
+    def prelabel_with_pos_by_sentence(self, is_combined=False, file='', former_labels=['null']):
         files = []
         if file == '':
             files.append(self.train_file)
@@ -85,7 +104,7 @@ class PreLabelWithPosPreprocessor(Preprocessor):
                         pos_tags = nltk.pos_tag(tokens)
                         for (token, pos_tag), label in zip(pos_tags, labels):
                             if label.lower() in former_labels:
-                                if is_combine:
+                                if is_combined:
                                     fopen.write(token + ' ' + self.combine_pos_tag(pos_tag) + '\n')
                                 else:
                                     fopen.write(token + ' ' + pos_tag + '\n')

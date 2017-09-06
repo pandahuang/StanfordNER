@@ -11,8 +11,16 @@ class TrainAndTestDataPreprocessor(Preprocessor):
     def preprocess(self):
         print 'This is a preprocessor deal with train data and test data.'
 
-    def reduce_replicate_data(self, datums, first_file='', second_file='', third_file=''):
-        pass
+    def reduce_replicate_data(self, first_datums, second_datums, output_file=''):
+        if output_file == '':
+            output_file = self.train_file
+        second_datums_sentences = [datum.get_sentence() for datum in second_datums]
+        with open(output_file, 'w') as fopen:
+            for datum in first_datums:
+                if not datum.get_sentence() in second_datums_sentences:
+                    for token, glabel in zip(datum.tokens, datum.golden_labels):
+                        fopen.write(token + ' ' + glabel + '\n')
+                    fopen.write('\n')
 
     def reduce_replicate_data(self, first_file='', second_file='', third_file=''):
         if first_file == '':

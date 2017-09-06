@@ -10,11 +10,11 @@ class Datum(object):
         self.golden_labels = glabels
         self.labels = labels
 
-    def get_sentence(self, index_token):
+    def get_sentence(self):
         return self.doc
 
-    def get_golden_labels(self, index_golden_label):
+    def get_golden_labels(self):
         return self.golden_labels
 
-    def get_labels(self, index_labels):
+    def get_labels(self):
         return self.labels
