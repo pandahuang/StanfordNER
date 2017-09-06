@@ -46,8 +46,8 @@ if __name__ == '__main__':
         feature_demo = features
         sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result, sout_train_f, serr_train_f, sent_accuracy_f, sout_test_f, serr_test_f, detail_result_f = run(
             feature_demo)
-        st.ResultsAndWrongAnswerRecord(sout_test, serr_test, detail_result)
-        st.ResultsAndWrongAnswerRecord(sout_test_f, serr_test_f, detail_result_f)
+        st.LogResultsAndWrongAnswer(sout_test, serr_test, detail_result)
+        st.LogResultsAndWrongAnswer(sout_test_f, serr_test_f, detail_result_f)
         sent_accuracys.append(sent_accuracy)
         sent_accuracys_f.append(sent_accuracy_f)
     print 'Average sent_accuracy of former corpus is : %f' % (sum(sent_accuracys) / cycle_times)

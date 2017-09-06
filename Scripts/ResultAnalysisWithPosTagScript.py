@@ -37,6 +37,6 @@ if __name__ == '__main__':
         # use demo features
         feature_demo = features
         sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result = run(feature_demo)
-        st.ResultsAndWrongAnswerRecord(sout_test, serr_test, detail_result)
+        st.LogResultsAndWrongAnswer(sout_test, serr_test, detail_result)
         sent_accuracys.append(sent_accuracy)
     print 'Average sent_accuracy is : %f' % (sum(sent_accuracys) / cycle_times)

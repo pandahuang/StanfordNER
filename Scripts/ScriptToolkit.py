@@ -26,7 +26,7 @@ class ScriptToolkit(object):
     def list2dict(self, features, feature):
         return {key: features.get(key) for key in feature if features.has_key(key)}
 
-    def ResultsAndWrongAnswerRecord(self, sout, serr, detail_result):
+    def LogResultsAndWrongAnswer(self, sout, serr, detail_result):
         results = sout.strip().split('\r')
         isWorng = False
         sents = []
@@ -74,3 +74,21 @@ class ScriptToolkit(object):
             fopen.write('Test--------------------------------------------------------------------------' + '\n')
             for line in min_data[1]:
                 fopen.write(line)
+
+    @classmethod
+    def StatisticDatums(self, datums):
+        sentences_amount, tokens_distribution, glabels_distribution = 0, {}, {}
+        sentences_amount = len(datums)
+        for datum in datums:
+            for token in datum.tokens:
+                if tokens_distribution.has_key(token):
+                    tokens_distribution[token] += 1
+                else:
+                    tokens_distribution[token] = 1
+        for datum in datums:
+            for glabel in datum.golden_labels:
+                if glabels_distribution.has_key(glabel):
+                    glabels_distribution[glabel] += 1
+                else:
+                    glabels_distribution[glabel] = 1
+        return sentences_amount, tokens_distribution, glabels_distribution
