@@ -36,6 +36,9 @@ class PreLabelWithPosPreprocessor(Preprocessor):
         else:
             return pos_tag
 
+    def prelabel_with_pos_all(self, datums, is_combined=False, file=''):
+        pass
+
     def prelabel_with_pos_all(self, is_combined=False, file=''):
         files = []
         if file == '':
@@ -57,6 +60,9 @@ class PreLabelWithPosPreprocessor(Preprocessor):
                             fopen.write(token + ' ' + nlabel[0][1] + '\n')
                     else:
                         fopen.write(line)
+
+    def prelabel_with_pos_by_sentence(self, datums, is_combine=False, file='', former_labels=['null']):
+        pass
 
     def prelabel_with_pos_by_sentence(self, is_combine=False, file='', former_labels=['null']):
         files = []

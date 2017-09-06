@@ -1,4 +1,5 @@
 import random
+from Preprocessing.Datum import Datum
 
 
 def CombineTokens(tokens):
@@ -46,6 +47,26 @@ class CRFPreprocessor(Preprocessor):
     '''
         We have to load all of train data and test data in memory.
     '''
+
+    def get_train_data(self, datums, percent=(2, 1), isRandom=True):
+        datum_index = range(len(datums))
+        train_index, test_index = [], []
+        if isRandom:
+            train_index = random.sample(datum_index, len(datum_index) / (percent[0] + percent[1]) * percent[0])
+            test_index = list(set(datum_index) - set(train_index))
+        else:
+            train_index, test_index = regular_sample(datum_index, percent)
+        with open(self.train_file, 'w') as fopen_train, open(self.test_file, 'w') as fopen_test:
+            for index, datum in enumerate(datums):
+                if index in train_index:
+                    for token, glabel in zip(datum.tokens, datum.golden_labels):
+                        fopen_train.write(token + ' ' + glabel + '\n')
+                    fopen_train.write('\n')
+                elif index in test_index:
+                    for token, glabel in zip(datum.tokens, datum.golden_labels):
+                        fopen_test.write(token + ' ' + glabel + '\n')
+                    fopen_test.write('\n')
+        return train_index, test_index
 
     def get_train_data(self, percent=(2, 1), isRandom=True):  # train size : test size == 2 :  1
         fopen = open(self.source_data_file)

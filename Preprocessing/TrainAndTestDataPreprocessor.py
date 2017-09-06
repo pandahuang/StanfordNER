@@ -11,6 +11,9 @@ class TrainAndTestDataPreprocessor(Preprocessor):
     def preprocess(self):
         print 'This is a preprocessor deal with train data and test data.'
 
+    def reduce_replicate_data(self, datums, first_file='', second_file='', third_file=''):
+        pass
+
     def reduce_replicate_data(self, first_file='', second_file='', third_file=''):
         if first_file == '':
             first_file = self.source_data_file
