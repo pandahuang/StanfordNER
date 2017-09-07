@@ -133,6 +133,14 @@ class CRF(object):
                 fopen.write(fn + '=' + fv + '\n')
         pass
 
+    def train_temp(self):
+        command = self.command_line + ' -prop ' + self.prop_file
+        cmd = shlex.split(command)
+        sout, serr = java(cmd, classpath=self.path_to_jar, stdout=PIPE, stderr=PIPE)
+        print '--------------------TRAIN------------------------'
+        print serr
+        return sout, serr
+
     def training_crf_model(self):
         command = self.command_line + ' -prop ' + self.prop_file
         cmd = shlex.split(command)
@@ -145,6 +153,20 @@ class CRF(object):
 
     def train(self):
         return self.training_crf_model()
+
+    def verify_by_sentence(self, sentence):
+        pass
+
+    def verify_temp(self, file=''):
+        if not file:
+            file = self.test_file
+        command = self.command_line + ' -loadClassifier ' + self.model_filename + ' -testFile ' + file
+        cmd = shlex.split(command)
+        sout, serr = java(cmd, classpath=self.path_to_jar, stdout=PIPE, stderr=PIPE)
+        print '--------------------TEST------------------------'
+        print serr
+        return sout, serr
+
 
     def verify(self, sentence=None):
         test_file = self.test_file
@@ -169,6 +191,13 @@ class CRF(object):
         if not test_file == self.test_file:
             os.remove(test_file)
         return sout, serr, sent_accuracy, test_datasize, test_time, detail_result
+
+    def train_and_verify_temp(self, train_file='', test_file=''):
+        if not train_file: train_file = self.train_file
+        if not test_file: test_file = self.test_file
+        sout_train, serr_train = self.train(train_file)
+        sout_test, serr_test = self.verify(test_file)
+        return sout_train, serr_train, sout_test, serr_test
 
     def train_and_verify(self):
         sout_train, serr_train, train_datasize, train_time = self.train()

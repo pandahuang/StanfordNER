@@ -1,5 +1,3 @@
-import os
-import copy
 from Data.DataManager import DataManager
 from Preprocessing import ProcessorFactory
 from Model.ConditionalRandomField import CRF

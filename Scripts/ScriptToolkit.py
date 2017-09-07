@@ -92,3 +92,87 @@ class ScriptToolkit(object):
                 else:
                     glabels_distribution[glabel] = 1
         return sentences_amount, tokens_distribution, glabels_distribution
+
+    @classmethod
+    def ParseTrainSoutAndSerr(self, sout, serr):
+        if sout.strip():
+            pass
+        results = serr.strip().split('\n')
+        train_datasize, train_time = 0, 0
+        for result in results:
+            try:
+                infos = result.strip().split(':')
+                if infos[0].strip() == 'numDocuments':
+                    train_datasize = infos[1].strip()
+            except IndexError:
+                continue
+        train_time_res = results[-3]
+        train_time = train_time_res.strip().split('[')[1].strip().split(' ')[0]
+        return train_datasize, train_time
+
+    @classmethod
+    def ParseTestSoutAndSerr(self, sout, serr):
+        labels_tp, labels_fp, labels_fn = {}, {}, {}
+        results_sout = sout.strip().split('\r')
+        count_wrong, count_sent = 0, 0
+        isWorng = False
+        for result in results_sout:
+            if result.strip():
+                token, label, res = result.split('\t')[0], result.split('\t')[1], result.split('\t')[2]
+                if label != res:
+                    isWorng = True
+            else:
+                if isWorng:
+                    count_wrong += 1
+                count_sent += 1
+                isWorng = False
+            try:
+                token, label, res = result.split('\t')[0], result.split('\t')[1], result.split('\t')[2]
+                if label == res:
+                    labels_tp[label] = labels_tp[label] + 1 if labels_tp.has_key(label) else 1
+                else:
+                    labels_fn[label] = labels_fn[label] + 1 if labels_fn.has_key(label) else 1
+                    labels_fp[res] = labels_fp[res] + 1 if labels_fp.has_key(res) else 1
+            except IndexError, e1:
+                continue
+            except KeyError, e2:
+                continue
+
+        sent_accuracy = float(count_sent - count_wrong) / count_sent
+
+        print '--------------------Custom Result--------------------'
+        print 'The sentences accuracy is %f.' % (sent_accuracy)
+        # print 'Entity\tP\tR\tF1\tTP\tFP\tFN'
+        detail_result = 'Entity\tP\tR\tF1\tTP\tFP\tFN'
+        labelset = list(set(labels_fp.keys() + labels_tp.keys() + labels_fn.keys()))
+        for label in labelset:
+            try:
+                tp = labels_tp[label] if labels_tp.has_key(label) else 0
+                fp = labels_fp[label] if labels_fp.has_key(label) else 0
+                fn = labels_fn[label] if labels_fn.has_key(label) else 0
+                precision = float(tp) / (tp + fp)
+                recall = float(tp) / (tp + fn)
+                f1 = 2 * precision * recall / (precision + recall)
+                detail_result = detail_result + '\n' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
+                    label, precision, recall, f1, tp, fp, fn)
+            except ZeroDivisionError, e:
+                continue
+        total_tp = sum(labels_tp.values())
+        total_fp = sum(labels_fp.values())
+        total_fn = sum(labels_fn.values())
+        total_precision = float(total_tp) / (total_tp + total_fp)
+        total_recall = float(total_tp) / (total_tp + total_fn)
+        total_f1 = 2 * total_precision * total_recall / (total_precision + total_recall)
+        detail_result = detail_result + '\n' + '%s\t%f\t%f\t%f\t%d\t%d\t%d' % (
+            'Total', total_precision, total_recall, total_f1, total_tp, total_fp, total_fn)
+        test_datasize, test_time = 0, 0
+        results_serr = serr.strip().split('\n')
+        for result in results_serr:
+            try:
+                infos = result.strip().split(' ')
+                if infos[0].strip() == 'CRFClassifier':
+                    test_datasize = infos[5].strip()
+                    test_time = int(infos[2].strip()) * (1 / float(infos[8].strip()))
+            except IndexError:
+                continue
+        return sent_accuracy, test_datasize, test_time, detail_result
