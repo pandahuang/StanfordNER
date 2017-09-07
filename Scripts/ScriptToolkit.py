@@ -1,3 +1,8 @@
+import os
+from datetime import datetime
+import time
+
+
 class ScriptToolkit(object):
     def __init__(self, DM):
         self.DM = DM
@@ -76,7 +81,7 @@ class ScriptToolkit(object):
                 fopen.write(line)
 
     @classmethod
-    def StatisticDatums(self, datums):
+    def StatisticDatums(cls, datums):
         sentences_amount, tokens_distribution, glabels_distribution = 0, {}, {}
         sentences_amount = len(datums)
         for datum in datums:
@@ -94,7 +99,7 @@ class ScriptToolkit(object):
         return sentences_amount, tokens_distribution, glabels_distribution
 
     @classmethod
-    def ParseTrainSoutAndSerr(self, sout, serr):
+    def ParseTrainSoutAndSerr(cls, sout, serr):
         if sout.strip():
             pass
         results = serr.strip().split('\n')
@@ -111,7 +116,7 @@ class ScriptToolkit(object):
         return train_datasize, train_time
 
     @classmethod
-    def ParseTestSoutAndSerr(self, sout, serr):
+    def ParseTestSoutAndSerr(cls, sout, serr):
         labels_tp, labels_fp, labels_fn = {}, {}, {}
         results_sout = sout.strip().split('\r')
         count_wrong, count_sent = 0, 0
@@ -176,3 +181,17 @@ class ScriptToolkit(object):
             except IndexError:
                 continue
         return sent_accuracy, test_datasize, test_time, detail_result
+
+    @classmethod
+    def LogResult(cls, sent_accuracy, source_data, train_datasize, train_time, test_datasize, test_time,
+                  result_file='result-record.txt'):
+        if not os.path.exists(result_file):
+            fopen = open(result_file, 'w')
+            fopen.write('ExpDate' + '\t' + 'SentAccuracy' + '\t' + 'SourceData' + '\t' + 'TrainDataSize' + '\t' +
+                        'TrainTime' + '\t' + 'TestDataSize' + '\t' + 'TestTime' + '\n')
+            fopen.close()
+        fopen = open(result_file, 'a')
+        exp_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        fopen.write(exp_date + '\t' + str(sent_accuracy) + '\t' + source_data + '\t' + str(train_datasize) + '\t' + str(train_time) +
+                    '\t' + str(test_datasize) + '\t' + str(test_time) + '\n')
+        fopen.close()

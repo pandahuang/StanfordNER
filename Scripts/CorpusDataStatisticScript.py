@@ -4,6 +4,7 @@ from Data.DataManager import DataManager
 
 DM = DataManager()
 DM.change_pwd()
+DM.source_data_file = 'CorpusLabelData_LongSentences_Sales_v3.txt'
 
 
 def run(DM=DM):

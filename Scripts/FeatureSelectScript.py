@@ -1,9 +1,8 @@
 import os
-import copy
 from Data.DataManager import DataManager
 from Preprocessing import ProcessorFactory
 from Model.ConditionalRandomField import CRF
-from Visualization import CanvasFactory
+from Scripts.ScriptToolkit import ScriptToolkit
 
 features = {
     'useClassFeature': 'true',
@@ -70,14 +69,15 @@ def run(feature_set, DM=DM):
     crf_processor = ProcessorFactory.CRFProcessorFactory().produce(source_data_file=DM.source_data_file,
                                                                    train_file=DM.train_file, test_file=DM.test_file)
     crf_processor.get_train_data(isRandom=False)
-    crf_test = CRF(path_to_jar=DM.path_to_jar, prop_file=DM.prop_file, model_file=DM.model_file,
-                   train_file=DM.train_file,
+    crf_test = CRF(path_to_jar=DM.path_to_jar, prop_file=DM.prop_file, model_file=DM.model_file, train_file=DM.train_file,
                    test_file=DM.test_file, result_file=DM.result_file)
     crf_test.feature_config(features=feature_set)
-    crf_test.train()
+    sout_train, serr_train = crf_test.train()
     os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), DM.features_train))
-    crf_test.verify()
+    sout_test, serr_test = crf_test.verify()
     os.rename(os.path.join(os.getcwd(), 'features-1.txt'), os.path.join(os.getcwd(), DM.features_test))
+    sent_accuracy = ScriptToolkit.ParseTestSoutAndSerr(sout_test, serr_test)[0]
+    return sent_accuracy
 
 
 if __name__ == '__main__':
@@ -87,7 +87,7 @@ if __name__ == '__main__':
 
     # use demo features
     feature_demo = features
-    run(feature_demo)
+    sent_accuracy = run(feature_demo)
 
     # #use the 3 better feature in demo list
     # feature_word_shape_disjunctive = list2dict(default + word + wordshape + disjunctive)

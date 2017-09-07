@@ -22,7 +22,12 @@ def run(feature_set, DM=DM):
                    source_data_file=DM.source_data_file, train_file=DM.train_file, test_file=DM.test_file,
                    result_file=DM.result_file)
     crf_test.feature_config(features=feature_set)
-    sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result = crf_test.train_and_verify()
+    sout_train, serr_train, sout_test, serr_test = crf_test.train_and_verify()
+    train_datasize, train_time = ScriptToolkit.ParseTrainSoutAndSerr(sout_train, serr_train)
+    sent_accuracy, test_datasize, test_time, detail_result = ScriptToolkit.ParseTestSoutAndSerr(sout_test, serr_test)
+    ScriptToolkit.LogResult(sent_accuracy, DM.source_data_file, train_datasize, train_time, test_datasize, test_time)
+    ScriptToolkit(DM).LogResultsAndWrongAnswer(sout_test, serr_test, detail_result)
+
     DM.source_data_file = 'CorpusLabelData_MergedFilter_Full.txt'
     tat_data_processor = ProcessorFactory.TrainAndTestDataPreprocessorFactory().produce(source_data_file=DM.source_data_file,
                                                                                         train_file=DM.train_file,
@@ -32,22 +37,23 @@ def run(feature_set, DM=DM):
                      source_data_file=DM.source_data_file, train_file=DM.train_file, test_file=DM.test_file,
                      result_file=DM.result_file)
     crf_test_f.feature_config(features=feature_set)
-    sout_train_f, serr_train_f, sent_accuracy_f, sout_test_f, serr_test_f, detail_result_f = crf_test_f.train_and_verify()
-    return sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result, sout_train_f, serr_train_f, sent_accuracy_f, sout_test_f, serr_test_f, detail_result_f
+    sout_train_f, serr_train_f, sout_test_f, serr_test_f = crf_test_f.train_and_verify()
+    train_datasize_f, train_time_f = ScriptToolkit.ParseTrainSoutAndSerr(sout_train_f, serr_train_f)
+    sent_accuracy_f, test_datasize_f, test_time_f, detail_result_f = ScriptToolkit.ParseTestSoutAndSerr(sout_test_f, serr_test_f)
+    ScriptToolkit.LogResult(sent_accuracy_f, DM.source_data_file, train_datasize_f, train_time_f, test_datasize_f, test_time_f)
+    ScriptToolkit(DM).LogResultsAndWrongAnswer(sout_test_f, serr_test_f, detail_result_f)
+    return sent_accuracy, sent_accuracy_f
 
 
 st = ScriptToolkit(DM)
 
 if __name__ == '__main__':
-    cycle_times = 10
+    cycle_times = 1
     sent_accuracys, sent_accuracys_f = [], []
     for i in range(cycle_times):
         # use demo features
         feature_demo = features
-        sout_train, serr_train, sent_accuracy, sout_test, serr_test, detail_result, sout_train_f, serr_train_f, sent_accuracy_f, sout_test_f, serr_test_f, detail_result_f = run(
-            feature_demo)
-        st.LogResultsAndWrongAnswer(sout_test, serr_test, detail_result)
-        st.LogResultsAndWrongAnswer(sout_test_f, serr_test_f, detail_result_f)
+        sent_accuracy, sent_accuracy_f = run(feature_demo)
         sent_accuracys.append(sent_accuracy)
         sent_accuracys_f.append(sent_accuracy_f)
     print 'Average sent_accuracy of former corpus is : %f' % (sum(sent_accuracys) / cycle_times)
