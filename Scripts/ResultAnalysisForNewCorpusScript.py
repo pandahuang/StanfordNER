@@ -1,9 +1,6 @@
-import os
-import copy
 from Data.DataManager import DataManager
 from Preprocessing import ProcessorFactory
 from Model.ConditionalRandomField import CRF
-from Visualization import PainterFactory
 from ScriptToolkit import ScriptToolkit
 
 features = ScriptToolkit.get_demo_features()
@@ -48,6 +45,10 @@ def run(feature_set, DM=DM):
 st = ScriptToolkit(DM)
 
 if __name__ == '__main__':
+    DM = DataManager()
+    DM.change_pwd()
+    DM.remove(DM.log_wrong_sentences)
+    st = ScriptToolkit(DM)
     cycle_times = 1
     sent_accuracys, sent_accuracys_f = [], []
     for i in range(cycle_times):
