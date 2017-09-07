@@ -43,4 +43,4 @@ if __name__ == '__main__':
     prepos_processor = prepos_factory.produce(train_file=DM.train_file, test_file=DM.test_file)
     prepos_processor.preprocess()
     prepos_processor.prelabel_with_pos_all()
-    prepos_processor.prelabel_with_pos_by_sentence(is_combine=True)
+    prepos_processor.prelabel_with_pos_by_sentence(is_combined=True)

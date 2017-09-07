@@ -11,9 +11,10 @@ class DataReader(object):
             doc_id = 0
             tokens, glabels = [], []
             for line in fopen.readlines():
+                line = line.replace(' ', '\t')
                 if line.strip():
-                    tokens.append(line.strip().split(' ')[0])
-                    glabels.append(line.strip().split(' ')[1])
+                    tokens.append(line.strip().split('\t')[0])
+                    glabels.append(line.strip().split('\t')[1])
                 elif line.strip() == '' and tokens:
                     doc = ' '.join(tokens)
                     datum = Datum(doc_id, doc, tokens, glabels, [])

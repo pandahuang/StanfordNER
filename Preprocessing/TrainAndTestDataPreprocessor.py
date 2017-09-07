@@ -19,7 +19,7 @@ class TrainAndTestDataPreprocessor(Preprocessor):
             for datum in first_datums:
                 if not datum.get_sentence() in second_datums_sentences:
                     for token, glabel in zip(datum.tokens, datum.golden_labels):
-                        fopen.write(token + ' ' + glabel + '\n')
+                        fopen.write(token + '\t' + glabel + '\n')
                     fopen.write('\n')
 
     def reduce_replicate_data(self, first_file='', second_file='', third_file=''):
@@ -39,6 +39,7 @@ class TrainAndTestDataPreprocessor(Preprocessor):
         sentence_second = []
         temp_sentence = ''
         for line in lines_first:
+            line = line.replace(' ', '\t')
             if line.strip():
                 temp_sentence = temp_sentence + line
             else:
@@ -46,6 +47,7 @@ class TrainAndTestDataPreprocessor(Preprocessor):
                 temp_sentence = ''
         temp_sentence = ''
         for line in lines_second:
+            line = line.replace(' ', '\t')
             if line.strip():
                 temp_sentence = temp_sentence + line
             else:

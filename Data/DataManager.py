@@ -51,5 +51,5 @@ class DataManager(object):
 
 if __name__ == '__main__':
     DM = DataManager()
-    DM.list_all_files()
+    data_files = DM.list_all_files()
     DM.change_pwd()

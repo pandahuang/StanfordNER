@@ -60,11 +60,11 @@ class CRFPreprocessor(Preprocessor):
             for index, datum in enumerate(datums):
                 if index in train_index:
                     for token, glabel in zip(datum.tokens, datum.golden_labels):
-                        fopen_train.write(token + ' ' + glabel + '\n')
+                        fopen_train.write(token + '\t' + glabel + '\n')
                     fopen_train.write('\n')
                 elif index in test_index:
                     for token, glabel in zip(datum.tokens, datum.golden_labels):
-                        fopen_test.write(token + ' ' + glabel + '\n')
+                        fopen_test.write(token + '\t' + glabel + '\n')
                     fopen_test.write('\n')
         return train_index, test_index
 
@@ -72,19 +72,18 @@ class CRFPreprocessor(Preprocessor):
         fopen = open(self.source_data_file)
         index_record = [index for index, line in enumerate(fopen) if not line.strip()]
         fopen.close()
-        train_index = []
-        test_index = []
+        train_index, test_index = [], []
         if isRandom:
             train_index = random.sample(index_record, len(index_record) / (percent[0] + percent[1]) * percent[0])
             test_index = list(set(index_record) - set(train_index))
         else:
             train_index, test_index = regular_sample(index_record, percent)
         # print index_record
-        with open(self.source_data_file) as fopen_source, open(self.train_file, 'w') as fopen_train, open(
-                self.test_file, 'w') as fopen_test:
+        with open(self.source_data_file) as fopen_source, open(self.train_file, 'w') as fopen_train, open(self.test_file,
+                                                                                                          'w') as fopen_test:
             sents = []
             for index, line in enumerate(fopen_source):
-                sents.append(line)
+                sents.append(line.replace(' ', '\t'))
                 if index in train_index:
                     fopen_train.write(''.join(sents))
                     sents = []

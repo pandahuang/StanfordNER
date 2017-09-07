@@ -42,9 +42,9 @@ class PreLabelWithPosPreprocessor(Preprocessor):
                 pos_tags = nltk.pos_tag(datum.tokens)
                 for (token, pos_tag) in pos_tags:
                     if is_combined:
-                        fopen.write(token + ' ' + self.combine_pos_tag(pos_tag) + '\n')
+                        fopen.write(token + '\t' + self.combine_pos_tag(pos_tag) + '\n')
                     else:
-                        fopen.write(token + ' ' + pos_tag + '\n')
+                        fopen.write(token + '\t' + pos_tag + '\n')
                 fopen.write('\n')
 
     def prelabel_with_pos_all(self, is_combined=False, file=''):
@@ -58,14 +58,15 @@ class PreLabelWithPosPreprocessor(Preprocessor):
             lines = open_file(file)
             with open(file, 'w') as fopen:
                 for line in lines:
+                    line = line.replace(' ', '\t')
                     if line.strip():
-                        token = line.strip().split(' ')[0]
-                        label = line.strip().split(' ')[1]
+                        token = line.strip().split('\t')[0]
+                        label = line.strip().split('\t')[1]
                         nlabel = nltk.pos_tag([token])
                         if is_combined:
-                            fopen.write(token + ' ' + self.combine_pos_tag(nlabel[0][1]) + '\n')
+                            fopen.write(token + '\t' + self.combine_pos_tag(nlabel[0][1]) + '\n')
                         else:
-                            fopen.write(token + ' ' + nlabel[0][1] + '\n')
+                            fopen.write(token + '\t' + nlabel[0][1] + '\n')
                     else:
                         fopen.write(line)
 
@@ -76,11 +77,11 @@ class PreLabelWithPosPreprocessor(Preprocessor):
                 for (token, pos_tag), glabel in zip(pos_tags, datum.golden_labels):
                     if glabel.lower() in former_labels:
                         if is_combined:
-                            fopen.write(token + ' ' + self.combine_pos_tag(pos_tag) + '\n')
+                            fopen.write(token + '\t' + self.combine_pos_tag(pos_tag) + '\n')
                         else:
-                            fopen.write(token + ' ' + pos_tag + '\n')
+                            fopen.write(token + '\t' + pos_tag + '\n')
                     else:
-                        fopen.write(token + ' ' + glabel + '\n')
+                        fopen.write(token + '\t' + glabel + '\n')
                 fopen.write('\n')
 
     def prelabel_with_pos_by_sentence(self, is_combined=False, file='', former_labels=['null']):
@@ -95,6 +96,7 @@ class PreLabelWithPosPreprocessor(Preprocessor):
             with open(file, 'w') as fopen:
                 tokens, labels = [], []
                 for line in lines:
+                    line = line.replace(' ', '\t')
                     if line.strip():
                         token = line.strip().split(' ')[0]
                         label = line.strip().split(' ')[1]
@@ -105,10 +107,10 @@ class PreLabelWithPosPreprocessor(Preprocessor):
                         for (token, pos_tag), label in zip(pos_tags, labels):
                             if label.lower() in former_labels:
                                 if is_combined:
-                                    fopen.write(token + ' ' + self.combine_pos_tag(pos_tag) + '\n')
+                                    fopen.write(token + '\t' + self.combine_pos_tag(pos_tag) + '\n')
                                 else:
-                                    fopen.write(token + ' ' + pos_tag + '\n')
+                                    fopen.write(token + '\t' + pos_tag + '\n')
                             else:
-                                fopen.write(token + ' ' + label + '\n')
+                                fopen.write(token + '\t' + label + '\n')
                         fopen.write(line)
                         tokens, labels = [], []
