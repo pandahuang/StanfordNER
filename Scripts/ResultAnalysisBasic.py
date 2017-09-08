@@ -2,6 +2,8 @@ from Data.DataManager import DataManager
 from Preprocessing import ProcessorFactory
 from Model.ConditionalRandomField import CRF
 from ScriptToolkit import ScriptToolkit
+from Preprocessing.Datum import Datum
+from Preprocessing.DataReader import DataReader
 
 
 class ResultAnalysisBasic(object):

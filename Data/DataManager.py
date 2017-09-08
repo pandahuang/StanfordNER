@@ -46,7 +46,13 @@ class DataManager(object):
         if os.path.exists(os.path.join(os.getcwd(), filepath)):
             os.remove(os.path.join(os.getcwd(), filepath))
         else:
-            print 'IOError: %s is not in current work directory.'%filepath
+            print 'IOError: %s is not in current work directory.' % filepath
+
+    def rename(self, filepath_old, filepath_new):
+        if os.path.exists(os.path.join(os.getcwd(), filepath_old)):
+            os.rename(os.path.join(os.getcwd(), filepath_old), os.path.join(os.getcwd(), filepath_new))
+        else:
+            print 'IOError: %s is not in current work directory.' % filepath_old
 
 
 if __name__ == '__main__':
