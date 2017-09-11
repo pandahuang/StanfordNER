@@ -96,7 +96,8 @@ class ScriptToolkit(object):
                     glabels_distribution[glabel] += 1
                 else:
                     glabels_distribution[glabel] = 1
-        return sentences_amount, tokens_distribution, glabels_distribution
+        return sentences_amount, sorted(tokens_distribution.iteritems(), key=lambda d: d[1], reverse=True), \
+               sorted(glabels_distribution.iteritems(), key=lambda d: d[1], reverse=True)
 
     @classmethod
     def ParseTrainSoutAndSerr(cls, sout, serr):
@@ -180,7 +181,7 @@ class ScriptToolkit(object):
                     test_time = int(infos[2].strip()) * (1 / float(infos[8].strip()))
             except IndexError:
                 continue
-        return sent_accuracy, test_datasize, test_time, detail_result
+        return sent_accuracy, test_datasize, round(test_time, 2), detail_result
 
     @classmethod
     def LogResult(cls, sent_accuracy, source_data, train_datasize, train_time, test_datasize, test_time,

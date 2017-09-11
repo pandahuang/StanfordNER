@@ -26,11 +26,11 @@ def run(features, DM):
 if __name__ == '__main__':
     DM = DataManager()
     DM.change_pwd()
-    DM.source_data_file = 'CorpusLabelData_LongSentences_Sales_v3.txt'
+    DM.source_data_file = 'CorpusLabelData_LongAndShortSentences_Sales_v2.txt'
     DM.remove(DM.log_wrong_sentences)
     features = ScriptToolkit.get_demo_features()
     sent_accuracys = []
-    cycle_times = 1
+    cycle_times = 10
     for i in range(cycle_times):
         sent_accuracy = run(features, DM)
         sent_accuracys.append(sent_accuracy)
