@@ -100,3 +100,16 @@ ExpDate	SentAccuracy	SourceData	TrainDataSize	TrainTime	TestDataSize	TestTime
 2017-09-07 22:12:09	0.855072463768	CorpusLabelData_MergedFilter_Full.txt	409	16.3	139	0.716000949977
 2017-09-08 09:33:23	0.847826086957	CorpusLabelData_MergedFilter_Update.txt	274	15.1	139	1.39699613039
 2017-09-08 10:00:50	0.811594202899	CorpusLabelData_MergedFilter_Update.txt	274	13.4	139	1.47899044318
+2017-09-11 11:10:08	0.890977443609	CorpusLabelData_LongAndShortSentences_Sales_v2.txt	534	23.5	267	1.0
+2017-09-11 11:10:35	0.87969924812	CorpusLabelData_LongAndShortSentences_Sales_v2.txt	534	23.3	267	1.0
+2017-09-11 11:11:01	0.890977443609	CorpusLabelData_LongAndShortSentences_Sales_v2.txt	534	22.8	267	1.0
+2017-09-11 11:11:29	0.864661654135	CorpusLabelData_LongAndShortSentences_Sales_v2.txt	534	24.1	267	1.0
+2017-09-11 11:11:54	0.857142857143	CorpusLabelData_LongAndShortSentences_Sales_v2.txt	534	21.7	267	1.0
+2017-09-11 11:12:19	0.838345864662	CorpusLabelData_LongAndShortSentences_Sales_v2.txt	534	21.8	267	1.0
+2017-09-11 11:12:43	0.894736842105	CorpusLabelData_LongAndShortSentences_Sales_v2.txt	534	20.0	267	1.0
+2017-09-11 11:13:07	0.864661654135	CorpusLabelData_LongAndShortSentences_Sales_v2.txt	534	21.1	267	1.0
+2017-09-11 11:13:36	0.864661654135	CorpusLabelData_LongAndShortSentences_Sales_v2.txt	534	25.5	267	1.0
+2017-09-11 11:13:59	0.864661654135	CorpusLabelData_LongAndShortSentences_Sales_v2.txt	534	19.7	267	1.0
+2017-09-12 10:22:55	0.927536231884	CorpusLabelData_LongAndShortSentences_Sales_v2.txt	274	7.3	139	0.51
+2017-09-12 10:23:28	0.811594202899	CorpusLabelData_LongAndShortSentences_Sales_v2.txt	274	7.4	139	0.56
+2017-09-12 10:25:19	0.898550724638	CorpusLabelData_LongAndShortSentences_Sales_v2.txt	274	7.9	139	0.48

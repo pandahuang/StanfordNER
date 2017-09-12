@@ -30,7 +30,7 @@ if __name__ == '__main__':
     DM.remove(DM.log_wrong_sentences)
     features = ScriptToolkit.get_demo_features()
     sent_accuracys = []
-    cycle_times = 10
+    cycle_times = 1
     for i in range(cycle_times):
         sent_accuracy = run(features, DM)
         sent_accuracys.append(sent_accuracy)
