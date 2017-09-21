@@ -1,11 +1,15 @@
 import os
 from datetime import datetime
-import time
 
 
 class ScriptToolkit(object):
     def __init__(self, DM):
         self.DM = DM
+
+    @classmethod
+    def get_custom_features(cls, file_name):
+        feature_sets = []
+        return feature_sets
 
     @classmethod
     def get_demo_features(cls):

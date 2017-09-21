@@ -2,19 +2,23 @@ from Scripts.ScriptToolkit import ScriptToolkit
 from Preprocessing.DataReader import DataReader
 from Data.DataManager import DataManager
 
-DM = DataManager()
-DM.change_pwd()
-DM.source_data_file = 'CorpusLabelData_LongAndShortSentences_Sales_v2.txt'
+if __name__ == '__main__':
+    # create data manager
+    DM = DataManager()
+    DM.change_pwd()
+    DM.source_data_file = 'CorpusLabelData_LongAndShortSentences_Sales_v2.txt'
 
-
-def run(DM=DM):
+    # create datums
     DR = DataReader(source_data_file=DM.source_data_file)
     DR.standard_read()
-    return ScriptToolkit.StatisticDatums(DR.Datums)
 
+    # create toolkits
+    ST = ScriptToolkit(DM)
 
-if __name__ == '__main__':
-    sentences_amount, tokens_distribution, glabels_distribution = run()
+    # analysis
+    sentences_amount, tokens_distribution, glabels_distribution = ScriptToolkit.StatisticDatums(DR.Datums)
+
+    # result display
     print 'Sentences Amount is %d' % (sentences_amount)
     print 'Tokens distribution is:'
     print tokens_distribution
