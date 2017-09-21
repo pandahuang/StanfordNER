@@ -24,6 +24,8 @@ if __name__ == '__main__':
     # features['printFeatures'] = '1'
     feature_sets = ScriptToolkit.get_custom_features('custom_features.txt')
 
+    train_times = []
+    sent_accuracys = []
     for features in feature_sets:
         # data preprocessing
         crf_processor = ProcessorFactory.CRFProcessorFactory().produce(source_data_file=DM.source_data_file,
@@ -34,10 +36,13 @@ if __name__ == '__main__':
         crf_test = CRF(path_to_jar=DM.path_to_jar, prop_file=DM.prop_file, model_file=DM.model_file, train_file=DM.train_file,
                        test_file=DM.test_file, result_file=DM.result_file)
         crf_test.feature_config(features=features)
-        crf_test.train()
+        sout_train, serr_train = crf_test.train()
         DM.rename('features-1.txt', DM.features_train)
+        train_times.append(ScriptToolkit.ParseTrainSoutAndSerr(sout_train, serr_train)[1])
         sout_test, serr_test = crf_test.verify()
         DM.rename('features-1.txt', DM.features_test)
+        sent_accuracys.append(ScriptToolkit.ParseTestSoutAndSerr(sout_test, serr_test)[0])
 
-    # result display
-    sent_accuracy = ScriptToolkit.ParseTestSoutAndSerr(sout_test, serr_test)[0]
+        # result display
+        for train_time, sent_accuracy in zip(train_times, sent_accuracys):
+            print 'Training Time:%s , Sentence Level Accuracy:%s .' % (train_time, sent_accuracy)
