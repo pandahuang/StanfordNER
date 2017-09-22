@@ -24,9 +24,12 @@ if __name__ == '__main__':
     cycle_times = 1
     for i in range(cycle_times):
         # data preprocessing
-        crf_processor = ProcessorFactory.CRFProcessorFactory().produce(source_data_file=DM.source_data_file,
-                                                                       train_file=DM.train_file, test_file=DM.test_file)
-        crf_processor.get_train_data(DR.Datums)
+        # crf_processor = ProcessorFactory.CRFProcessorFactory().produce(source_data_file=DM.source_data_file,
+        #                                                                train_file=DM.train_file, test_file=DM.test_file)
+        # crf_processor.get_train_data(DR.Datums)
+        null2o_processor = ProcessorFactory.ReplaceNullWithOPreprocessorFactory().produce(train_file=DM.train_file,
+                                                                                          test_file=DM.test_file)
+        null2o_processor.replace_null_with_o()
 
         # training and testing
         crf_test = CRF(path_to_jar=DM.path_to_jar, prop_file=DM.prop_file, model_file=DM.model_file,

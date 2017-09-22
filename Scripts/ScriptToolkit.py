@@ -88,7 +88,9 @@ class ScriptToolkit(object):
     def StatisticDatums(cls, datums):
         sentences_amount, tokens_distribution, glabels_distribution = 0, {}, {}
         sentences_amount = len(datums)
+        tokens_amount = 0
         for datum in datums:
+            tokens_amount = tokens_amount + len(datum.tokens)
             for token in datum.tokens:
                 if tokens_distribution.has_key(token):
                     tokens_distribution[token] += 1
@@ -100,7 +102,7 @@ class ScriptToolkit(object):
                     glabels_distribution[glabel] += 1
                 else:
                     glabels_distribution[glabel] = 1
-        return sentences_amount, sorted(tokens_distribution.iteritems(), key=lambda d: d[1], reverse=True), \
+        return sentences_amount, tokens_amount, sorted(tokens_distribution.iteritems(), key=lambda d: d[1], reverse=True), \
                sorted(glabels_distribution.iteritems(), key=lambda d: d[1], reverse=True)
 
     @classmethod

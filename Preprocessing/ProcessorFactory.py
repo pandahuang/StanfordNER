@@ -2,6 +2,7 @@ from Preprocessing import Preprocessor
 from Data.DataManager import DataManager
 from Preprocessing.TrainAndTestDataPreprocessor import TrainAndTestDataPreprocessor
 from Preprocessing.PreLabelWithPosPreprocessor import PreLabelWithPosPreprocessor
+from Preprocessing.ReplaceNullWithOPreprocessor import ReplaceNullWithOPreprocessor
 
 
 class Provider(object):
@@ -27,6 +28,10 @@ class LSTMProcessorFactory(Provider):
 class TrainAndTestDataPreprocessorFactory(Provider):
     def produce(self, **kw):
         return TrainAndTestDataPreprocessor(**kw)
+
+class ReplaceNullWithOPreprocessorFactory(Provider):
+    def produce(self, **kw):
+        return ReplaceNullWithOPreprocessor(**kw)
 
 
 if __name__ == '__main__':
