@@ -9,6 +9,7 @@ if __name__ == '__main__':
     # create data manager
     DM = DataManager()
     DM.change_pwd()
+    DM.source_data_file = 'CorpusLabelData_SalesModule.txt'
     DM.remove(DM.features_train)
     DM.remove(DM.features_test)
 
@@ -18,11 +19,12 @@ if __name__ == '__main__':
 
     # create toolkits
     ST = ScriptToolkit(DM)
-    # features = ScriptToolkit.get_demo_features()
+    features = ScriptToolkit.get_demo_features()
 
     # feature setting
-    # features['printFeatures'] = '1'
-    feature_sets = ScriptToolkit.get_custom_features('custom_features.txt')
+    features['printFeatures'] = '1'
+    feature_sets = [features]
+    # feature_sets = ScriptToolkit.get_custom_features('custom_features.txt')
 
     train_times = []
     sent_accuracys = []
@@ -30,7 +32,7 @@ if __name__ == '__main__':
         # data preprocessing
         crf_processor = ProcessorFactory.CRFProcessorFactory().produce(source_data_file=DM.source_data_file,
                                                                        train_file=DM.train_file, test_file=DM.test_file)
-        crf_processor.get_train_data(DR.Datums, percent=(2, 1), isRandom=False)
+        crf_processor.get_train_data(DR.Datums, percent=(0, 0), isRandom=False)
 
         # training and testing
         crf_test = CRF(path_to_jar=DM.path_to_jar, prop_file=DM.prop_file, model_file=DM.model_file, train_file=DM.train_file,

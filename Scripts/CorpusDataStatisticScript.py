@@ -6,7 +6,7 @@ if __name__ == '__main__':
     # create data manager
     DM = DataManager()
     DM.change_pwd()
-    DM.source_data_file = 'CorpusLabelData_MergedFilter_Update.txt'
+    DM.source_data_file = 'CorpusLabelData_SalesModule.txt'
 
     # create datums
     DR = DataReader(source_data_file=DM.source_data_file)
